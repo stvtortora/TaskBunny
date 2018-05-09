@@ -12,12 +12,13 @@
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
-    "webpack": "^3.4.1"
+    "webpack": "^3.11.0"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
   "main": "index.js",
   "directories": {
+    "lib": "lib",
     "test": "test"
   },
   "scripts": {
@@ -26,9 +27,9 @@
     "postinstall": "webpack"
   },
   "engines": {
-     "node": "6.7.0",
-     "npm": "3.10.7"
-   },
+    "node": "6.7.0",
+    "npm": "3.10.7"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stvtortora/fullstack_project.git"
