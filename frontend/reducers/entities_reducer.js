@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import dashboard from './dashboard_reducer';
+import categories from './categories_reducer';
 
 
 export default combineReducers({
-  dashboard
+  categories
 });

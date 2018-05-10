@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 const SessionLinks = (props) => {
   if(!!props.currentUser) {
-      return (
-        <nav className='session-links'>
-          <div onClick={props.logout} className='session-link'>Logout</div>
-        </nav>
-      );
+    return (
+      <nav className='session-links'>
+        <div onClick={props.logout} className='session-link'>Logout</div>
+      </nav>
+    );
   }
 
   return (

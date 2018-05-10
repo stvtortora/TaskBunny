@@ -20,3 +20,10 @@ export const signup = (user) => {
     data: { user }
   });
 }
+
+export const fetchCategories = () => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/categories'
+  });
+}

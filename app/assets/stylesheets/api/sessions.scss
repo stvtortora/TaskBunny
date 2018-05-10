@@ -42,7 +42,7 @@
 }
 
 .page-content {
-  background-image:
+  background-image: image-url('session_form_background.jpg');
 }
 
 .session-form {
@@ -52,6 +52,10 @@
   margin-top: 20px;
   padding: 20px;
   align-items: center;
+}
+
+.session-form > h1 {
+  text-align: center;
 }
 
 .form-field > {
