@@ -15,7 +15,7 @@ const SessionLinks = (props) => {
       <Link to='/login' className='session-link'>Login</Link>
       <Link to='/signup' className='session-link' className='sign-up-button'>Sign Up</Link>
     </nav>
-);
+  );
 };
 
 export default SessionLinks;

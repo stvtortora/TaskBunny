@@ -21,7 +21,7 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return(
-      <ul>
+      <ul className='errors'>
         {this.props.errors.map((error, i) => (
           <li key={i}>
             {error}
@@ -33,17 +33,21 @@ class SessionForm extends React.Component {
 
   render () {
     return (
-      <form className='session-form' onSubmit={this.handleSubmit}>
-        <h1>{this.props.formName}</h1>
-        <div>{this.renderErrors()}</div>
-        <ul>
-          <li className='form-label'>Username</li>
-          <li className='form-field'><input value={this.state.user} onChange={this.update('username')}/></li>
-          <li className='form-label'>Passoword</li>
-          <li className='form-field'><input value={this.state.user} onChange={this.update('password')}/></li>
-          <li className='form-field' id='submit'><input type='submit' value={this.props.formName}/></li>
-        </ul>
-      </form>
+      <div className='page-content' id='session-page'>
+        <form className='session-form' onSubmit={this.handleSubmit}>
+          <h1>{this.props.formName}</h1>
+          <div>{this.renderErrors()}</div>
+          <div className='form-field'>
+            <label>Username</label>
+            <input type="text" value={this.state.user} onChange={this.update('username')}/>
+          </div>
+          <div className='form-field'>
+            <label>Passoword</label>
+            <input type="password" value={this.state.user} onChange={this.update('password')}/>
+          </div>
+          <button type='submit'>{this.props.formName}</button>
+        </form>
+      </div>
     );
   }
 

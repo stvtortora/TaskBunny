@@ -15,11 +15,6 @@
   text-decoration: none;
 }
 
-.session-links {
-  margin-top: 20px;
-  margin-right: 40px;
-}
-
 .sign-up-button {
   border: solid;
   border-width: 1px;
@@ -29,52 +24,68 @@
   text-decoration: inherit;
 }
 
+.session-links {
+  margin-top: 20px;
+  margin-right: 40px;
+}
+
 .session-link {
   margin: 20px;
   color: inherit;
   text-decoration: none;
   height: 20px;
-  margin: 8px;
+  margin: 20px;
 }
 
 .session-link:hover {
   cursor: pointer;
 }
 
+.page-content {
+  background-image:
+}
+
 .session-form {
   margin: auto;
-  width: 70%;
+  width: 40%;
   padding: 10px;
   margin-top: 20px;
   padding: 20px;
-  text-align: center;
+  align-items: center;
 }
 
-.session-form ul {
-  margin: auto;
-  width: 50%;
-  list-style-type: none;
+.form-field > {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }
 
-.session-form li {
-  text-align: left;
+.form-field > label {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  font-size: 15px;
   color: #86919d;
-}
-
-.form-field #submit {
 
 }
 
 .form-field > input {
-  width: 100%;
-  radius: 4px;
-  padding: 15px;
-  margin: 5px;
-  height: 8px;
+  width: 400px;
+  padding: 10px 16px;
+  margin-left: 20px;
+  margin-top: 10px;
+  font-size: 15px;
 }
 
-.form-label {
-  text-align: inherit;
-  color: inherit;
-  font-size: 0.875em;
+.session-form > button {
+    padding: 10px 16px;
+    margin: 20px;
+    width: 437px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 5px;
+    color: white;
+    font-family: inherit;
+    font-size: 20px;
+    background-color:#51af33;
 }
