@@ -6,6 +6,7 @@ export const MOD_DROPDOWN = 'MOD_DROPDOWN';
 export const ADD_TO_TASK = 'ADD_TO_TASK';
 
 export const fetchCategories = () => {
+  debugger
   return (dispatch) => {
     return ApiUtil.fetchCategories().then(categories => {
       return dispatch({type: RECEIVE_CATEGORIES, categories})
@@ -14,9 +15,10 @@ export const fetchCategories = () => {
 };
 
 export const fetchLocations = () => {
+  debugger
   return (dispatch) => {
-    return ApiUtil.fetchLocations().then(categories => {
-      return dispatch({type: RECEIVE_LOCATIONS, categories})
+    return ApiUtil.fetchLocations().then(locations => {
+      return dispatch({type: RECEIVE_LOCATIONS, locations})
     });
   };
 };

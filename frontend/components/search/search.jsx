@@ -21,15 +21,20 @@ class Search extends React.Component {
   }
 
   render() {
-
     return (
       <div className="search">
-        <input className='search_bar' type="text" placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
+        <input className='search_bar' type="text" value={this.props.name} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
         <QueryDropdown queryString={ this.state.queryString } />
       </div>
     );
   }
 }
+// //
+// const mapStateToProps = (state) => {
+//   return {
+//     name: 'new york'
+//   }
+// }
 
 
 const mapDispatchToProps = (dispatch) => {
