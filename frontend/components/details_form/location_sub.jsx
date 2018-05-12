@@ -3,38 +3,34 @@ import { connect } from 'react-redux';
 import { addToTask } from '../../actions/entities_actions';
 import Search from '../search/search';
 
-class Location extends React.Component {
+class LocationSub extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.location
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit() {
     //handle errors if blank!
-    this.props.addToTask( this.state )
+    debugger
+    this.props.addToTask( this.props.location )
   }
 
-  return (
-    <form onSubmit={ this.handleSubmit }>
-      <Search placeholder="Enter your location">
-      <input type='submit' value="Submit" />
-    </form>
+//if props.phase < 0
+  render() {
+    return (
+      <form onSubmit={ this.handleSubmit }>
+        <Search placeholder="Enter your location" />
+        <input type='submit' value="Submit" />
+      </form>
+    )
+  }
 
-  )
+  //else display state.title
 }
 
 const mapStateToProps = (state) => {
-  // const locationId = state.entities.currentTask.location_id;
-  // if(locationId) {
-  //   const location = state.entities.locations[locationId].title;
-  //   return {
-  //     location
-  //   };
-  // };
-  // return {};
-
-  const location = state.entities.detailForm.location
+  const location = state.entities.detailForm.location;
+  const phase = state.entities.detailForm.phase;
   return {
     location
   }
@@ -42,7 +38,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToTask: (param) => dispatch(addToTask(param));
+    addToTask: (param) => dispatch(addToTask(param))
   };
 }
 

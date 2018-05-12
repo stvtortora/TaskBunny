@@ -1,4 +1,5 @@
 import React from 'react';
+import LocationSub from './location_sub';
 
 class DetailsForm extends React.Component {
   constructor(props){
@@ -6,13 +7,14 @@ class DetailsForm extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchLocations();
   }
 
   render() {
     return (
-      <h1>you're at the details form!</h1>
+      <section onClick={() => this.props.modDropdown(false)}>
+        <LocationSub />
+      </section>
     )
   }
 }

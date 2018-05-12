@@ -11,7 +11,6 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchCategories();
   }
 

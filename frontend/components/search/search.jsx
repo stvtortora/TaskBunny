@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { modDropdown } from '../../actions/entities_actions';
+import { modDropdown, dropDownItemSelected } from '../../actions/entities_actions';
 import QueryDropdown from './query_dropdown_container';
 
 class Search extends React.Component {
@@ -21,26 +21,28 @@ class Search extends React.Component {
   }
 
   render() {
+
     return (
       <div className="search">
-        <input className='search_bar' type="text" value={this.props.name} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
+        <input className='search_bar' type="text" value={this.props.input} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
         <QueryDropdown queryString={ this.state.queryString } />
       </div>
     );
   }
 }
-// //
-// const mapStateToProps = (state) => {
-//   return {
-//     name: 'new york'
-//   }
-// }
+
+const mapStateToProps = (state) => {
+  const input = state.entities.searchbar.input.value
+  return {
+    input
+  }
+}
 
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    modDropdown: (status) => dispatch(modDropdown(status))
+    modDropdown: (status) => dispatch(modDropdown(status)),
   }
 }
 
-export default connect(null, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

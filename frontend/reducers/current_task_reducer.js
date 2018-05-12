@@ -4,6 +4,7 @@ import merge from 'lodash/merge';
 const currentTaskReducer = (state = {}, action) => {
   switch(action.type) {
     case ADD_TO_TASK:
+    debugger
       return merge({}, state, action.taskParam);
     default:
       return state;

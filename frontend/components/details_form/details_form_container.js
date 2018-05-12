@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import DetailsForm from './details_form';
-import { fetchLocations } from '../../actions/entities_actions';
+import { fetchLocations, modDropdown } from '../../actions/entities_actions';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchLocations: () => dispatch(fetchLocations())
+    fetchLocations: () => dispatch(fetchLocations()),
+    modDropdown: (status) => dispatch(modDropdown(status))
   };
 };
 
