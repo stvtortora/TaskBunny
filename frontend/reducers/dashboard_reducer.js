@@ -11,4 +11,4 @@ const dashboardReducer = (state = {}, action) {
   }
 };
 
-export default dashboardReducer; 
+export default dashboardReducer;

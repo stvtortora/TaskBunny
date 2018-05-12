@@ -27,3 +27,10 @@ export const fetchCategories = () => {
     url: 'api/categories'
   });
 }
+
+export const fetchLocations = () => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/locations'
+  });
+}
