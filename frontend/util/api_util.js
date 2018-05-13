@@ -21,16 +21,18 @@ export const signup = (user) => {
   });
 }
 
-export const fetchCategories = () => {
+export const fetchCategories = (searchQuery) => {
   return $.ajax({
     method: 'GET',
-    url: 'api/categories'
+    url: 'api/categories',
+    data: { searchQuery }
   });
 }
 
-export const fetchLocations = () => {
+export const fetchLocations = (searchQuery) => {
   return $.ajax({
     method: 'GET',
-    url: 'api/locations'
+    url: 'api/locations',
+    data: { searchQuery }
   });
 }

@@ -7,20 +7,18 @@ class QueryDropdown extends React.Component {
   }
 
   handleClick(data) {
-    if(this.props.dataType === 'category'){
+    if(this.props.path){
       this.props.addToTask({ category_id: data.id });
       this.props.history.push(this.props.path);
     } else {
       this.props.dropDownItemSelected(data);
     }
-      // const idType = `${this.props.dataType}_id`;
-      // case 'location':
   }
 
   render() {
-    const data = this.props.results.map((data) => {
-
-      return <li key={data.id} onClick={() => this.handleClick(data)}>{data.title}</li>
+    const data = Object.keys(this.props.searchResults).map((id) => {
+      const result = this.props.searchResults[id];
+      return <li key={id} onClick={() => this.handleClick(result)}>{result.title}</li>
     });
     // debugger
     if(this.props.open && data.length > 0) {

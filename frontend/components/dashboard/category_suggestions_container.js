@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import CategorySuggestions from './category_suggestions';
-import suggestedCategories from '../../selectors/suggested_categories';
 
 const mapStateToProps = (state) => {
   // debugger

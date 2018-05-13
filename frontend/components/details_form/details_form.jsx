@@ -6,10 +6,6 @@ class DetailsForm extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.fetchLocations();
-  }
-
   render() {
     return (
       <section onClick={() => this.props.modDropdown(false)}>

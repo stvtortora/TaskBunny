@@ -2,18 +2,12 @@ import React from 'react';
 import NavBar from '../nav_bar/nav_bar';
 import CategorySuggestions from './category_suggestions_container';
 import Greeting from './greeting_container';
-import Search from '../search/search';
+import CategorySearch from '../search/category_search_container';
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {queryString: '', clicked: false};
   }
-
-  componentDidMount() {
-    this.props.fetchCategories();
-  }
-
 
   render() {
     return (
@@ -21,13 +15,13 @@ class Dashboard extends React.Component {
         <NavBar />
         <section className="dashboard-content">
           <Greeting />
-          <CategorySuggestions />
-          <Search placeholder="Need something different?"/>
+          <CategorySearch />
         </section>
       </span>
     );
   }
 }
+// <CategorySuggestions />
 
 export default Dashboard;
 

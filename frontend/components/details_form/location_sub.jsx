@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addToTask } from '../../actions/entities_actions';
-import Search from '../search/search';
+import LocationSearch from '../search/location_search_container';
 
 class LocationSub extends React.Component {
   constructor(props) {
@@ -9,28 +9,29 @@ class LocationSub extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
     //handle errors if blank!
-    debugger
+    // debugger
+    e.preventDefault();
     this.props.addToTask( this.props.location )
   }
 
-//if props.phase < 0
   render() {
+    //if props.location.title
+    //return location title
+    //else
     return (
       <form onSubmit={ this.handleSubmit }>
-        <Search placeholder="Enter your location" />
+        <LocationSearch />
         <input type='submit' value="Submit" />
       </form>
     )
   }
 
-  //else display state.title
 }
 
 const mapStateToProps = (state) => {
   const location = state.entities.detailForm.location;
-  const phase = state.entities.detailForm.phase;
   return {
     location
   }
