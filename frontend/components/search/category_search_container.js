@@ -3,6 +3,8 @@ import { modDropdown, fetchCategories, clearSearchBar } from '../../actions/enti
 import Search from './search';
 
 const mapStateToProps = (state) => {
+  const input = state.entities.search.input;
+  debugger
   return {
     input: state.entities.search.input,
     placeholder: 'Need something different?',
@@ -15,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     modDropdown: (status) => dispatch(modDropdown(status)),
     fetchResults: (criteria) => dispatch(fetchCategories(criteria)),
-    clearSearchBar: () => dispatch(clearSearchBar())
+    action: () => dispatch(clearSearchBar())
   }
 }
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { modDropdown, fetchLocations, clearSearchBar } from '../../actions/entities_actions';
+import { modDropdown, fetchLocations, clearSearchResults } from '../../actions/entities_actions';
 import Search from './search';
 
 const mapStateToProps = (state) => {
@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     modDropdown: (status) => dispatch(modDropdown(status)),
     fetchResults: (criteria) => dispatch(fetchLocations(criteria)),
-    clearSearchBar: () => dispatch(clearSearchBar())
+    action: () => dispatch(clearSearchResults())
   }
 }
 

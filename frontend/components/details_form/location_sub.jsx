@@ -1,46 +1,42 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToTask } from '../../actions/entities_actions';
-import LocationSearch from '../search/location_search_container';
+import LocationForm from './location_form';
+import Location from './location';
 
-class LocationSub extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
 
-  handleSubmit(e) {
-    //handle errors if blank!
-    // debugger
-    e.preventDefault();
-    this.props.addToTask( this.props.location )
-  }
+const LocationSub = (props) => {
+  const display = props.locationId ? <Location /> : <LocationForm />;
 
-  render() {
-    //if props.location.title
-    //return location title
-    //else
-    return (
-      <form onSubmit={ this.handleSubmit }>
-        <LocationSearch />
-        <input type='submit' value="Submit" />
-      </form>
-    )
-  }
-
+  return (
+    <section>
+      <h3>YOUR TASK LOCATION</h3>
+      {display}
+    </section>
+  );
 }
 
+//   render() {
+//     // const display = this.props.location.title ?
+//     //return location title
+//     //else
+//     return (
+//       <section>
+//         <h3>YOUR TASK LOCATION</h3>
+//         <LocationForm />
+//       </section>
+//     )
+//   }
+//
+// }
+
 const mapStateToProps = (state) => {
+  const locationId = state.entities.currentTask.location_id;
   const location = state.entities.detailForm.location;
+
   return {
+    locationId,
     location
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addToTask: (param) => dispatch(addToTask(param))
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LocationSub);
+export default connect(mapStateToProps)(LocationSub);

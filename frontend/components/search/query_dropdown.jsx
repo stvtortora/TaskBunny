@@ -18,6 +18,7 @@ class QueryDropdown extends React.Component {
   render() {
     const data = Object.keys(this.props.searchResults).map((id) => {
       const result = this.props.searchResults[id];
+      debugger
       return <li key={id} onClick={() => this.handleClick(result)}>{result.title}</li>
     });
     // debugger

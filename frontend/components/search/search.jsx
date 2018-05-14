@@ -12,7 +12,8 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    this.props.clearSearchBar();
+    debugger
+    this.props.action();
   }
 
   handleClick(e) {
@@ -35,9 +36,11 @@ class Search extends React.Component {
   }
 
   render() {
+    const value = this.props.input === undefined ? this.state.searchQuery : this.props.input
+
     return (
       <div className="search">
-        <input className='search_bar' type="text" value={this.props.input} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
+        <input className='search_bar' type="text" value={value} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
         <QueryDropdown path={ this.props.path }/>
       </div>
     );

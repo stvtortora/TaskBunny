@@ -5,6 +5,8 @@ export const MOD_DROPDOWN = 'MOD_DROPDOWN';
 export const DROPDOWN_ITEM_SELECTED = 'DROPDOWN_ITEM_SELECTED';
 export const ADD_TO_TASK = 'ADD_TO_TASK';
 export const CLEAR_SEARCHBAR = 'CLEAR_SEARCHBAR';
+export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS';
+export const EDIT_LOCATION = 'EDIT_LOCATION';
 
 export const fetchCategories = (criteria) => {
 
@@ -55,5 +57,17 @@ export const dropDownItemSelected = (location) => {
 export const clearSearchBar = () => {
   return {
     type: CLEAR_SEARCHBAR
+  }
+}
+
+export const clearSearchResults = () => {
+  return {
+    type: CLEAR_SEARCH_RESULTS
+  }
+}
+
+export const editLocation = () => {
+  return {
+    type: EDIT_LOCATION
   }
 }

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import {MOD_DROPDOWN, DROPDOWN_ITEM_SELECTED, RECEIVE_SEARCH_RESULTS, CLEAR_SEARCHBAR } from '../actions/entities_actions';
+import {MOD_DROPDOWN, DROPDOWN_ITEM_SELECTED, RECEIVE_SEARCH_RESULTS, CLEAR_SEARCHBAR, CLEAR_SEARCH_RESULTS } from '../actions/entities_actions';
 import merge from 'lodash/merge';
 
 const defaultState = {
@@ -12,6 +12,10 @@ const searchReducer = (state = defaultState, action) => {
  switch(action.type) {
    case CLEAR_SEARCHBAR:
     return defaultState;
+  case CLEAR_SEARCH_RESULTS:
+    const newState = merge({}, state);
+    delete newState.results;
+    return merge({}, newState, {results: {}});
    case RECEIVE_SEARCH_RESULTS:
       return merge(state, {}, { results: action.results });
    case MOD_DROPDOWN:
