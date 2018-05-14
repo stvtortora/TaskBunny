@@ -2,9 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addToTask } from '../../actions/entities_actions';
 import TaskDetailsForm from './task_details_form';
+import EditTaskDetails from './edit_task_details_container';
 
 const TaskDetails = (props) => {
-  const display = props.size && props.vehicle ? <div><p>{props.size}</p><p>{props.vehicle}</p></div> : <TaskDetailsForm />
+  let display;
+  if(props.size && props.vehicle){
+    display = <EditTaskDetails />;
+  } else if(!props.location) {
+    display = null;
+  } else {
+    display = <TaskDetailsForm />;
+  }
 
   return(
     <section>
@@ -15,10 +23,12 @@ const TaskDetails = (props) => {
 }
 
 const mapStateToProps = state => {
+  const location = state.entities.currentTask.location_id;
   const size = state.entities.currentTask.size;
   const vehicle = state.entities.currentTask.vehicle;
 
   return {
+    location,
     size,
     vehicle
   };

@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LocationForm from './location_form';
-import Location from './location';
+import EditLocation from './edit_location_container';
 
 
 const LocationSub = (props) => {
-  const display = props.locationId ? <Location /> : <LocationForm />;
+  const display = props.locationId ? <EditLocation /> : <LocationForm />;
 
   return (
     <section>
@@ -32,7 +32,7 @@ const LocationSub = (props) => {
 const mapStateToProps = (state) => {
   const locationId = state.entities.currentTask.location_id;
   const location = state.entities.detailForm.location;
-
+  debugger
   return {
     locationId,
     location

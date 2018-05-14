@@ -7,6 +7,7 @@ export const ADD_TO_TASK = 'ADD_TO_TASK';
 export const CLEAR_SEARCHBAR = 'CLEAR_SEARCHBAR';
 export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS';
 export const EDIT_LOCATION = 'EDIT_LOCATION';
+export const EDIT_TASK_DETAILS = 'EDIT_TASK_DETAILS';
 
 export const fetchCategories = (criteria) => {
 
@@ -69,5 +70,11 @@ export const clearSearchResults = () => {
 export const editLocation = () => {
   return {
     type: EDIT_LOCATION
+  }
+}
+
+export const editTaskDetails = () => {
+  return {
+    type: EDIT_TASK_DETAILS
   }
 }

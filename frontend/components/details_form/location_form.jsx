@@ -11,6 +11,7 @@ class LocationForm extends React.Component {
 
   handleSubmit(e) {
     //handle error if bblank
+    debugger
     e.preventDefault();
     this.props.addToTask( {location_id: this.props.location.id} )
   }

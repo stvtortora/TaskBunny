@@ -4,9 +4,9 @@ import Search from './search';
 
 const mapStateToProps = (state) => {
   const input = state.entities.search.input;
-  debugger
   return {
     input: state.entities.search.input,
+    open: state.entities.search.open,
     placeholder: 'Need something different?',
     path: "/taskform/details"
   }

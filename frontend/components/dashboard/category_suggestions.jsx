@@ -1,5 +1,4 @@
 import React from 'react';
-import suggestedCategories from '../../selectors/suggested_categories';
 
 const categorySuggestions = ({ suggestions }) => {
   // debugger

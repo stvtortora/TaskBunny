@@ -1,6 +1,7 @@
 import React from 'react';
 import LocationSub from './location_sub';
-import TaskDetails from './task_details_sub';
+import TaskDetailsSub from './task_details_sub';
+import TellDetailsSub from './tell_details_sub';
 
 class DetailsForm extends React.Component {
   constructor(props){
@@ -9,10 +10,11 @@ class DetailsForm extends React.Component {
 
   render() {
     return (
-      <section onClick={() => this.props.modDropdown(false)}>
+      <div className="all-content" id="details_form" onClick={() => this.props.modDropdown(false)}>
         <LocationSub />
-        <TaskDetails />
-      </section>
+        <TaskDetailsSub />
+        <TellDetailsSub />
+      </div>
     )
   }
 }

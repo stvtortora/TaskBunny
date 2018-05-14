@@ -12,8 +12,23 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.action();
+
+    if(this.props.path){
+      this.setState({
+        searchQuery: ''
+      });
+    }
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    debugger
+    if(nextProps.input){
+      return({
+        searchQuery: nextProps.input
+      });
+    }
+    return null;
   }
 
   handleClick(e) {
@@ -35,13 +50,15 @@ class Search extends React.Component {
     );
   }
 
+
+
   render() {
-    const value = this.props.input === undefined ? this.state.searchQuery : this.props.input
+    // const value = this.props.input === undefined ? this.state.searchQuery : this.props.input;
 
     return (
       <div className="search">
-        <input className='search_bar' type="text" value={value} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
-        <QueryDropdown path={ this.props.path }/>
+        <input className='search_bar' type="text" value={this.state.searchQuery} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
+        <QueryDropdown open={this.props.open}path={ this.props.path }/>
       </div>
     );
   }
