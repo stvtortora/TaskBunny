@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToTask } from '../../actions/entities_actions';
+import { addToTask, updateShowForm } from '../../actions/entities_actions';
 
 class TaskDetailsForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {size: '', vehicle: ''};
+    this.state = this.props.state;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,6 +20,8 @@ class TaskDetailsForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.addToTask(this.state);
+    debugger
+    this.props.updateShowForm('tellDetails');
   }
 
   render(){
@@ -43,10 +45,17 @@ class TaskDetailsForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    state: state.entities.currentTask.size ? state.entities.currentTask : {size: '', vehicle: ''}
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToTask: (state) => dispatch(addToTask(state))
+    addToTask: (state) => dispatch(addToTask(state)),
+    updateShowForm: (formName) => dispatch(updateShowForm(formName))
   };
 }
 
-export default connect(null, mapDispatchToProps)(TaskDetailsForm);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskDetailsForm);

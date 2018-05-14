@@ -9,7 +9,6 @@ const defaultState = {
 }
 
 const searchReducer = (state = defaultState, action) => {
-  debugger
  switch(action.type) {
    case CLEAR_SEARCHBAR:
     return defaultState;
@@ -18,7 +17,9 @@ const searchReducer = (state = defaultState, action) => {
     delete newState.results;
     return merge({}, newState, {results: {}});
    case RECEIVE_SEARCH_RESULTS:
-      return merge(state, {}, { results: action.results });
+    const next = Object.assign(state, {});
+    delete next.results;
+    return merge(next, {}, { results: action.results });
    case MOD_DROPDOWN:
       return merge({}, state, { open: action.status });
    case DROPDOWN_ITEM_SELECTED:

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToTask } from '../../actions/entities_actions';
+import { addToTask, updateShowForm } from '../../actions/entities_actions';
 import LocationSearch from '../search/location_search_container';
 
 class LocationForm extends React.Component {
@@ -11,9 +11,9 @@ class LocationForm extends React.Component {
 
   handleSubmit(e) {
     //handle error if bblank
-    debugger
     e.preventDefault();
     this.props.addToTask( {location_id: this.props.location.id} )
+    this.props.updateShowForm('taskDetails');
   }
 
   render() {
@@ -35,7 +35,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToTask: (param) => dispatch(addToTask(param))
+    addToTask: (param) => dispatch(addToTask(param)),
+    updateShowForm: (formName) => dispatch(updateShowForm(formName))
   };
 }
 

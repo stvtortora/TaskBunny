@@ -24,16 +24,59 @@ class TellDetails extends React.Component {
   }
 
   render(){
-    return (
-      <section>
-        <h3>TELL US THE DETAILS</h3>
-        <p>Start the conversation and tell your Tasker what you need done!</p>
+    // if(this.props.showForm){
+    //   return(
+    //     <section>
+    //       <h3>TELL US THE DETAILS</h3>
+    //       <form onSubmit={this.handleSubmit}>
+    //         <textarea placeholder="" onChange={this.handleChange}></textarea>
+    //         <input type="submit" value="See Taskers & Prices"/>
+    //       </form>
+    //     </section>
+    //   )
+    // }
+
+    let form;
+    if(this.props.showForm){
+      form = (
         <form onSubmit={this.handleSubmit}>
           <textarea placeholder="" onChange={this.handleChange}></textarea>
           <input type="submit" value="See Taskers & Prices"/>
         </form>
+      )
+    }
+debugger
+    return (
+      <section>
+        <h3>TELL US THE DETAILS</h3>
+        {form}
       </section>
     )
+  }
+}
+
+const mapStateToProps = (state) => {
+  // let form;
+  //
+  // if(state.entities.detailForm.showForm === 'tellDetails') {
+  //   form = (
+  //     <form onSubmit={this.handleSubmit}>
+  //       <textarea placeholder="" onChange={this.handleChange}></textarea>
+  //       <input type="submit" value="See Taskers & Prices"/>
+  //     </form>
+  //   )
+  // } else{
+  //   form = null;
+  // }
+  //
+  // return {
+  //   form
+  // }
+
+  const showForm = Boolean(state.entities.detailForm.showForm === 'tellDetails');
+debugger
+  return {
+    showForm
   }
 }
 
@@ -43,4 +86,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(TellDetails));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TellDetails));

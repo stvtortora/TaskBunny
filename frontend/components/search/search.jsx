@@ -22,7 +22,6 @@ class Search extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    debugger
     if(nextProps.input){
       return({
         searchQuery: nextProps.input

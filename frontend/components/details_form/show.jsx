@@ -1,28 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-class Edit extends React.Component {
+class Show extends React.Component {
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    this.props.edit()
+    this.props.updateShowForm(this.props.formName);
   }
 
   render() {
-    const names = this.props.fields.map(field => {
-      return <p>{field.title}</p>
-    });
+    let displayNames;
 
+    if(this.props.fields[0]){
+      displayNames = this.props.fields.map(field => {
+        return <p>{field}</p>
+      });
+    }
+
+
+    debugger
     return (
       <div>
-        {names}
+        {displayNames}
         <p onClick={this.handleClick}>Edit</p>
       </div>
     );
   }
 }
 
-export default Edit;
+export default Show;

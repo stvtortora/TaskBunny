@@ -3,7 +3,6 @@ import { modDropdown, fetchLocations, clearSearchResults } from '../../actions/e
 import Search from './search';
 
 const mapStateToProps = (state) => {
-  debugger
   return {
     input: state.entities.search.input,
     open: state.entities.search.open,
