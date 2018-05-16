@@ -1,11 +1,7 @@
 class Api::TaskersController <ApplicationController
   def index
-    @taskers = Tasker.joins(:categories).joins(:sizes).joins(:vehicles)
-                .where('categories.id = ?', taskers_params[:category_id])
-                .where('taskers.location_id = ?', taskers_params[:location_id])
-                .where('sizes.title ilike ?', taskers_params[:size])
-                .where('vehicles.title ilike ?', taskers_params[:vehicle])
-    debugger
+    @taskers = Tasker.joins(:categories).joins(:sizes).joins(:vehicles).where('categories.id = ?', taskers_params[:category_id]).where('taskers.location_id = ?', taskers_params[:location_id]).where('sizes.title ilike ?', taskers_params[:size]).where('vehicles.title ilike ?', taskers_params[:vehicle])
+    # debugger
     render 'api/taskers/index'
   end
 

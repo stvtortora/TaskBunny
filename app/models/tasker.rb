@@ -1,4 +1,4 @@
-class Tasker <ApplicationRecord
+class Tasker < ApplicationRecord
   validates :name, :location, presence: true
 
   belongs_to :location
