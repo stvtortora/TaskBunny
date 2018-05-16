@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :categories, only: [:index]
     resources :locations, only: [:index]
+    resources :taskers, only: [:index]
   end
 
 end

@@ -28,18 +28,24 @@ class TaskDetailsForm extends React.Component {
     return(
       <form onSubmit={this.handleSubmit}>
         <div>
-          <p>How Big is Your Task?</p>
-          <label><input type="radio" value="Small - Est. 1 hr" checked={this.state.size === 'Small - Est. 1 hr'} onChange={this.handleChange('size')} />Small - Est. 1 hr</ label>
-          <label><input type="radio" value="Medium - Est. 2-3 hrs" checked={this.state.size === 'Medium - Est. 2-3 hrs'} onChange={this.handleChange('size')} />Medium - Est. 2-3 hrs</ label>
-          <label><input type="radio" value="Large - Est. 4+ hrs" checked={this.state.size === 'Large - Est. 4+ hrs'} onChange={this.handleChange('size')} />Large - Est. 4+ hrs</ label>
+          <h3 className="form_question">How Big is Your Task?</h3>
+          <div className="size_options">
+            <label><input type="radio" value="small" checked={this.state.size === 'small'} onChange={this.handleChange('size')} />Small - Est. 1 hr</ label>
+            <label><input type="radio" value="medium" checked={this.state.size === 'medium'} onChange={this.handleChange('size')} />Medium - Est. 2-3 hrs</ label>
+            <label><input type="radio" value="large" checked={this.state.size === 'large'} onChange={this.handleChange('size')} />Large - Est. 4+ hrs</ label>
+          </div>
         </div>
         <div>
-          <p>Vehicle Requirements</p>
-          <label><input type="radio" value="Not needed for task" checked={this.state.vehicle === 'Not needed for task'} onChange={this.handleChange('vehicle')} />Not needed for task</label>
-          <label><input type="radio" value="Task requires a car" checked={this.state.vehicle === 'Task requires a car'} onChange={this.handleChange('vehicle')} />Task requires a car</label>
-          <label><input type="radio" value="Task requires a truck" checked={this.state.vehicle === 'Task requires a truck'} onChange={this.handleChange('vehicle')} />Task requires a truck</label>
+          <h3 className="form_question">Vehicle Requirements</h3>
+          <div className="vehicle_options">
+            <label><input type="radio" value="none" checked={this.state.vehicle === 'none'} onChange={this.handleChange('vehicle')} />Not needed for task</label>
+            <label><input type="radio" value="car" checked={this.state.vehicle === 'car'} onChange={this.handleChange('vehicle')} />Task requires a car</label>
+            <label><input type="radio" value="truck" checked={this.state.vehicle === 'truck'} onChange={this.handleChange('vehicle')} />Task requires a truck</label>
+          </div>
+          </div>
+        <div className='form_input_button'>
+          <input type='submit' value="Save"/>
         </div>
-        <input type='submit' value="Continue"/>
       </form>
     )
   }

@@ -36,3 +36,13 @@ export const fetchLocations = (searchQuery) => {
     data: { searchQuery }
   });
 }
+
+export const fetchTaskers = (task_info) => {
+  debugger
+  debugger
+  return $.ajax({
+    method: 'GET',
+    url: 'api/taskers',
+    data: { task_info }
+  });
+}

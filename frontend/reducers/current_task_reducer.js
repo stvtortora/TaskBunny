@@ -6,6 +6,7 @@ const currentTaskReducer = (state = {}, action) => {
   switch(action.type) {
     case ADD_TO_TASK:
         newState = merge({}, state, action.taskParam);
+        debugger
         return newState;
     case EDIT_LOCATION:
         newState = merge({}, state);

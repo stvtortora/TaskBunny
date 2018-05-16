@@ -7,7 +7,5 @@ class Api::CategoriesController <ApplicationController
     render 'api/categories/index'
   end
 
-  def category_params
-    params.require(:searchQuery)
-  end
+
 end

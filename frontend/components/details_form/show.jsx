@@ -18,16 +18,21 @@ class Show extends React.Component {
       displayNames = this.props.fields.map(field => {
         return <p>{field}</p>
       });
+
+      return (
+        <span className="show_form">
+          <div className="parameter_names">
+            {displayNames}
+          </div>
+          <div id="edit_button">
+            <p onClick={this.handleClick}>Edit</p>
+          </div>
+        </span>
+      );
+
     }
 
-
-    debugger
-    return (
-      <div>
-        {displayNames}
-        <p onClick={this.handleClick}>Edit</p>
-      </div>
-    );
+    return null;
   }
 }
 

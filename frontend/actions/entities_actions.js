@@ -26,6 +26,15 @@ export const fetchLocations = (criteria) => {
   };
 };
 
+export const fetchTaskers = (task_info) => {
+  debugger
+  return (dispatch) => {
+    return ApiUtil.fetchTaskers(task_info).then(taskers => {
+      return dispatch(receiveSearchResults(taskers))
+    });
+  };
+}
+
 export const receiveSearchResults = (results) => {
   return {
     type: RECEIVE_SEARCH_RESULTS,

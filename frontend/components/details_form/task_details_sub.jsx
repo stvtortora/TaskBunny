@@ -10,7 +10,7 @@ const TaskDetails = (props) => {
 
   return(
     <section>
-      <h3>TASK DETAILS</h3>
+      <h3 className='sub_form_name'>TASK DETAILS</h3>
       {display}
     </section>
   )

@@ -9,7 +9,7 @@ const LocationSub = (props) => {
 
   return (
     <section>
-      <h3>YOUR TASK LOCATION</h3>
+      <h3 className='sub_form_name'>YOUR TASK LOCATION</h3>
       {display}
     </section>
   );

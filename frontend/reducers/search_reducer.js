@@ -19,7 +19,9 @@ const searchReducer = (state = defaultState, action) => {
    case RECEIVE_SEARCH_RESULTS:
     const next = Object.assign(state, {});
     delete next.results;
-    return merge(next, {}, { results: action.results });
+    const nextState = merge(next, {}, { results: action.results });
+    debugger
+    return nextState;
    case MOD_DROPDOWN:
       return merge({}, state, { open: action.status });
    case DROPDOWN_ITEM_SELECTED:
