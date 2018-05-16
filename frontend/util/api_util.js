@@ -38,8 +38,6 @@ export const fetchLocations = (searchQuery) => {
 }
 
 export const fetchTaskers = (task_info) => {
-  debugger
-  debugger
   return $.ajax({
     method: 'GET',
     url: 'api/taskers',

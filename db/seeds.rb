@@ -12,6 +12,7 @@ Location.destroy_all
 Category.destroy_all
 Size.destroy_all
 Vehicle.destroy_all
+TimeSlot.destroy_all
 CategoryRegistration.destroy_all
 VehicleRegistration.destroy_all
 SizeRegistration.destroy_all

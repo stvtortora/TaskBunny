@@ -2,7 +2,9 @@ import React from 'react';
 
 const TaskerSchedule = () => {
   return (
-    <p>Tasker Schedule</p>
+    <div className='tasker_schedule'>
+      <p>Tasker Schedule</p>
+    </div>
   )
 }
 

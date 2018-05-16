@@ -4,7 +4,7 @@ class TimeSlotsController < ApplicationController
                         .select('date')
                         .group('time_slots.date')
 
-    @tasker_timeslots = TimeSlot.
+    @tasker_timeslots = TimeSlot
                           .joins(:taskers)
 
 
