@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openModal } from '../../actions/modal_actions';
+import { fetchScheduleModal } from '../../actions/modal_actions';
 
 class Tasker extends React.Component {
   constructor(props){
@@ -10,7 +10,7 @@ class Tasker extends React.Component {
   render(){
     return(
       <section>
-        <div onClick={this.props.openModal}>View Schedule</div>
+        <div onClick={this.props.fetchSchedule(key)}>View Schedule</div>
         <div>
           <h3>{this.props.name}</h3>
           <p>${this.props.rate}/hr</p>
@@ -27,7 +27,7 @@ class Tasker extends React.Component {
 const mapDispatchToProps = dispatch => {
 
   return {
-    openModal: () => dispatch(openModal())
+    fetchSchedule: (taskerId) => dispatch(fetchSchedule(taskerId))
   }
 }
 

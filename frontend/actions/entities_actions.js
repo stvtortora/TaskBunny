@@ -1,4 +1,5 @@
 import * as ApiUtil from '../util/api_util';
+import { openModal } from './modal_actions';
 
 export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
 export const MOD_DROPDOWN = 'MOD_DROPDOWN';
@@ -33,6 +34,23 @@ export const fetchTaskers = (task_info) => {
       return dispatch(receiveSearchResults(taskers))
     });
   };
+}
+
+export const fetchSchedule = (tasker_id) => {
+  return dispatch => {
+    return ApiUtil.fetchSchedule(tasker_id).then(schedule => {
+      updateTasker(schedule, tasker_id);
+      openModal(tasker_id);
+    });
+  }
+}
+
+export const updateTasker = (schedule, tasker_id) => {
+  return {
+    type: UPDATE_TASKER,
+    schedule,
+    tasker_id
+  }
 }
 
 export const receiveSearchResults = (results) => {

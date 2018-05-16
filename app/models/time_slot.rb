@@ -1,5 +1,10 @@
 class TimeSlot <ApplicationRecord
-  validates :date, :time, presence: true
+  validates :day, :hour, presence: true
+  validates :hour, uniqueness: {scope: :day}
+
+  belongs_to :day
+
+  belongs_to :hour
 
   has_many :time_slot_registrations
 

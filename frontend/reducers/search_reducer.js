@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import {MOD_DROPDOWN, DROPDOWN_ITEM_SELECTED, RECEIVE_SEARCH_RESULTS, CLEAR_SEARCHBAR, CLEAR_SEARCH_RESULTS } from '../actions/entities_actions';
+import {MOD_DROPDOWN, DROPDOWN_ITEM_SELECTED, RECEIVE_SEARCH_RESULTS, CLEAR_SEARCHBAR, CLEAR_SEARCH_RESULTS, UPDATE_TASKER } from '../actions/entities_actions';
 import merge from 'lodash/merge';
 
 const defaultState = {
@@ -19,9 +19,13 @@ const searchReducer = (state = defaultState, action) => {
    case RECEIVE_SEARCH_RESULTS:
     const next = Object.assign(state, {});
     delete next.results;
-    const nextState = merge(next, {}, { results: action.results });
-    debugger
-    return nextState;
+    return merge(next, {}, { results: action.results });
+  case UPDATE_TASKER:
+      const tasker = state[action.tasker_id];
+      const updatedTasker = merge({}, tasker, action.schedule);
+      const nextState = merge({}, state);
+      nextState[action.tasker_id] = updatedTasker;
+      return nextState;
    case MOD_DROPDOWN:
       return merge({}, state, { open: action.status });
    case DROPDOWN_ITEM_SELECTED:

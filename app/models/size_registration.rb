@@ -1,5 +1,6 @@
 class SizeRegistration < ApplicationRecord
   validates :tasker, :size,  presence: true
+  validates :tasker, uniqueness: {scope: :size}
 
   belongs_to :tasker
 

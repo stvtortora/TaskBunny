@@ -4,7 +4,7 @@ export default function modalReducer(state = null, action) {
   debugger
   switch (action.type) {
     case OPEN_MODAL:
-      return true;
+      return action.tasker_id;
     case CLOSE_MODAL:
       return null;
     default:

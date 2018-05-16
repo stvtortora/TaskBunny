@@ -1,17 +1,9 @@
 class TimeSlotsController < ApplicationController
   def index
-    @all_timeslots = TimeSlot
-                        .select('date')
-                        .group('time_slots.date')
+    @time_slots = TimeSlot.includes(:hour, :day)
+                          .joins(:time_slot_registrations)
+                          .where('time_slot_registrations.tasker_id = ?', params[:tasker_id])
 
-    @tasker_timeslots = TimeSlot
-                          .joins(:taskers)
-
-
-
-  end
-
-  def time_slots_params
-
+    render 'api/time_slots/index'
   end
 end

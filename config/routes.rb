@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index]
     resources :locations, only: [:index]
     resources :taskers, only: [:index]
+    resources :time_slots, only: [:index]
   end
 
 end
