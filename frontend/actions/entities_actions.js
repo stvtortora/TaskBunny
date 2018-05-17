@@ -9,6 +9,8 @@ export const CLEAR_SEARCHBAR = 'CLEAR_SEARCHBAR';
 export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS';
 export const UPDATE_SHOWFORM = 'UPDATE_SHOWFORM';
 export const UPDATE_TASKER = 'UPDATE_TASKER';
+export const CREATE_TASK = 'CREATE_TASK';
+export const RECEIVE_TASKS = 'RECEIVE_TASKS';
 
 export const fetchCategories = (criteria) => {
 
@@ -31,7 +33,7 @@ export const fetchLocations = (criteria) => {
 export const fetchTaskers = (task_info) => {
   return (dispatch) => {
     return ApiUtil.fetchTaskers(task_info).then(taskers => {
-      return dispatch(receiveSearchResults(taskers))
+      return dispatch(receiveSearchResults(taskers));
     });
   };
 }
@@ -43,6 +45,27 @@ export const fetchSchedule = (tasker_id) => {
       dispatch(updateTasker(schedule, tasker_id));
       dispatch(openModal(tasker_id));
     });
+  }
+}
+
+export const fetchTasks = () => {
+  return dispatch => {
+    return ApiUtil.fetchTasks().then((tasks) => {
+      return dispatch(receiveTasks(tasks));
+    });
+  }
+}
+
+export const createTask = (task_info) => {
+  return dispatch => {
+    return ApiUtil.createTask(task_info)
+  }
+}
+
+export const receiveTasks = (tasks) => {
+  return {
+    type: RECEIVE_TASKS,
+    tasks
   }
 }
 

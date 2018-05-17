@@ -53,3 +53,18 @@ export const fetchSchedule = (tasker_id) => {
     data: { tasker_id }
   });
 }
+
+export const createTask = (task_info) => {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/tasks',
+    data: { task_info }
+  });
+}
+
+export const fetchTasks = () => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/tasks'
+  });
+}
