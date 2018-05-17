@@ -20,7 +20,7 @@ class TellDetails extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
+
     this.props.fetchTaskers(this.props.task_info).then(() => {
       this.props.addToTask(this.state);
     });
@@ -53,7 +53,7 @@ class TellDetails extends React.Component {
 const mapStateToProps = (state) => {
   const showForm = Boolean(state.entities.detailForm.showForm === 'tellDetails');
   const task_info = state.entities.currentTask;
-  debugger
+
   return {
     showForm,
     task_info

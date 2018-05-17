@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchScheduleModal } from '../../actions/modal_actions';
+import { fetchSchedule } from '../../actions/entities_actions';
 
 class Tasker extends React.Component {
   constructor(props){
     super(props);
   }
 
+
   render(){
+    debugger
     return(
       <section>
-        <div onClick={this.props.fetchSchedule(key)}>View Schedule</div>
+        <div onClick={() => this.props.fetchSchedule(this.props.id)}>View Schedule</div>
         <div>
           <h3>{this.props.name}</h3>
           <p>${this.props.rate}/hr</p>

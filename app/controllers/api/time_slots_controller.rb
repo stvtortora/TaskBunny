@@ -1,4 +1,4 @@
-class TimeSlotsController < ApplicationController
+class Api::TimeSlotsController < ApplicationController
   def index
     @time_slots = TimeSlot.includes(:hour, :day)
                           .joins(:time_slot_registrations)

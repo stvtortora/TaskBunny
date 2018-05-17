@@ -8,6 +8,7 @@ export const ADD_TO_TASK = 'ADD_TO_TASK';
 export const CLEAR_SEARCHBAR = 'CLEAR_SEARCHBAR';
 export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS';
 export const UPDATE_SHOWFORM = 'UPDATE_SHOWFORM';
+export const UPDATE_TASKER = 'UPDATE_TASKER';
 
 export const fetchCategories = (criteria) => {
 
@@ -28,7 +29,6 @@ export const fetchLocations = (criteria) => {
 };
 
 export const fetchTaskers = (task_info) => {
-  debugger
   return (dispatch) => {
     return ApiUtil.fetchTaskers(task_info).then(taskers => {
       return dispatch(receiveSearchResults(taskers))
@@ -37,10 +37,11 @@ export const fetchTaskers = (task_info) => {
 }
 
 export const fetchSchedule = (tasker_id) => {
+  debugger
   return dispatch => {
     return ApiUtil.fetchSchedule(tasker_id).then(schedule => {
-      updateTasker(schedule, tasker_id);
-      openModal(tasker_id);
+      dispatch(updateTasker(schedule, tasker_id));
+      dispatch(openModal(tasker_id));
     });
   }
 }

@@ -20,7 +20,6 @@ class TaskDetailsForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.addToTask(this.state);
-    debugger
     this.props.updateShowForm('tellDetails');
   }
 

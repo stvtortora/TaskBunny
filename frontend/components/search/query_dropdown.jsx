@@ -11,7 +11,6 @@ class QueryDropdown extends React.Component {
       this.props.addToTask({ category_id: data.id });
       this.props.history.push(this.props.path);
     } else {
-      debugger
       this.props.dropDownItemSelected(data);
     }
   }

@@ -20,10 +20,10 @@ class TaskersIndex extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const searchResults = state.entities.search.results
+  const searchResults = state.entities.search.results;
   const taskers = Object.keys(searchResults).map(taskerId => {
     const tasker = searchResults[taskerId];
-    return <Tasker key={taskerId} name={tasker.name} description={tasker.description} rate={tasker.rate}/>;
+    return <Tasker key={taskerId} id={taskerId} name={tasker.name} description={tasker.description} rate={tasker.rate}/>;
   });
 
   return {
