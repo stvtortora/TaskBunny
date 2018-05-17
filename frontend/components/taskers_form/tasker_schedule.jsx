@@ -80,11 +80,17 @@ class TaskerSchedule extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  const task_info = {
+    category_id: state.entities.currentTask.category_id,
+    location_id: state.entities.currentTask.category_id
+  }
+
   const tasker = state.entities.search.results[state.modal];
   debugger
   const days = tasker.days;
   return {
-    days
+    days,
+    task_info
   }
 }
 

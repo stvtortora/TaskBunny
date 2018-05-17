@@ -1,6 +1,8 @@
 class Tasker < ApplicationRecord
   validates :name, :location, presence: true
 
+  has_many :tasks
+
   belongs_to :location
 
   has_many :time_slot_registrations
