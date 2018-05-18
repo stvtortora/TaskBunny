@@ -72,7 +72,7 @@ export const fetchTasks = () => {
 export const createTask = (task_info) => {
   return dispatch => {
     return ApiUtil.createTask(task_info).then(() => {
-      dispatch({type: TASK_CREATED})
+      return dispatch({type: TASK_CREATED})
     });
   }
 }

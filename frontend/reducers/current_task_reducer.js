@@ -1,4 +1,4 @@
-import { ADD_TO_TASK, EDIT_LOCATION, EDIT_TASK_DETAILS } from '../actions/entities_actions';
+import { ADD_TO_TASK, EDIT_LOCATION, EDIT_TASK_DETAILS, TASK_CREATED } from '../actions/entities_actions';
 import merge from 'lodash/merge';
 
 const currentTaskReducer = (state = {}, action) => {

@@ -1,12 +1,9 @@
 class Api::TasksController < ApplicationController
   def create
     @task = current_user.tasks.new(task_params)
-    debugger
     if @task.save
-      debugger
       render json: {}
     else
-      debugger
       render json: @task.errors.full_messages, status: 422
     end
   end
