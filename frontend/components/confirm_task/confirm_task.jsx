@@ -25,6 +25,10 @@ class ConfirmTask extends React.Component {
     });
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.task_info.category_id;
+  }
+
   render() {
     const display = Object.keys(this.props.task_display).map((taskParam) => {
       const paramValue = this.props.task_display[taskParam];

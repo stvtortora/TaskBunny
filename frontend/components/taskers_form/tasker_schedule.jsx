@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router';
 import { addToTask } from '../../actions/entities_actions';
+import { closeModal } from '../../actions/modal_actions';
 import merge from 'lodash/merge';
 
 class TaskerSchedule extends React.Component {
@@ -36,6 +37,7 @@ class TaskerSchedule extends React.Component {
       // const task_info = merge({}, this.state, this.props.task_info);
       // debugger
       this.props.addToTask(this.state);
+      this.props.closeModal();
       this.props.history.push('/taskform/confirm_task');
     }
 
@@ -89,7 +91,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addToTask: (task_info) => dispatch(addToTask(task_info))
+    addToTask: (task_info) => dispatch(addToTask(task_info)),
+    closeModal: () => dispatch(closeModal())
   }
 }
 
