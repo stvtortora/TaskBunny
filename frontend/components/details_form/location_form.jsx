@@ -12,7 +12,7 @@ class LocationForm extends React.Component {
   handleSubmit(e) {
     //handle error if bblank
     e.preventDefault();
-    this.props.addToTask( {location_id: this.props.location.id} )
+    this.props.addToTask( {location: this.props.location} )
     this.props.updateShowForm('taskDetails');
   }
 
@@ -30,7 +30,7 @@ class LocationForm extends React.Component {
 
 const mapStateToProps = (state) => {
   const location = state.entities.detailForm.location.value;
-  
+
   return {
     location
   }

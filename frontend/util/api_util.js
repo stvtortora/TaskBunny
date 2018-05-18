@@ -29,6 +29,14 @@ export const fetchCategories = (searchQuery) => {
   });
 }
 
+export const fetchCategorySuggestions = () => {
+  debugger
+  return $.ajax({
+    method: 'GET',
+    url: 'api/categories'
+  });
+}
+
 export const fetchLocations = (searchQuery) => {
   return $.ajax({
     method: 'GET',

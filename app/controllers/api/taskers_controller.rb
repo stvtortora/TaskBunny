@@ -4,15 +4,11 @@ class Api::TaskersController <ApplicationController
                     .joins(:categories)
                     .joins(:sizes)
                     .joins(:vehicles)
-                    .where('categories.id = ?', taskers_params[:category_id])
-                    .where('taskers.location_id = ?', taskers_params[:location_id])
-                    .where('sizes.title ilike ?', taskers_params[:size])
-                    .where('vehicles.title ilike ?', taskers_params[:vehicle])
+                    .where('categories.id = ?', params[:task_info][:category][:id])
+                    .where('taskers.location_id = ?', params[:task_info][:location][:id])
+                    .where('sizes.title ilike ?', params[:task_info][:size])
+                    .where('vehicles.title ilike ?', params[:task_info][:vehicle])
 
     render 'api/taskers/index'
-  end
-
-  def taskers_params
-    params.require(:task_info).permit(:category_id, :location_id, :size, :vehicle, :details)
   end
 end

@@ -59,7 +59,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addToTask: (state) => dispatch(addToTask(state)),
-    updateShowForm: (formName) => dispatch(updateShowForm(formName))
+    updateShowForm: (formName) => dispatch(updateShowForm(formName)),
   };
 }
 

@@ -57,7 +57,7 @@ class Search extends React.Component {
     return (
       <div className="search">
         <input className='search_bar' type="text" value={this.state.searchQuery} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
-        <QueryDropdown open={this.props.open}path={ this.props.path }/>
+        <QueryDropdown searchQuery={this.state.searchQuery} open={this.props.open}path={ this.props.path }/>
       </div>
     );
   }

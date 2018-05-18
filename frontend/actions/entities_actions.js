@@ -11,6 +11,10 @@ export const UPDATE_SHOWFORM = 'UPDATE_SHOWFORM';
 export const UPDATE_TASKER = 'UPDATE_TASKER';
 export const CREATE_TASK = 'CREATE_TASK';
 export const RECEIVE_TASKS = 'RECEIVE_TASKS';
+export const RECEIVE_CATEGORY_SUGGESTIONS = 'RECEIVE_CATEGORY_SUGGESTIONS';
+export const TASK_CREATED = 'TASK_CREATED';
+export const TASK_CANCELLED = 'TASK_CANCELLED';
+
 
 export const fetchCategories = (criteria) => {
 
@@ -20,6 +24,15 @@ export const fetchCategories = (criteria) => {
     });
   };
 };
+
+export const fetchCategorySuggestions = () => {
+  debugger
+  return dispatch => {
+    return ApiUtil.fetchCategorySuggestions().then(suggestions => {
+      return dispatch({type: RECEIVE_CATEGORY_SUGGESTIONS, suggestions});
+    });
+  };
+}
 
 export const fetchLocations = (criteria) => {
 
@@ -58,7 +71,15 @@ export const fetchTasks = () => {
 
 export const createTask = (task_info) => {
   return dispatch => {
-    return ApiUtil.createTask(task_info)
+    return ApiUtil.createTask(task_info).then(() => {
+      dispatch({type: TASK_CREATED})
+    });
+  }
+}
+
+export const taskCancelled = () => {
+  return {
+    type: TASK_CANCELLED
   }
 }
 

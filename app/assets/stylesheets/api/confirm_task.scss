@@ -1,0 +1,36 @@
+.task-param-container {
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 1px solid #DCE0E6;
+}
+
+.task-param-container > p {
+  text-align: left;
+}
+
+.paramValue {
+  text-align: left;
+}
+
+.taskParams {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 20px;
+  padding: 20px;
+}
+
+.taskParam > {
+  display: inline-block;
+  margin: 10px;
+  color: #545E69;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+// .taskParam {
+//   text-align: right;
+// }

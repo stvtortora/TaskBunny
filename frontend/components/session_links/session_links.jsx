@@ -5,7 +5,7 @@ const SessionLinks = (props) => {
   if(!!props.currentUser) {
     return (
       <nav className='session-links'>
-        <div onClick={props.logout} className='session-link'>Logout</div>
+        <div onClick={props.logout} id='logout-button' className='session-link'>Logout</div>
       </nav>
     );
   }

@@ -10,10 +10,16 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    const uiMessages = this.props.ui_messages.map(message => {
+      return <div>{message}</div>
+    });
     return (
       <span className='homepage' onClick={() => this.props.modDropdown(false)}>
         <NavBar />
         <section className="all-content">
+          <div className='ui-messages'>
+            {uiMessages}
+          </div>
           <Greeting />
           <CategorySearch />
         </section>
@@ -21,7 +27,7 @@ class Dashboard extends React.Component {
     );
   }
 }
-// <CategorySuggestions />
+
 
 export default Dashboard;
 

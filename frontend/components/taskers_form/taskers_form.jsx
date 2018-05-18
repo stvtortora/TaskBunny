@@ -1,5 +1,6 @@
 import React from 'react';
 import Tasker from './Tasker';
+import NavBar from '../nav_bar/nav_bar';
 import Modal from './modal';
 import { connect } from 'react-redux';
 
@@ -12,8 +13,17 @@ class TaskersIndex extends React.Component {
   render() {
     return (
       <div>
+        <NavBar />
         <Modal />
-        {this.props.taskers}
+        <div className='all-content'>
+          <header className='form_header'>
+            <h1>Pick a Tasker</h1>
+            <p>Select from our list of vetted taskers!</p>
+          </header>
+          <div>
+            {this.props.taskers}
+          </div>
+        </div>
       </div>
     )
   }

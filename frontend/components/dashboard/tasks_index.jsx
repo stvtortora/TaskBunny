@@ -13,15 +13,17 @@ class TasksIndex extends React.Component {
   }
 
   render() {
+    debugger
     const tasks = this.props.taskIds.map(id => {
       return <Task key={id} id={id} />
     });
 
-    const display = tasks.length > 0 ? tasks : <p>You haven't booked any tasks yet</p>
+    const header = tasks.length > 0 ? <h3 className='your-tasks'>Upcoming Tasks:</h3> : <h3 className='your-tasks'>You haven't booked any tasks yet</h3>
 
     return (
-      <div>
-        {display}
+      <div className='tasks-container'>
+        {header}
+        {tasks}
       </div>
     )
   }

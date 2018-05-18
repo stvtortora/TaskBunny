@@ -11,13 +11,19 @@ class Tasker extends React.Component {
   render(){
     debugger
     return(
-      <section>
-        <div onClick={() => this.props.fetchSchedule(this.props.id)}>View Schedule</div>
-        <div>
-          <h3>{this.props.name}</h3>
-          <p>${this.props.rate}/hr</p>
+      <section className='tasker-box'>
+        <div className='tasker-left'>
+          <img src={window.staticImages.tasker_pic} />
+        </div>
+        <div className='tasker-information'>
+          <div className='tasker-header'>
+            <h3>{this.props.name}</h3>
+            <p>${this.props.rate}/hr</p>
+          </div>
           <span>
-            <p>How I can help: <br/> {this.props.description}</p>
+            <p className='how-i-can-help'>How I can help: </p>
+            <p>{this.props.description}</p>
+            <div className='tasker-select-button' onClick={() => this.props.fetchSchedule(this.props.id)}>Select & Continue</div>
           </span>
         </div>
       </section>
