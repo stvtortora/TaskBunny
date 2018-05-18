@@ -133,7 +133,7 @@
   max-height: 210px;
 }
 
- .tasker-select-button {
+ .custom-button {
    background-color: #51AF33;
    margin: 15px;
    color: white;
@@ -144,4 +144,29 @@
    height: 20px;
    width: 130px;
   margin: 20px 0px 0px 70px;
+}
+
+.redirect-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.tasker-schedule-header {
+  text-align: center;
+}
+
+#redirect-header {
+  margin: 5px;
+}
+
+#redirect-box {
+  height: 250px;
+}
+
+#redirect-button {
+  position: relative;
+  left: -85px;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
 }

@@ -2,9 +2,9 @@ import React from 'react';
 import TasksIndex from './tasks_index';
 import CategorySuggestions from './category_suggestions';
 
-const Greeting = ({ user, userName }) => {
+const Greeting = ({ user }) => {
   debugger
-  if(!user){
+  if(!user.id){
     return (
       <section className="intro-content">
         <h2 className="header">The convenient & fast way <br/> to get things done around the house</h2>

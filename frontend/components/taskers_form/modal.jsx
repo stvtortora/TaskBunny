@@ -2,16 +2,19 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import TaskerSchedule from './tasker_schedule';
+import RedirectOptions from './redirect_options';
 
-function Modal({modal, closeModal}) {
+function Modal({modal, closeModal, session}) {
   if (!modal) {
     return null;
   }
 
+  const display = session ? <TaskerSchedule id={modal}/> : <RedirectOptions />
+
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
-        <TaskerSchedule id={modal}/>
+        {display}
       </div>
     </div>
   );
@@ -20,7 +23,8 @@ function Modal({modal, closeModal}) {
 const mapStateToProps = state => {
 
   return {
-    modal: state.modal
+    modal: state.modal,
+    session: state.session.id
   };
 };
 

@@ -23,7 +23,7 @@ class Tasker extends React.Component {
           <span>
             <p className='how-i-can-help'>How I can help: </p>
             <p>{this.props.description}</p>
-            <div className='tasker-select-button' onClick={() => this.props.fetchSchedule(this.props.id)}>Select & Continue</div>
+            <div className='custom-button' onClick={() => this.props.fetchSchedule(this.props.id)}>Select & Continue</div>
           </span>
         </div>
       </section>
