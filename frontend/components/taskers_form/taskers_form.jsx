@@ -1,5 +1,5 @@
 import React from 'react';
-import Tasker from './Tasker';
+import Tasker from './tasker';
 import NavBar from '../nav_bar/nav_bar';
 import Modal from './modal';
 import { connect } from 'react-redux';
