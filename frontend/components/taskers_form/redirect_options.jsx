@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import {connect} from 'react-redux';
+import { closeModal } from '../../actions/modal_actions';
 
 class RedirectOptions extends React.Component {
   constructor(props){
@@ -8,6 +10,7 @@ class RedirectOptions extends React.Component {
 
   handleClick(field) {
     return () => {
+      this.props.closeModal();
       this.props.history.push(`/${field}`);
     }
   }
@@ -25,4 +28,9 @@ class RedirectOptions extends React.Component {
   }
 }
 
-export default withRouter(RedirectOptions);
+const mapDispatchToProps = dispatch => {
+  return {
+    closeModal: () => dispatch(closeModal())
+  }
+}
+export default withRouter(connect(null, mapDispatchToProps)(RedirectOptions));
