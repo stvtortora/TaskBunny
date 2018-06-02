@@ -7,6 +7,8 @@ export const DROPDOWN_ITEM_SELECTED = 'DROPDOWN_ITEM_SELECTED';
 export const ADD_TO_TASK = 'ADD_TO_TASK';
 export const CLEAR_SEARCHBAR = 'CLEAR_SEARCHBAR';
 export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS';
+export const INVALID_LOCATION = 'INVALID_LOCATION';
+export const UPDATE_FORM_TRACKER = 'UPDATE_FORM_TRACKER';
 export const UPDATE_SHOWFORM = 'UPDATE_SHOWFORM';
 export const UPDATE_TASKER = 'UPDATE_TASKER';
 export const CREATE_TASK = 'CREATE_TASK';
@@ -142,5 +144,18 @@ export const updateShowForm = (formName) => {
   return {
     type: UPDATE_SHOWFORM,
     formName
+  }
+}
+
+export const updateFormTracker = (currentForm) => {
+  return {
+    type: UPDATE_FORM_TRACKER,
+    currentForm
+  }
+}
+
+export const invalidLocation = () => {
+  return {
+    type: INVALID_LOCATION
   }
 }

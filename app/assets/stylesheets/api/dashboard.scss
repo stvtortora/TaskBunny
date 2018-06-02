@@ -5,7 +5,6 @@
   // font-style: normal;
   // font-weight: lighter;
   // color: #414437;
-
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -13,6 +12,18 @@
   font-style: normal;
   font-weight: lighter;
   color: #414437;
+  margin-top: 20px;
+}
+
+#homepage {
+  background: image-url('homebackground.jpg');
+  border-top: 1px solid #DCE0E6;
+  margin-top: 10px;
+}
+
+.logo-image {
+  margin-top: 7px;
+  margin-left: 20px;
 }
 
 .ui-messages > div {

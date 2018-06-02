@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToTask, updateShowForm } from '../../actions/entities_actions';
+import { addToTask, updateShowForm, invalidLocation } from '../../actions/entities_actions';
 import LocationSearch from '../search/location_search_container';
 
 class LocationForm extends React.Component {
@@ -12,14 +12,19 @@ class LocationForm extends React.Component {
   handleSubmit(e) {
     //handle error if bblank
     e.preventDefault();
-    this.props.addToTask( {location: this.props.location} )
-    this.props.updateShowForm('taskDetails');
+    if(this.props.location) {
+      this.props.addToTask( {location: this.props.location} )
+      this.props.updateShowForm('taskDetails');
+    } else {
+      this.props.invalidLocation();
+    }
   }
 
   render() {
     return (
       <form onSubmit={ this.handleSubmit }>
         <LocationSearch />
+        <ul className='error-message'>{this.props.locationErrors}</ul>
         <div className='form_input_button'>
           <input type='submit' value="Save" />
         </div>
@@ -30,16 +35,19 @@ class LocationForm extends React.Component {
 
 const mapStateToProps = (state) => {
   const location = state.entities.detailForm.location.value;
+  const locationErrors = state.errors.formErrors;
 
   return {
-    location
+    location,
+    locationErrors
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addToTask: (param) => dispatch(addToTask(param)),
-    updateShowForm: (formName) => dispatch(updateShowForm(formName))
+    updateShowForm: (formName) => dispatch(updateShowForm(formName)),
+    invalidLocation: () => dispatch(invalidLocation())
   };
 }
 

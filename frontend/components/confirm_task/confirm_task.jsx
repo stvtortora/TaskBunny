@@ -1,8 +1,9 @@
 import React from 'react';
 import NavBar from '../nav_bar/nav_bar';
+import FormTracker from '../form_tracker/form_tracker';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { createTask, taskCancelled } from '../../actions/entities_actions';
+import { createTask, taskCancelled, updateFormTracker } from '../../actions/entities_actions';
 
 class ConfirmTask extends React.Component {
   constructor(props){
@@ -10,6 +11,14 @@ class ConfirmTask extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.updateFormTracker('confirm');
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.task_info.category_id;
   }
 
   handleCancel() {
@@ -25,9 +34,6 @@ class ConfirmTask extends React.Component {
     });
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.task_info.category_id;
-  }
 
   render() {
     const display = Object.keys(this.props.task_display).map((taskParam) => {
@@ -41,6 +47,7 @@ class ConfirmTask extends React.Component {
     return (
       <div>
         <NavBar />
+        <FormTracker />
         <div className='all-content'>
           <form onSubmit={this.handleSubmit}>
             <header className='form_header'>
@@ -92,6 +99,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    updateFormTracker: (currentForm) => dispatch(updateFormTracker(currentForm)),
     createTask: (task_info) => dispatch(createTask(task_info)),
     taskCancelled: () => dispatch(taskCancelled())
   }

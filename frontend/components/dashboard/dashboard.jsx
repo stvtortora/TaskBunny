@@ -17,7 +17,7 @@ class Dashboard extends React.Component {
     return (
       <span className='homepage' onClick={() => this.props.modDropdown(false)}>
         <NavBar />
-        <section className="all-content">
+        <section id="homepage" className="all-content">
           <div className='ui-messages'>
             {uiMessages}
           </div>

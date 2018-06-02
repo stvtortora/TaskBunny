@@ -1,8 +1,10 @@
 import React from 'react';
 import Tasker from './tasker';
 import NavBar from '../nav_bar/nav_bar';
+import FormTracker from '../form_tracker/form_tracker';
 import Modal from './modal';
 import { connect } from 'react-redux';
+import { updateFormTracker } from '../../actions/entities_actions';
 
 
 class TaskersIndex extends React.Component {
@@ -10,10 +12,15 @@ class TaskersIndex extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.updateFormTracker('taskers');
+  }
+
   render() {
     return (
       <div>
         <NavBar />
+        <FormTracker />
         <Modal />
         <div className='all-content'>
           <header className='form_header'>
@@ -41,4 +48,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(TaskersIndex);
+const mapDispatchToProps = dispatch => {
+  return {
+    updateFormTracker: (currentForm) => dispatch(updateFormTracker(currentForm))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskersIndex);

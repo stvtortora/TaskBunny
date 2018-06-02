@@ -66,6 +66,11 @@
   margin-top: -47px;
 }
 
+#edit_button:hover {
+  color: #51af33;
+  cursor: pointer;
+}
+
 .parameter_names {
   display: flex;
   flex-direction: column;
@@ -115,4 +120,9 @@
   line-height: 1.5em;
   font-size: 15px;
   outline-color: #51AF33;
+}
+
+.error-message {
+  font-style: italic;
+  color: #ff0000;
 }

@@ -4,7 +4,7 @@ import { modDropdown } from '../../actions/entities_actions';
 
 const mapStateToProps = state => {
   return {
-    ui_messages: state.ui
+    ui_messages: state.ui.taskStatus
   }
 }
 
