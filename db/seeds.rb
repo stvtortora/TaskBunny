@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.delete_all
+User.destroy_all
 Tasker.destroy_all
 Location.destroy_all
 Category.destroy_all
@@ -472,7 +472,7 @@ end
 Tasker.all.each do |tasker|
   tasker_time_slots = []
 
-  until tasker_time_slots.length == 25
+  until tasker_time_slots.length == 15
     time_slot = time_slots.sample
     tasker_time_slots << time_slot unless tasker_time_slots.include?(time_slot)
   end

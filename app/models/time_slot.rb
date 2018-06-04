@@ -8,6 +8,8 @@ class TimeSlot <ApplicationRecord
 
   has_many :time_slot_registrations
 
+  has_many :tasks
+
   has_many :taskers,
   through: :time_slot_registrations,
   source: :tasker

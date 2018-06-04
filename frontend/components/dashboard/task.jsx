@@ -18,7 +18,6 @@ const Task = ({ task }) => {
           <p>{task.category}</p>
           <p>{ task.location}</p>
         </div>
-
     </div>
   )
 }

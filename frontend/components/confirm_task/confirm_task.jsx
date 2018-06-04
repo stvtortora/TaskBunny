@@ -79,8 +79,7 @@ const mapStateToProps = (state) => {
     location_id: state.entities.currentTask.location.id || null,
     size: state.entities.currentTask.size || null,
     vehicle: state.entities.currentTask.vehicle || null,
-    date: state.entities.currentTask.date || null,
-    time: state.entities.currentTask.time || null
+    time_slot_id: state.entities.currentTask.time.id
   }
 
   const task_display = {
@@ -90,7 +89,7 @@ const mapStateToProps = (state) => {
     Size: state.entities.currentTask.size || null,
     Vehicle: state.entities.currentTask.vehicle || null,
     Date: state.entities.currentTask.date || null,
-    Time: state.entities.currentTask.time || null
+    Time: state.entities.currentTask.time.title || null
   }
 
   return {
@@ -108,3 +107,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ConfirmTask));
+
+
+// date: state.entities.currentTask.date || null,
+// time: state.entities.currentTask.time || null

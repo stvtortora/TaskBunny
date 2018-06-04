@@ -50,7 +50,7 @@ class TaskerSchedule extends React.Component {
 
       const times = this.props.days[this.state.date].map(time => {
         debugger
-        return <option value={time} onClick={this.handleTimeSelection}>{time}</option>
+        return <option value={time} onClick={this.handleTimeSelection}>{time.title}</option>
       });
 
       return(

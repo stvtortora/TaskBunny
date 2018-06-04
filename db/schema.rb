@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517012916) do
+ActiveRecord::Schema.define(version: 20180604161330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,13 +59,13 @@ ActiveRecord::Schema.define(version: 20180517012916) do
     t.integer "location_id", null: false
     t.integer "tasker_id", null: false
     t.integer "user_id", null: false
-    t.string "time", null: false
-    t.string "date", null: false
+    t.integer "time_slot_id"
   end
 
   create_table "time_slot_registrations", force: :cascade do |t|
     t.integer "tasker_id", null: false
     t.integer "time_slot_id", null: false
+    t.boolean "filled", default: false
     t.index ["tasker_id", "time_slot_id"], name: "index_time_slot_registrations_on_tasker_id_and_time_slot_id", unique: true
   end
 
