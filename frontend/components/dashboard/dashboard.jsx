@@ -9,15 +9,24 @@ class Dashboard extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    if(this.props.ui_messages.length > 0) {
+      this.props.resetForm();
+    }
+  }
+
   render() {
     debugger
     const uiMessages = this.props.ui_messages.map(message => {
       return <div>{message}</div>
     });
+
+    const idName = this.props.user ? 'homepage' : 'generic-homepage';
+
     return (
       <span className='homepage' onClick={() => this.props.modDropdown(false)}>
         <NavBar />
-        <section id="homepage" className="all-content">
+        <section id={idName} className="all-content">
           <div className='ui-messages'>
             {uiMessages}
           </div>
@@ -29,42 +38,4 @@ class Dashboard extends React.Component {
   }
 }
 
-
 export default Dashboard;
-
-// this.openDropdown = this.openDropdown.bind(this);
-// this.closeDropdown = this.closeDropdown.bind(this);
-// this.handleChange = this.handleChange.bind(this);
-
-// openDropdown(e) {
-//   e.stopPropagation()
-//   this.setState({ clicked: true })
-// }
-//
-// closeDropdown() {
-//   this.setState({ clicked: false })
-// }
-
-// switchDropdown(value) {
-//   e => {
-//     const change = !this.state.clicked;
-//     this.setState({clicked: [value]});
-//   }
-// }
-
-// handleChange(e) {
-//   // clearTimeout(this.timer);
-//   // debugger
-//   // this.timer = setTimeout(() => {
-//   //   this.setState({
-//   //     queryString: e.currentTarget.value
-//   //   });
-//   // }, 1000);
-//   this.setState({ queryString: e.currentTarget.value });
-//   // debugger
-// }
-
-// <div className="search">
-//   <input className='search_bar' type='text' placeholder="Need something different?" onClick={this.openDropdown} onChange={ this.handleChange } />
-//   <QueryDropdown queryString={ this.state.queryString } clicked={ this.state.clicked }/>
-// </div>

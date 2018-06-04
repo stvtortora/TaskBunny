@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
-import { UPDATE_SHOWFORM } from '../actions/entities_actions';
+import { UPDATE_SHOWFORM, RESET_FORM } from '../actions/entities_actions';
 import location from './location_sub_reducer';
 
 const showForm = (state = 'location', action) => {
   switch(action.type){
     case UPDATE_SHOWFORM:
     return action.formName;
+    case RESET_FORM:
+      return 'location';
     default:
     return state;
   }

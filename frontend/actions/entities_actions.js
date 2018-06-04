@@ -16,6 +16,7 @@ export const RECEIVE_TASKS = 'RECEIVE_TASKS';
 export const RECEIVE_CATEGORY_SUGGESTIONS = 'RECEIVE_CATEGORY_SUGGESTIONS';
 export const TASK_CREATED = 'TASK_CREATED';
 export const TASK_CANCELLED = 'TASK_CANCELLED';
+export const RESET_FORM = 'RESET_FORM';
 
 
 export const fetchCategories = (criteria) => {
@@ -28,7 +29,6 @@ export const fetchCategories = (criteria) => {
 };
 
 export const fetchCategorySuggestions = () => {
-  debugger
   return dispatch => {
     return ApiUtil.fetchCategorySuggestions().then(suggestions => {
       return dispatch({type: RECEIVE_CATEGORY_SUGGESTIONS, suggestions});
@@ -54,7 +54,6 @@ export const fetchTaskers = (task_info) => {
 }
 
 export const fetchSchedule = (tasker_id) => {
-  debugger
   return dispatch => {
     return ApiUtil.fetchSchedule(tasker_id).then(schedule => {
       dispatch(updateTasker(schedule, tasker_id));
@@ -157,5 +156,11 @@ export const updateFormTracker = (currentForm) => {
 export const invalidLocation = () => {
   return {
     type: INVALID_LOCATION
+  }
+}
+
+export const resetForm = () => {
+  return {
+    type: RESET_FORM
   }
 }

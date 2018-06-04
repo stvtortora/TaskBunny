@@ -1,4 +1,4 @@
-import { ADD_TO_TASK, EDIT_LOCATION, EDIT_TASK_DETAILS, TASK_CREATED } from '../actions/entities_actions';
+import { ADD_TO_TASK, EDIT_LOCATION, EDIT_TASK_DETAILS, TASK_CREATED, RESET_FORM } from '../actions/entities_actions';
 import merge from 'lodash/merge';
 
 const currentTaskReducer = (state = {}, action) => {
@@ -16,6 +16,8 @@ const currentTaskReducer = (state = {}, action) => {
         delete newState.size;
         delete newState.vehicle;
         return newState;
+    case RESET_FORM:
+      return {};
     default:
       return state;
   }

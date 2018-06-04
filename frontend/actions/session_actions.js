@@ -31,3 +31,9 @@ export const signup = (user) => {
     }
   )};
 };
+
+export const clearSessionErrors = () => {
+  return {
+    type: CLEAR_SESSION_ERRORS
+  }
+}

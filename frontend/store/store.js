@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
+import { saveCurrentTask } from '../util/local_storage_util';
 import thunk from '../middleware/thunk_middleware';
 import logger from 'redux-logger';
 

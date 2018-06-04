@@ -36,6 +36,7 @@ class ConfirmTask extends React.Component {
 
 
   render() {
+    debugger
     const display = Object.keys(this.props.task_display).map((taskParam) => {
       const paramValue = this.props.task_display[taskParam];
       return <div className='task-param-container'>
@@ -44,6 +45,7 @@ class ConfirmTask extends React.Component {
             </div>
     });
 
+debugger
     return (
       <div>
         <NavBar />
@@ -72,23 +74,23 @@ class ConfirmTask extends React.Component {
 
 const mapStateToProps = (state) => {
   const task_info = {
-    tasker_id: state.entities.currentTask.tasker.id,
-    category_id: state.entities.currentTask.category.id,
-    location_id: state.entities.currentTask.location.id,
-    size: state.entities.currentTask.size,
-    vehicle: state.entities.currentTask.vehicle,
-    date: state.entities.currentTask.date,
-    time: state.entities.currentTask.time
+    tasker_id: state.entities.currentTask.tasker.id || null,
+    category_id: state.entities.currentTask.category.id || null,
+    location_id: state.entities.currentTask.location.id || null,
+    size: state.entities.currentTask.size || null,
+    vehicle: state.entities.currentTask.vehicle || null,
+    date: state.entities.currentTask.date || null,
+    time: state.entities.currentTask.time || null
   }
 
   const task_display = {
-    Tasker: state.entities.currentTask.tasker.name,
-    Category: state.entities.currentTask.category.title,
-    Location: state.entities.currentTask.location.title,
-    Size: state.entities.currentTask.size,
-    Vehicle: state.entities.currentTask.vehicle,
-    Date: state.entities.currentTask.date,
-    Time: state.entities.currentTask.time
+    Tasker: state.entities.currentTask.tasker.name || null,
+    Category: state.entities.currentTask.category.title || null,
+    Location: state.entities.currentTask.location.title || null,
+    Size: state.entities.currentTask.size || null,
+    Vehicle: state.entities.currentTask.vehicle || null,
+    Date: state.entities.currentTask.date || null,
+    Time: state.entities.currentTask.time || null
   }
 
   return {

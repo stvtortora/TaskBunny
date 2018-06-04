@@ -21,12 +21,10 @@ const searchReducer = (state = defaultState, action) => {
     delete next.results;
     return merge(next, {}, { results: action.results });
   case UPDATE_TASKER:
-  debugger
       const tasker = state.results[action.tasker_id];
       const updatedTasker = merge({}, tasker, action.schedule);
       const nextState = merge({}, state);
       nextState.results[action.tasker_id] = updatedTasker;
-      debugger
       return nextState;
    case MOD_DROPDOWN:
       return merge({}, state, { open: action.status });

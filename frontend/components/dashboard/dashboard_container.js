@@ -1,16 +1,19 @@
 import { connect } from 'react-redux';
 import DashBoard from './dashboard';
-import { modDropdown } from '../../actions/entities_actions';
+import { modDropdown, resetForm } from '../../actions/entities_actions';
 
 const mapStateToProps = state => {
   return {
-    ui_messages: state.ui.taskStatus
+    ui_messages: state.ui.taskStatus,
+    user: state.session.id
+
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    modDropdown: (status) => dispatch(modDropdown(status))
+    modDropdown: (status) => dispatch(modDropdown(status)),
+    resetForm: () => dispatch(resetForm())
   };
 };
 

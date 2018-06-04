@@ -17,6 +17,8 @@ class TaskersIndex extends React.Component {
   }
 
   render() {
+    const headerMessage = this.props.taskers.length > 0 ? 'Select from our list of vetted taskers!' : 'No taskers match your criteria. Please try again later.'
+
     return (
       <div>
         <NavBar />
@@ -25,7 +27,7 @@ class TaskersIndex extends React.Component {
         <div className='all-content'>
           <header className='form_header'>
             <h1>Pick a Tasker</h1>
-            <p>Select from our list of vetted taskers!</p>
+            <p>{headerMessage}</p>
           </header>
           <div>
             {this.props.taskers}

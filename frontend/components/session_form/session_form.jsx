@@ -9,6 +9,10 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    
+  }
+
   update (field) {
     return e => this.setState({
         [field]: e.currentTarget.value
@@ -24,13 +28,11 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return(
-      <ul className='errors'>
-        {this.props.errors.map((error, i) => (
-          <li key={i}>
+      this.props.errors.map((error) => (
+          <div>
             {error}
-          </li>
-        ))}
-      </ul>
+          </div>
+        ))
     );
   }
 
@@ -39,7 +41,7 @@ class SessionForm extends React.Component {
       <div className='page-content' id='session-page'>
         <form className='session-form' onSubmit={this.handleSubmit}>
           <h1>{this.props.formName}</h1>
-          <div>{this.renderErrors()}</div>
+          <div className="ui-messages">{this.renderErrors()}</div>
           <div className='form-field'>
             <label>Username</label>
             <input type="text" value={this.state.user} onChange={this.update('username')}/>
