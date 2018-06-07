@@ -1,6 +1,9 @@
 class Tasker < ApplicationRecord
   validates :name, :location, presence: true
 
+  has_attached_file :image, default_url: "bunny.png"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
   has_many :tasks
 
   belongs_to :location

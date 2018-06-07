@@ -76,3 +76,11 @@ export const fetchTasks = () => {
     url: 'api/tasks'
   });
 }
+
+export const deleteTask = (id) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `api/tasks/${id}`,
+    data: { id }
+  });
+}

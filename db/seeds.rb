@@ -36,12 +36,7 @@ category_titles =
   'Furniture Assembly',
   'Home Improvement',
   'General Handyman',
-  'Heavy Lifting',
-  'Grocery Shopping',
-  'General Cleaning',
-  'Research',
-  'Event Marketing',
-  'Pet Sitting'
+  'Heavy Lifting'
 ]
 # 'Graphic Design',
 # 'Painting',
@@ -65,20 +60,11 @@ end
 
 location_titles = [
     'New York City, NY',
-    'Los Angeles, CA',
-    'Chicago, IL',
-    'Houston, TX ',
-    'Philadelphia, CA',
-    'Phoenix, AZ',
-    'San Antonio, TX',
-    'San Diego, CA',
-    'Dallas, TX',
-    'San Jose, CA',
-    'San Francisco, CA',
-    'Austin, TX',
-    'Sacramento, CA',
-    'Oakland, CA'
+    'Los Angeles, CA'
   ]
+  # 'Houston, TX ',
+  # 'Philadelphia, CA',
+  # 'Phoenix, AZ'
 
 locations = location_titles.map do |location_title|
   Location.create({title: location_title})
@@ -437,11 +423,35 @@ names = [
   'Archie Summerlin'
 ]
 
+image_urls = [
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/1.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/147660b8d5249e3db38826918f658c3f--lop-eared-bunny-lop-bunnies.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/3+cute2.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/48b68a8b364e08bcc0fda00f7034dd4e.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/5420182160_ac41c1f6d2_b.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/5420182160_ac41c1f6d2_b.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/Bunn-Rabbit-Easter-Wallpaper.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/DYifBivX4AAoAV6.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/Holland-Lop-Sable-Point.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/Rupert+3.JPG",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/a723ec68360465c99c98a87af0f3c3e0.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/bd84a7_6537945.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/bunny-rabbit-pictures-35-of-the-cutest-bunny-rabbits-are-cuteness-overload-free.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/bunny-with-blue-eyes.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/bunnyrabbit-large_trans_nvbqzqnjv4bqkm3ycdi1zvq0mt8cxo2c41vse9jsn00kzbur3ixhago.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/cute-bunny.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/dd3efdead0577d892010994e4f452efc.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/images.jpeg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/images_clipped_rev_2.jpg",
+  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/tumblr_o3irzcrVCc1tiyj7vo1_500.jpg"
+]
+
 
 names.each do |name|
   rateGenerator = Random.new
   rate = rateGenerator.rand(15.0...200.0).round(2).to_s
-  Tasker.create!({name: names.sample, location_id: locations.sample.id, description:'Hello, I am amazing. Hire me!', rate: rate})
+  image = image_urls.sample
+  Tasker.create!({name: names.sample, location_id: locations.sample.id, description:'Hello, I am amazing. Hire me!', rate: rate, image: image})
 end
 
 

@@ -13,6 +13,7 @@ export const UPDATE_SHOWFORM = 'UPDATE_SHOWFORM';
 export const UPDATE_TASKER = 'UPDATE_TASKER';
 export const CREATE_TASK = 'CREATE_TASK';
 export const RECEIVE_TASKS = 'RECEIVE_TASKS';
+export const DELETE_TASK = 'DELETE_TASK';
 export const RECEIVE_CATEGORY_SUGGESTIONS = 'RECEIVE_CATEGORY_SUGGESTIONS';
 export const TASK_CREATED = 'TASK_CREATED';
 export const TASK_CANCELLED = 'TASK_CANCELLED';
@@ -162,5 +163,14 @@ export const invalidLocation = () => {
 export const resetForm = () => {
   return {
     type: RESET_FORM
+  }
+}
+
+export const deleteTask = (id) => {
+  return dispatch => {
+    return ApiUtil.deleteTask(id).then(task => {
+      debugger
+      return dispatch({type: DELETE_TASK, task});
+    });
   }
 }

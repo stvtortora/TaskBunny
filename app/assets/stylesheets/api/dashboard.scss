@@ -150,6 +150,17 @@ ul {
   justify-content: space-between;
   width: 600px;
   border-top: 1px solid #DCE0E6;
+  // align-items: center;
+}
+
+.task-cancel-contaier {
+  display: flex;
+  flex-direction: column;
+}
+
+.cancel-task:hover {
+  cursor: pointer;
+  color: #51af33;
 }
 
 .task-header {

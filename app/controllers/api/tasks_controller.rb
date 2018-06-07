@@ -18,6 +18,16 @@ class Api::TasksController < ApplicationController
     render 'api/tasks/index'
   end
 
+  def destroy
+    @task  = Task.find(params[:id])
+    time_slot_registration = TimeSlotRegistration.find_by(tasker_id: @task.tasker.id, time_slot_id: @task.time_slot.id)
+    time_slot_registration.toggle_status
+    @task.destroy
+    render 'api/tasks/show'
+  end
+
+  private
+
   def task_params
     params.require(:task_info).permit(:location_id, :category_id, :tasker_id, :time_slot_id)
   end

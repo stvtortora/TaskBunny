@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :locations, only: [:index]
     resources :taskers, only: [:index]
     resources :time_slots, only: [:index]
-    resources :tasks, only: [:create, :index]
+    resources :tasks, only: [:create, :index, :destroy]
   end
 
   resources :time_slot_registrations, only: [:update]

@@ -13,7 +13,7 @@ class Tasker extends React.Component {
     return(
       <section className='tasker-box'>
         <div className='tasker-left'>
-          <img src={window.staticImages.tasker_pic} />
+          <img src={this.props.imageUrl} />
         </div>
         <div className='tasker-information'>
           <div className='tasker-header'>

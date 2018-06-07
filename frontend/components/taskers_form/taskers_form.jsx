@@ -42,7 +42,7 @@ const mapStateToProps = (state) => {
   const searchResults = state.entities.search.results;
   const taskers = Object.keys(searchResults).map(taskerId => {
     const tasker = searchResults[taskerId];
-    return <Tasker key={taskerId} id={taskerId} name={tasker.name} description={tasker.description} rate={tasker.rate}/>;
+    return <Tasker key={taskerId} id={taskerId} name={tasker.name} description={tasker.description} rate={tasker.rate} imageUrl={tasker.image_url}/>;
   });
 
   return {
