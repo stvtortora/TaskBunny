@@ -1,26 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
 
-Things you may want to cover:
+Inspired by Task Rabbit, Task Bunny is an application for booking professionals for services related to home improvement, moving help, furniture assembly, and more. The application walks users through a multi-stage form, in which they are prompted to specify details about the task they need completed, including location, category, vehicle requirements, and size requirements. It was build with a Ruby on Rails backend, React/Redux frontend, and a PostgreSQL database.
 
-* Ruby version
+## The Reusable Searchbar
 
-* System dependencies
+The category and location portions of the form both utilize a search component which updates in real time as the user types. For example, if a user types 'ne' in the location search, 'New York, NY' is fetched from the database and offered as a suggestion.
 
-* Configuration
+Since the functionality for both searches are similar, I decided to keep my code DRY by sharing the same search component between them. To distinguish between the two, I used Redux's connect function to implement seperate containers for categories and locations. Within each container, the search component is supplied with a fetchResults method that is specific to the type of data we want to receive. That is, 'fetchReults' dispatches the 'fetchCategories' action in the category search container, and the 'fetchLocations' action in the location search container. Consequently, the actual search component can simply call 'fetchResults' and reamin agnostic to the type of data it's retrieving.
 
-* Database creation
 
-* Database initialization
+## Matching Users with Taskers
 
-* How to run the test suite
+After a user specifies some details about the task they need done, they are presented with a list of 'Taskers'. Up until this point, Redux has been accumulating details the user selects into a 'currentTask' slice of state. To retrieve Taskers from the database, the data from the currentTask slice is sent to the backend through a GET request. The Tasker controller then uses Active Record to join several tables and find Taskers whose data match the parameters of the request.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Maintaining State
 
-* Deployment instructions
-
-* ...
-
-testing
+Since the app features a multi-stage form, data from previous stages of the form would be lost from the currentTask slice without a way to preserve Redux state when the page reloads. This is a problem because the backend relies on currentTask for it's parameters, and it expects it's parameters to always contain the same type of information. To address this, I used local storage. Every time my state changed, I used the store's subscribe method to ensure that local storage was up to date with the most current version of currentTask.
