@@ -7,7 +7,6 @@ const tasksReducer = (state = {}, action) => {
       return merge({}, state, action.tasks);
     case DELETE_TASK:
       const newState = merge({}, state);
-      debugger
       delete newState[action.task.id];
       return newState;
     default:

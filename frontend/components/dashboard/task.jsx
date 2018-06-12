@@ -4,7 +4,7 @@ import { deleteTask } from '../../actions/entities_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const task = state.entities.tasks[ownProps.id];
-  debugger
+
   return {
     task
   }
@@ -24,7 +24,6 @@ class Task extends React.Component {
   }
 
   handleClick() {
-    debugger
     this.props.deleteTask(this.props.id);
   }
 

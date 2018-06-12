@@ -4,14 +4,11 @@ import { withRouter } from 'react-router';
 import { addToTask, fetchCategorySuggestions } from '../../actions/entities_actions';
 
 class CategorySuggestions extends React.Component {
-  // debugger
-
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchCategorySuggestions();
   }
 
@@ -21,7 +18,6 @@ class CategorySuggestions extends React.Component {
   }
 
   render() {
-    debugger
     const suggestionButtons = Object.keys(this.props.categorySuggestions).map((title) => {
       const category = this.props.categorySuggestions[title];
       return <li key={category.id} onClick={() => this.handleClick(category)}>{category.title}</li>
@@ -42,7 +38,6 @@ class CategorySuggestions extends React.Component {
 
   const mapStateToProps = (state) => {
     const categorySuggestions = state.entities.categorySuggestions;
-    debugger
     return {
       categorySuggestions
     }

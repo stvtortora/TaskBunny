@@ -3,7 +3,6 @@ import TasksIndex from './tasks_index';
 import CategorySuggestions from './category_suggestions';
 
 const Greeting = ({ user }) => {
-  debugger
   if(!user.id){
     return (
       <section className="intro-content">

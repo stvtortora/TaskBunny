@@ -13,7 +13,6 @@ class TasksIndex extends React.Component {
   }
 
   render() {
-    debugger
     const tasks = this.props.taskIds.map(id => {
       return <Task key={id} id={id} />
     });
@@ -31,7 +30,6 @@ class TasksIndex extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   const taskIds = state.session.taskIds;
   return {
     taskIds

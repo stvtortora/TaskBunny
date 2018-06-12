@@ -169,7 +169,6 @@ export const resetForm = () => {
 export const deleteTask = (id) => {
   return dispatch => {
     return ApiUtil.deleteTask(id).then(task => {
-      debugger
       return dispatch({type: DELETE_TASK, task});
     });
   }

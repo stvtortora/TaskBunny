@@ -9,7 +9,6 @@ class Tasker extends React.Component {
 
 
   render(){
-    debugger
     return(
       <section className='tasker-box'>
         <div className='tasker-left'>

@@ -7,7 +7,6 @@ import { createTask, taskCancelled, updateFormTracker } from '../../actions/enti
 
 class ConfirmTask extends React.Component {
   constructor(props){
-    debugger
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
@@ -29,14 +28,12 @@ class ConfirmTask extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createTask(this.props.task_info).then(() => {
-      debugger
       this.props.history.push('/');
     });
   }
 
 
   render() {
-    debugger
     const display = Object.keys(this.props.task_display).map((taskParam) => {
       const paramValue = this.props.task_display[taskParam];
       return <div className='task-param-container'>
@@ -45,7 +42,6 @@ class ConfirmTask extends React.Component {
             </div>
     });
 
-debugger
     return (
       <div>
         <NavBar />

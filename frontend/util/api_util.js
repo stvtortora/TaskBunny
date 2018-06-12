@@ -30,7 +30,6 @@ export const fetchCategories = (searchQuery) => {
 }
 
 export const fetchCategorySuggestions = () => {
-  debugger
   return $.ajax({
     method: 'GET',
     url: 'api/categories'
@@ -54,7 +53,6 @@ export const fetchTaskers = (task_info) => {
 }
 
 export const fetchSchedule = (tasker_id) => {
-  debugger
   return $.ajax ({
     method: 'GET',
     url: 'api/time_slots',

@@ -20,7 +20,7 @@ class QueryDropdown extends React.Component {
       const result = this.props.searchResults[id];
       return <li key={id} onClick={() => this.handleClick(result)}>{result.title}</li>
     });
-    // debugger
+
     if(this.props.open && data.length > 0 && this.props.searchQuery.length > 0) {
 
       return (

@@ -7,7 +7,6 @@ import { loadCurrentTask, saveCurrentTask } from './util/local_storage_util';
 document.addEventListener('DOMContentLoaded', () => {
   let preloadedState;
   if (window.currentUser) {
-    debugger
     preloadedState = {
       session: { id: window.currentUser.id, username: window.currentUser.username, taskIds: [] },
       entities: {
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         currentTask: loadCurrentTask()
       }
     };
-    // store = configureStore(preloadedState);
     delete window.currentUser;
   } else {
     preloadedState = {
@@ -29,11 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let store = configureStore(preloadedState);
 
   store.subscribe(() => {
-    debugger
     saveCurrentTask(store.getState().entities.currentTask);
   });
 
-  debugger
   const root = document.getElementById('root');
   window.getState = store.getState;
   ReactDOM.render(<Root store={store}/>, root);

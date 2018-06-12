@@ -16,7 +16,6 @@ class TaskerSchedule extends React.Component {
     }
 
     handleDateSelection(e) {
-      debugger
       this.setState({
         date: e.currentTarget.getAttribute('value')
       }, () => {
@@ -34,8 +33,6 @@ class TaskerSchedule extends React.Component {
 
     handleSubmit(e) {
       e.preventDefault(e);
-      // const task_info = merge({}, this.state, this.props.task_info);
-      // debugger
       this.props.addToTask(this.state);
       this.props.closeModal();
       this.props.history.push('/taskform/confirm_task');
@@ -46,10 +43,8 @@ class TaskerSchedule extends React.Component {
         const className = this.state.date === day ? 'selectedDay' : 'unselectedDay';
         return <div className={className} value={day} onClick={this.handleDateSelection}>{day}</div>;
       });
-      debugger
 
       const times = this.props.days[this.state.date].map(time => {
-        debugger
         return <option value={time} onClick={this.handleTimeSelection}>{time.title}</option>
       });
 

@@ -21,12 +21,10 @@ const sessionReducer = (state = _nullUser, action) => {
       let oldTaskIds = Object.assign([], state.taskIds);
 
       const newTaskIds = oldTaskIds.filter(id => {
-        debugger
         return id !== action.task.id.toString();
       });
 
       newState.taskIds = newTaskIds
-debugger
       return newState;
     default:
       return state;

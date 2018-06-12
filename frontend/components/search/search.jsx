@@ -49,11 +49,7 @@ class Search extends React.Component {
     );
   }
 
-
-
   render() {
-    // const value = this.props.input === undefined ? this.state.searchQuery : this.props.input;
-
     return (
       <div className="search">
         <input className='search_bar' type="text" value={this.state.searchQuery} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
