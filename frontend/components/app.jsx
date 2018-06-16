@@ -20,6 +20,8 @@ const App = () => (
     <Route path='/taskform/details' exact component={DetailsForm} />
     <Route path='/taskform/select_tasker' exact component={TaskersForm} />
     <Route path='/taskform/confirm_task' exact component={RedirectHandler}/>
+    <Route path='/signup' exact component={SignUpFormContainer}/>
+    <Route path='/login' exact component={LogInFormContainer}/>
   </div>
 );
 
