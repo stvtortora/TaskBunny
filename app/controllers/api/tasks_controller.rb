@@ -32,7 +32,3 @@ class Api::TasksController < ApplicationController
     params.require(:task_info).permit(:location_id, :category_id, :tasker_id, :time_slot_id)
   end
 end
-
-
-# @time_slot_registration = TimeSlotRegistration.find(@task.time_slot_registration.id)
-# @time_slot_registration.update({time: @task.time})
