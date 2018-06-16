@@ -5,7 +5,6 @@ import {
   Link
 } from 'react-router-dom';
 
-import { AuthRoute } from '../util/router_util';
 import NavBar from './nav_bar/nav_bar';
 import LogInFormContainer from './session_form/login_form_container';
 import SignUpFormContainer from './session_form/signup_form_container';
@@ -21,12 +20,9 @@ const App = () => (
     <Route path='/taskform/details' exact component={DetailsForm} />
     <Route path='/taskform/select_tasker' exact component={TaskersForm} />
     <Route path='/taskform/confirm_task' exact component={RedirectHandler}/>
-    <AuthRoute path='/login' exact component={LogInFormContainer}/>
-    <AuthRoute path='/signup' exact component={SignUpFormContainer}/>
   </div>
 );
 
-// <Route path='/' exact component={NavBar} />
 
 
 export default App;
