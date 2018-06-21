@@ -1,8 +1,8 @@
-# README
+# Task Bunny
 
 ## Overview
 
-Inspired by Task Rabbit, Task Bunny is an application for booking professionals for services related to home improvement, moving help, furniture assembly, and more. The application walks users through a multi-stage form, in which they are prompted to specify details about the task they need completed, including location, category, vehicle requirements, and size requirements. It was build with a Ruby on Rails backend, React/Redux frontend, and a PostgreSQL database.
+Inspired by Task Rabbit, Task Bunny is an application for booking professionals for home improvement, moving help, furniture assembly, and more. The application walks users through a multi-stage form, in which they are prompted to specify details about the task they need completed. It was built with a Ruby on Rails backend, React/Redux frontend, and a PostgreSQL database.
 
 ## The Reusable Searchbar
 
@@ -28,7 +28,7 @@ handleChange(e) {
 
 ## Matching Users with Taskers
 
-After a user specifies some details about the task they need done, they are presented with a list of 'Taskers'. Up until this point, Redux has been accumulating details the user selects into a 'currentTask' slice of state. To retrieve Taskers from the database, the data from the currentTask slice is sent to the backend through a GET request. The Tasker controller then uses Active Record to join several tables and find Taskers whose data match the parameters of the request.
+After a user specifies some details about the task they need done, they are presented with a list of 'Taskers'. Up until this point, Redux has been accumulating task details into a 'currentTask' slice of state. To retrieve Taskers from the database, the data from the currentTask slice is sent to the backend through a GET request. The Tasker controller then uses Active Record associations to find Taskers whose data match the parameters of the request.
 
 ``` ruby
 class Api::TaskersController <ApplicationController
@@ -55,7 +55,7 @@ end
 
 ## Maintaining State
 
-Since the app features a multi-stage form, data from previous stages of the form would be lost from the currentTask slice without a way to preserve Redux state when the page reloads. This is a problem because the backend relies on currentTask for it's parameters, and it expects it's parameters to always contain the same type of information. To address this, I used local storage. Every time my state changed, I used the store's subscribe method to ensure that local storage was up to date with the most current version of currentTask. I also preloaded the contents of local storage into the my Redux state to retrieve the data needed for currentTask whenever the page reloads.
+Since the app features a multi-stage form, data from previous stages of the form would be lost from the currentTask slice without a way to preserve Redux state when the page reloads. This is a problem because the backend relies on currentTask for it's parameters, and it expects it's parameters to always contain the same type of information. To address this, I used local storage. Every time state changes, the store's subscribe method ensures that local storage is updated with the most current version of currentTask. I also preloaded the contents of local storage into the my Redux state to retrieve the data needed for currentTask whenever the page reloads.
 
 ``` javascript
 document.addEventListener('DOMContentLoaded', () => {
@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
+
   let store = configureStore(preloadedState);
 
   store.subscribe(() => {
