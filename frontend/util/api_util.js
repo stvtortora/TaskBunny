@@ -13,10 +13,10 @@ export const logout = () => {
   });
 }
 
-export const signup = (user) => {
+export const signupClient = (user) => {
   return $.ajax({
     method: 'POST',
-    url: 'api/users',
+    url: 'api/clients',
     data: { user }
   });
 }

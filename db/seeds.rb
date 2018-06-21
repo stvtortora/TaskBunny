@@ -443,7 +443,7 @@ names.each do |name|
   rateGenerator = Random.new
   rate = rateGenerator.rand(15.0...200.0).round(2).to_s
   image = image_urls.sample
-  Tasker.create!({name: names.sample, location_id: locations.sample.id, description:'Hello, I am amazing. Hire me!', rate: rate, image: image})
+  Tasker.create!({username: name, password: 'password', name: name, location_id: locations.sample.id, description:'Hello, I am amazing. Hire me!', rate: rate, image: image})
 end
 
 

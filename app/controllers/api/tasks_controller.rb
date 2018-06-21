@@ -11,9 +11,7 @@ class Api::TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task
-                .includes(:category, :location, :tasker, :user, :time_slot)
-                .where(users: {id: current_user.id})
+    @tasks = current_user.tasks.includes(:category, :location, :tasker, :client, :time_slot)
 
     render 'api/tasks/index'
   end

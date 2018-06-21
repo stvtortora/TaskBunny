@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  validates :category, :location, :tasker, :user, :time_slot, presence: true
+  validates :category, :location, :tasker, :client, :time_slot, presence: true
 
   belongs_to :category
 
@@ -7,7 +7,7 @@ class Task < ApplicationRecord
 
   belongs_to :tasker
 
-  belongs_to :user
+  belongs_to :client
 
   belongs_to :time_slot
 end

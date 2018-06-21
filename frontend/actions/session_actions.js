@@ -22,9 +22,9 @@ export const logout = () => {
   };
 };
 
-export const signup = (user) => {
+export const signupClient = (user) => {
   return (dispatch) => {
-    return ApiUtil.signup(user).then((user) => {
+    return ApiUtil.signupClient(user).then((user) => {
       return dispatch({type: RECEIVE_CURRENT_USER, user})
     },
     err => {

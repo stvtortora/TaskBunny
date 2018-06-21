@@ -4,7 +4,11 @@ class Api::SessionsController < ApplicationController
 
     if @user
       login(@user)
-      render "api/users/show"
+      if @user.is_a? Client
+        render "api/users/show"
+      else
+        render "ap/users/taskers/show"
+      end
     else
       render json: ['Invalid credentials'], status: 422
     end
