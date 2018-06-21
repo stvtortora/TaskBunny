@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateShowForm } from '../../actions/entities_actions';
+import { updateShowForm } from '../../actions/form_actions';
 import Show from './show';
 
 const mapStateToProps = (state) => {

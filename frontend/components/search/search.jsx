@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { modDropdown, dropDownItemSelected } from '../../actions/entities_actions';
+import { modDropdown, dropDownItemSelected } from '../../actions/dropdown_actions';
 import QueryDropdown from './query_dropdown_container';
 
 class Search extends React.Component {

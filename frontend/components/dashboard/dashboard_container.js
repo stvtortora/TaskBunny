@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import DashBoard from './dashboard';
-import { modDropdown, resetForm } from '../../actions/entities_actions';
+import { modDropdown } from '../../actions/dropdown_actions';
+import { resetForm } from '../../actions/form_actions';
 
 const mapStateToProps = state => {
   return {

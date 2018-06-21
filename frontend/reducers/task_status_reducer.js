@@ -1,4 +1,4 @@
-import { ADD_TO_TASK, TASK_CREATED, TASK_CANCELLED } from '../actions/entities_actions';
+import { ADD_TO_TASK, TASK_CREATED, TASK_CANCELLED } from '../actions/tasks_actions';
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 
 const taskStatusReducer = (state = [], action) => {

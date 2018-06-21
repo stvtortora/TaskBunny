@@ -3,7 +3,8 @@ import NavBar from '../nav_bar/nav_bar';
 import FormTracker from '../form_tracker/form_tracker';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { createTask, taskCancelled, updateFormTracker } from '../../actions/entities_actions';
+import { createTask, taskCancelled } from '../../actions/tasks_actions';
+import { updateFormTracker } from '../../actions/form_actions';
 
 class ConfirmTask extends React.Component {
   constructor(props){

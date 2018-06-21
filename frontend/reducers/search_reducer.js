@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
-import {MOD_DROPDOWN, DROPDOWN_ITEM_SELECTED, RECEIVE_SEARCH_RESULTS, CLEAR_SEARCHBAR, CLEAR_SEARCH_RESULTS, UPDATE_TASKER } from '../actions/entities_actions';
+import { RECEIVE_SEARCH_RESULTS, CLEAR_SEARCHBAR, CLEAR_SEARCH_RESULTS } from '../actions/search_actions';
+import { MOD_DROPDOWN, DROPDOWN_ITEM_SELECTED } from '../actions/dropdown_actions';
+import { UPDATE_TASKER } from '../actions/taskers_actions';
+
 import merge from 'lodash/merge';
 
 const defaultState = {
@@ -34,8 +37,5 @@ const searchReducer = (state = defaultState, action) => {
       return state;
  }
 }
-
-//if this doesnt work it may be because of receive locations
-//if it does work, delte queryDropdownReducer and searchInputReducer
 
  export default searchReducer;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToTask, updateShowForm, invalidLocation } from '../../actions/entities_actions';
+import { addToTask } from '../../actions/tasks_actions';
+import { updateShowForm, invalidLocation } from '../../actions/form_actions';
 import LocationSearch from '../search/location_search_container';
 
 class LocationForm extends React.Component {

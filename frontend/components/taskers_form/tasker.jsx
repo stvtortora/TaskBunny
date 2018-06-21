@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchSchedule } from '../../actions/entities_actions';
+import { fetchSchedule } from '../../actions/taskers_actions';
 
 class Tasker extends React.Component {
   constructor(props){

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router';
-import { addToTask } from '../../actions/entities_actions';
+import { addToTask } from '../../actions/tasks_actions';
 import { closeModal } from '../../actions/modal_actions';
 import merge from 'lodash/merge';
 

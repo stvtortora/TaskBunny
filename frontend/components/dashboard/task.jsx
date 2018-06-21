@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteTask } from '../../actions/entities_actions';
+import { deleteTask } from '../../actions/tasks_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const task = state.entities.tasks[ownProps.id];
@@ -45,14 +45,3 @@ class Task extends React.Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Task);
-
-
-
-
-
-
-//
-// <div className='right-panel'>
-//   <p><p className='task-field'>Date: </p>{task.date}</p>
-//   <p><p className='task-field'>Time: </p> {task.time}</p>
-// </div>

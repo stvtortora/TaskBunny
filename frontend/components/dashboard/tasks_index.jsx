@@ -1,7 +1,7 @@
 import React from 'react';
 import Task from './task';
 import { connect } from 'react-redux';
-import { fetchTasks } from '../../actions/entities_actions';
+import { fetchTasks } from '../../actions/tasks_actions';
 
 class TasksIndex extends React.Component {
   constructor(props) {

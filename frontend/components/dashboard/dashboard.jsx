@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../nav_bar/nav_bar';
-import CategorySuggestions from './category_suggestions_container';
+import CategorySuggestions from './category_suggestions';
 import Greeting from './greeting_container';
 import CategorySearch from '../search/category_search_container';
 

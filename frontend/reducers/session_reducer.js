@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_TASKS, DELETE_TASK } from '../actions/entities_actions';
+import { RECEIVE_TASKS, DELETE_TASK } from '../actions/tasks_actions';
 import merge from 'lodash/merge';
 
 const _nullUser = Object.freeze({id: null, taskIds: []});

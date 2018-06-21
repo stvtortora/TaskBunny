@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToTask, updateShowForm } from '../../actions/entities_actions';
+import { addToTask } from '../../actions/tasks_actions';
+import { updateShowForm } from '../../actions/form_actions';
 
 class TaskDetailsForm extends React.Component {
   constructor(props) {

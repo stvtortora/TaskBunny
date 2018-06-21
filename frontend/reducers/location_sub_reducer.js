@@ -1,4 +1,5 @@
-import { DROPDOWN_ITEM_SELECTED, RESET_FORM } from '../actions/entities_actions';
+import { DROPDOWN_ITEM_SELECTED } from '../actions/dropdown_actions';
+import { RESET_FORM } from '../actions/form_actions';
 import merge from 'lodash/merge';
 
 const defaultState = {showForm: true, value: undefined}

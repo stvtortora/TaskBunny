@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { UPDATE_SHOWFORM, RESET_FORM } from '../actions/entities_actions';
+import { UPDATE_SHOWFORM, RESET_FORM } from '../actions/form_actions';
 import location from './location_sub_reducer';
 
 const showForm = (state = 'location', action) => {

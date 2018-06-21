@@ -4,7 +4,7 @@ import NavBar from '../nav_bar/nav_bar';
 import FormTracker from '../form_tracker/form_tracker';
 import Modal from './modal';
 import { connect } from 'react-redux';
-import { updateFormTracker } from '../../actions/entities_actions';
+import { updateFormTracker } from '../../actions/form_actions';
 
 
 class TaskersIndex extends React.Component {

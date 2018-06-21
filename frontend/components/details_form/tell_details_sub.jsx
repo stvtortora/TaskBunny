@@ -1,5 +1,6 @@
 import React from 'react';
-import { addToTask, fetchTaskers } from '../../actions/entities_actions';
+import { addToTask } from '../../actions/tasks_actions';
+import { fetchTaskers } from '../../actions/search_actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import merge from 'lodash/merge';

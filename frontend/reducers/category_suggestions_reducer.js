@@ -1,4 +1,4 @@
-import { RECEIVE_CATEGORY_SUGGESTIONS } from '../actions/entities_actions';
+import { RECEIVE_CATEGORY_SUGGESTIONS } from '../actions/dashboard_actions';
 
 const categorySuggestionsReducer = (state = [], action) => {
   switch(action.type) {

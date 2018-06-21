@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { addToTask, fetchCategorySuggestions } from '../../actions/entities_actions';
+import { fetchCategorySuggestions } from '../../actions/dashboard_actions';
+import { addToTask } from '../../actions/tasks_actions';
 
 class CategorySuggestions extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToTask } from '../../actions/entities_actions';
+import { addToTask } from '../../actions/tasks_actions';
 import TaskDetailsForm from './task_details_form';
 import ShowTaskDetails from './show_task_details_container';
 

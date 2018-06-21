@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { modDropdown, fetchCategories, clearSearchBar } from '../../actions/entities_actions';
+import { fetchCategories, clearSearchBar } from '../../actions/search_actions';
+import { modDropdown } from '../../actions/dropdown_actions';
 import Search from './search';
 
 const mapStateToProps = (state) => {

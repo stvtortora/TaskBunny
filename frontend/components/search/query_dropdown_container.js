@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import QueryDropdown from './query_dropdown';
-import { addToTask, dropDownItemSelected } from '../../actions/entities_actions';
+import { addToTask } from '../../actions/tasks_actions';
+import { dropDownItemSelected } from '../../actions/dropdown_actions';
 import merge from 'lodash/merge';
 
 const mapStateToProps = (state, ownProps) => {

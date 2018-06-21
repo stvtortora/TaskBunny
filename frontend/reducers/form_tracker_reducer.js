@@ -1,4 +1,4 @@
-import { UPDATE_FORM_TRACKER } from '../actions/entities_actions';
+import { UPDATE_FORM_TRACKER } from '../actions/form_actions';
 
 const formTrackerReducer = (state = 'details', action) => {
   switch(action.type) {

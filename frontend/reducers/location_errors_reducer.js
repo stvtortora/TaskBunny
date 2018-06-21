@@ -1,4 +1,5 @@
-import { INVALID_LOCATION, ADD_TO_TASK } from '../actions/entities_actions';
+import { INVALID_LOCATION } from '../actions/form_actions';
+import { ADD_TO_TASK } from '../actions/tasks_actions';
 
 const locationErrorsReducer = (state = [], action) => {
   switch(action.type) {
