@@ -11,5 +11,4 @@ const navBar = () => (
   </nav>
 );
 
-// <div>TaskBunny</div>
 export default navBar;

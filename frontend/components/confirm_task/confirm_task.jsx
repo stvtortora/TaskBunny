@@ -104,7 +104,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ConfirmTask));
-
-
-// date: state.entities.currentTask.date || null,
-// time: state.entities.currentTask.time || null

@@ -14,6 +14,7 @@ const SessionLinks = (props) => {
     <nav className='session-links'>
       <Link to='/login' className='session-link'>Login</Link>
       <Link to='/signup' className='session-link' className='sign-up-button'>Sign Up</Link>
+      <Link to='/become-a-tasker' className='session-link' className='sign-up-button'>Become a Tasker</Link>
     </nav>
   );
 };

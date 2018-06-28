@@ -6,7 +6,7 @@ import { resetForm } from '../../actions/form_actions';
 const mapStateToProps = state => {
   return {
     ui_messages: state.ui.taskStatus,
-    user: state.session.id
+    user: state.session
 
   }
 }

@@ -7,8 +7,10 @@ class Api::LocationsController <ApplicationController
 
     render 'api/locations/index'
   end
-
-  def category_params
-    params.require(:searchQuery)
-  end
 end
+
+
+# 
+# def category_params
+#   params.require(:searchQuery)
+# end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resources :clients, controller: 'users', type: 'Client', only: [:create]
-    resources :taskers, controller: 'users', type: 'Tasker', only: [:create, :index]
+    resources :taskers, controller: 'users', type: 'Tasker', only: [:create, :index, :show, :update]
     resource :session, only: [:create, :destroy]
     resources :sizes, only: [:index]
     resources :vehicles, only: [:index]
@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     resources :locations, only: [:index]
     resources :time_slots, only: [:index]
     resources :tasks, only: [:create, :index, :destroy]
+    resources :category_registrations, only: [:create, :destroy]
   end
-
-  resources :time_slot_registrations, only: [:update]
 end

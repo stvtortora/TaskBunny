@@ -20,7 +20,8 @@ class Dashboard extends React.Component {
       return <div>{message}</div>
     });
 
-    const idName = this.props.user ? 'homepage' : 'generic-homepage';
+    const idName = this.props.user.id ? 'homepage' : 'generic-homepage';
+    const showSearch = Boolean(!this.props.user.id || this.props.user.type === 'Client');
 
     return (
       <span className='homepage' onClick={() => this.props.modDropdown(false)}>
@@ -30,7 +31,7 @@ class Dashboard extends React.Component {
             {uiMessages}
           </div>
           <Greeting />
-          <CategorySearch />
+          <CategorySearch show={showSearch} type={null}/>
         </section>
       </span>
     );

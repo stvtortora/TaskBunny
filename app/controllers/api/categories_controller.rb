@@ -19,6 +19,4 @@ class Api::CategoriesController <ApplicationController
       render 'api/categories/index'
     end
   end
-
-
 end

@@ -1,9 +1,7 @@
 class Tasker < User
-  validates :name, :location, :rate, :description, presence: true
-
   has_many :tasks
 
-  belongs_to :location
+  belongs_to :location, optional: true
 
   has_many :time_slot_registrations
 
@@ -29,3 +27,5 @@ class Tasker < User
     through: :vehicle_registrations,
     source: :vehicle
 end
+
+# validates :name, :location, :rate, :description, presence: true

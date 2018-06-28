@@ -4,11 +4,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login(@user)
-      if @user.is_a? Client
-        render "api/users/show"
-      else
-        render "ap/users/taskers/show"
-      end
+      render "api/users/show"
     else
       render json: @user.errors.full_messages, status: 422
     end
@@ -29,10 +25,29 @@ class Api::UsersController < ApplicationController
     render 'api/users/taskers/index'
   end
 
+  def show
+    @tasker = Tasker
+                  .includes(:categories, :sizes, :vehicles, :time_slots)
+                  .where("users.id = ?", params[:id])
+                  .first
+
+    render 'api/users/taskers/show'
+  end
+
+  def update
+    @tasker = Tasker.find(params[:id])
+
+    if @tasker.update_attributes(user_params)
+      render json: {}
+    else
+      render json: @tasker.errors.full_messages, status: 422
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :location, :name)
+    params.require(:user).permit(:username, :password, :location, :location_id, :name, :rate)
   end
 
   def class_name
