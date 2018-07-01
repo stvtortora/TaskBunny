@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import EditLocation from './edit_location_container';
 import EditCategories from './edit_categories_container';
 import EditSchedule from './edit_schedule';
+import EditSizes from './edit_sizes_container';
 import { fetchUserInfo } from '../../actions/taskers_actions';
 
 class TaskerInfo extends React.Component{
@@ -20,6 +21,7 @@ class TaskerInfo extends React.Component{
         <EditLocation />
         <EditCategories />
         <EditSchedule />
+        <EditSizes />
       </div>
     )
   }

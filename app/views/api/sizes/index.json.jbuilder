@@ -1,5 +1,5 @@
 @sizes.each do |size|
-  json.set! size.title do
+  json.set! size.id do
     json.extract! size, :id, :title
   end
 end

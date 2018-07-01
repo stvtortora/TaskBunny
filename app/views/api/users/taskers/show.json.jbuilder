@@ -28,7 +28,6 @@ vehicles = {}
 
 @tasker.vehicles.each do |vehicle|
   vehicles[vehicle.id] = {
-    title: vehicle.title,
     id: vehicle.id
   }
 end
@@ -36,7 +35,7 @@ end
 time_slots = {}
 
 @tasker.time_slots.each do |time_slot|
-  timeSlots[time_slot.id] = {
+  time_slots[time_slot.id] = {
     id: time_slot.id
   }
 end

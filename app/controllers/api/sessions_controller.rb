@@ -19,12 +19,3 @@ class Api::SessionsController < ApplicationController
     end
   end
 end
-
-
-
-
-# if @user.is_a? Client
-#   render "api/users/show"
-# else
-#   render "ap/users/taskers/show"
-# end

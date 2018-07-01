@@ -2,6 +2,7 @@ import * as ApiUtil from '../util/api_util';
 
 export const REMOVE_REGISTRATION = 'REMOVE_REGISTRATION';
 export const CREATE_REGISTRATION = 'CREATE_REGISTRATION';
+export const RECEIVE_SIZES = 'RECEIVE_SIZES';
 
 export const destroyRegistration = (registration_type, id) => {
   return dispatch => {
@@ -20,12 +21,10 @@ export const createRegistration = (registration_type, info) => {
   }
 }
 
-// export const createRegistration = (registration_type, info) => {
-//   debugger
-//   return (dispatch) => {
-//     return ApiUtil.createRegistration(registration_type, info).then((response) => {
-//       debugger
-//       dispatch({type: CREATE_REGISTRATION, response}));
-//     }
-//   };
-// };
+export const fetchSizes = () => {
+  return dispatch => {
+    return ApiUtil.fetchSizes().then(sizes => {
+      return dispatch({type: RECEIVE_SIZES, sizes});
+    });
+  };
+}

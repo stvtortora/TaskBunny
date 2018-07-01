@@ -1,9 +1,10 @@
-import { RECEIVE_TASKER_INFO } from '../actions/tasks_actions';
+import { RECEIVE_SIZES } from '../actions/registration_actions';
 
 const sizesReducer = (state = {}, action) => {
   switch (action.type) {
-    case RECEIVE_TASKER_INFO:
-      return action.info.sizes;
+    case RECEIVE_SIZES:
+    debugger
+      return action.sizes;
     default:
       return state;
   }

@@ -129,3 +129,11 @@ export const fetchTimeSlots = () => {
     url: 'api/time_slots'
   });
 }
+
+export const fetchSizes = () => {
+  debugger
+  return($.ajax({
+    method: 'GET',
+    url: 'api/sizes'
+  }));
+}
