@@ -1,10 +1,6 @@
 
 
 .all-content {
-  // text-align: center;
-  // font-style: normal;
-  // font-weight: lighter;
-  // color: #414437;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -151,7 +147,6 @@ ul {
   justify-content: space-between;
   width: 600px;
   border-top: 1px solid #DCE0E6;
-  // align-items: center;
 }
 
 .task-cancel-contaier {
@@ -170,32 +165,28 @@ ul {
   font-size: 20px;
 }
 
-// .left-panel{
-//   text-align:left;
-//   display: block;
-//   position: relative;
-// }
-//
-// .left-panel > p > p{
-//   display: inline-block;
-//   position: relative;
-//   padding: 10px;
-// }
-//
-// .right-panel{
-//   text-align:right;
-//   display: block;
-//   text-align: left;
-//   // display: flex;
-//   // flex-direction: column;
-// }
-//
-// .right-panel > p > p{
-//   display: inline-block;
-//   position: relative;
-//   padding: 10px;
-// }
-//
-// .task-field {
-//   font-weight: bold;
-// }
+.selecetedTime {
+  background-color: #51AF33;
+  margin: 15px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid black;
+  padding:15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.unselectedTime {
+  background-color: white;
+  margin: 15px;
+  color: black;
+  font-weight: bold;
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid black;
+  padding: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}

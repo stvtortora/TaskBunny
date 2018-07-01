@@ -115,6 +115,7 @@ export const destroyRegistration = (type, id) => {
 
 
 export const createRegistration = (type, info) => {
+  debugger
   return $.ajax({
     method: 'POST',
     url: `api/${type}`,

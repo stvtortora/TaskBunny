@@ -9,7 +9,11 @@ const categoriesReducer = (state = {}, action) => {
       return action.info.categories;
     case CREATE_REGISTRATION:
     debugger
+    if(action.response.title){
       return merge({}, state, { [action.response.id]: action.response });
+    }else{
+      return state;
+    }
     default:
       return state;
   }

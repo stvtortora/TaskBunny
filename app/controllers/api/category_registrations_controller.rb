@@ -3,7 +3,6 @@ class Api::CategoryRegistrationsController < ApplicationController
     @registration = CategoryRegistration.new(registration_params)
 
     if @registration.save
-      # @registration = CategoryRegistration.includes(:category).where("category_registrations.id = ?", registration.id).first
       render 'api/category_registrations/show'
     else
       render json: @registration.errors.full_messages, status: 422

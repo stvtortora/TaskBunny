@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     resources :time_slots, only: [:index]
     resources :tasks, only: [:create, :index, :destroy]
     resources :category_registrations, only: [:create, :destroy]
+    resources :time_slot_registrations, only: [:create, :destroy]
   end
 end

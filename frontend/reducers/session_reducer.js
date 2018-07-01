@@ -45,8 +45,13 @@ const sessionReducer = (state = _nullUser, action) => {
 
     case CREATE_REGISTRATION:
       const nextState = merge({}, state);
-      categoryIds = state.categoryIds.concat([action.response.id]);
-      return merge({}, nextState, { categoryIds });
+      if(action.response.time_slot_id){
+        debugger
+        timeSlotIds = state.timeSlotIds.concat([action.response.time_slot_id]);
+        return merge({}, nextState, { timeSlotIds });
+      }else{
+        return state;
+      }
     default:
       return state;
   }
