@@ -12,6 +12,7 @@ class QueryDropdown extends React.Component {
       this.props.createRegistration({ category_id: data.id, tasker_id: this.props.userId })
     } else if(this.props.path){
       this.props.addToTask({ category: data });
+      this.props.resetForm();
       this.props.history.push(this.props.path);
     }else if(this.props.type === 'location'){
       this.props.editTaskerLocation(data);

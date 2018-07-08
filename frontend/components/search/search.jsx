@@ -21,14 +21,28 @@ class Search extends React.Component {
     // }
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if(nextProps.input){
-      return({
-        searchQuery: nextProps.input
-      });
-    } 
-    return null;
+  componentWillReceiveProps(newProps) {
+    debugger
+    if(!newProps.path && this.props.path){
+      debugger
+      this.setState({
+        searchQuery: ''
+      })
+    }else if(newProps.input){
+      this.setState({
+        searchQuery: newProps.input
+      })
+    }
   }
+
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   if(nextProps.input){
+  //     return({
+  //       searchQuery: nextProps.input
+  //     });
+  //   }
+  //   return null;
+  // }
 
   handleClick(e) {
     e.stopPropagation();

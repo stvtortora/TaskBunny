@@ -4,6 +4,7 @@ import { addToTask } from '../../actions/tasks_actions';
 import { dropDownItemSelected } from '../../actions/dropdown_actions';
 import { editTaskerLocation, editTaskerCategories } from '../../actions/taskers_actions';
 import { createRegistration } from '../../actions/registration_actions';
+import { resetForm } from '../../actions/form_actions';
 import merge from 'lodash/merge';
 
 const mapStateToProps = (state, ownProps) => {
@@ -18,7 +19,8 @@ const mapDispatchToProps = (dispatch) => {
     addToTask: (taskParam) => dispatch(addToTask(taskParam)),
     dropDownItemSelected: (location) => dispatch(dropDownItemSelected(location)),
     editTaskerLocation: (data) => dispatch(editTaskerLocation(data)),
-    createRegistration: (registration_info) => dispatch(createRegistration('category_registrations', registration_info))
+    createRegistration: (registration_info) => dispatch(createRegistration('category_registrations', registration_info)),
+    resetForm: () => dispatch(resetForm())
   };
 };
 
