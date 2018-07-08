@@ -14,11 +14,11 @@ class Search extends React.Component {
   componentDidMount() {
     this.props.action();
 
-    if(this.props.path){
+    // if(this.props.path){
       this.setState({
         searchQuery: ''
       });
-    }
+    // }
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -26,7 +26,7 @@ class Search extends React.Component {
       return({
         searchQuery: nextProps.input
       });
-    }
+    } 
     return null;
   }
 
@@ -50,6 +50,7 @@ class Search extends React.Component {
   }
 
   render() {
+
     if(this.props.show){
       return (
         <div className="search">

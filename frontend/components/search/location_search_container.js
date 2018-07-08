@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     modDropdown: (status) => dispatch(modDropdown(status)),
     fetchResults: (criteria) => dispatch(fetchLocations(criteria)),
-    action: () => dispatch(clearSearchResults())
+    action: () => dispatch(clearSearchBar())
   }
 }
 
