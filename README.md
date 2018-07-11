@@ -91,3 +91,54 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<Root store={store}/>, root);
 });
 ```
+
+##What's next?
+
+Currently, I'm working on building features that will allow users to sign up as a `Tasker`. To start, I've implemented single table inheritance. Instead of `User` and `Tasker` belonging to different tables in the database, they now both belong to the `Users` table. Accordingly, separate models are implemented for `Client` and `Tasker`, which each inherit from `User`.
+
+```ruby
+#client.rb
+class Client < User
+  #some code
+end
+
+#tasker.rbb
+class Tasker < User
+  #some code
+end
+```
+Now, both ```Client``` and ```Tasker``` can make use of ```User``` methods, which allow for user authentication.
+
+HTTP requests for relating to ```Clients``` and ```Taskers``` are now both handled by the ```UsersController```. To make this change, I created the following routes:
+
+```ruby
+#config.rb
+namespace :api, defaults: {format: :json} do
+  resources :clients, controller: 'users', type: 'Client', only: [:create]
+  resources :taskers, controller: 'users', type: 'Tasker', only: [:create, :index]
+  #some other routes
+end
+```
+
+Finally, the ```UsersController``` is made more flexible in order to handle requests made for multiple models. For instance, here is the ```create``` method, along with a helper method that determines the appropriate model:
+
+```ruby
+def create
+  @user = class_name.new(user_params)
+
+  if @user.save
+    login(@user)
+    if @user.is_a? Client
+      render "api/users/show"
+    else
+      render "ap/users/taskers/show"
+    end
+  else
+    render json: @user.errors.full_messages, status: 422
+  end
+end
+
+def class_name
+  params[:type].constantize
+end
+```
