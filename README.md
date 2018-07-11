@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-##What's next?
+## What's next?
 
 Currently, I'm working on building features that will allow users to sign up as a `Tasker`. To start, I've implemented single table inheritance. Instead of `User` and `Tasker` belonging to different tables in the database, they now both belong to the `Users` table. Accordingly, separate models are implemented for `Client` and `Tasker`, which each inherit from `User`.
 
