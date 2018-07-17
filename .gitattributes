@@ -1,2 +1,4 @@
 frontend/middleware/* linguist-vendored
 frontend/util/* linguist-vendored
+frontend/store/* linguist-vendored
+frontend/entry/* linguist-vendored
