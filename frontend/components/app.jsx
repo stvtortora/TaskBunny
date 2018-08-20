@@ -8,6 +8,7 @@ import {
 import NavBar from './nav_bar/nav_bar';
 import LogInFormContainer from './session_form/login_form_container';
 import SignUpFormContainer from './session_form/signup_form_container';
+import SignUpTaskerContainer from './session_form/signup_tasker_container';
 import DashBoard from './dashboard/dashboard_container';
 import TaskersForm from './taskers_form/taskers_form';
 import ConfirmTask from './confirm_task/confirm_task';
@@ -21,6 +22,7 @@ const App = () => (
     <Route path='/taskform/select_tasker' exact component={TaskersForm} />
     <Route path='/taskform/confirm_task' exact component={RedirectHandler}/>
     <Route path='/signup' exact component={SignUpFormContainer}/>
+    <Route path = '/become-a-tasker' exact component={SignUpTaskerContainer}/>
     <Route path='/login' exact component={LogInFormContainer}/>
   </div>
 );

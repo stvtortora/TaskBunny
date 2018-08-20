@@ -21,6 +21,14 @@ export const signupClient = (user) => {
   });
 }
 
+export const signupTasker = (user) => {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/taskers',
+    data: { user }
+  });
+}
+
 export const fetchCategories = (searchQuery) => {
   return $.ajax({
     method: 'GET',

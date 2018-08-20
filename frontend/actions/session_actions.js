@@ -33,6 +33,17 @@ export const signupClient = (user) => {
   )};
 };
 
+export const signupTasker = (user) => {
+  return (dispatch) => {
+    return ApiUtil.signupTasker(user).then((user) => {
+      return dispatch({type: RECEIVE_CURRENT_USER, user})
+    },
+    err => {
+      return dispatch({type: RECEIVE_SESSION_ERRORS, errors: err.responseJSON})
+    }
+  )};
+};
+
 export const clearSessionErrors = () => {
   return {
     type: CLEAR_SESSION_ERRORS

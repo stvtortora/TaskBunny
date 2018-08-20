@@ -4,11 +4,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login(@user)
-      if @user.is_a? Client
-        render "api/users/show"
-      else
-        render "ap/users/taskers/show"
-      end
+      render "api/users/show"
     else
       render json: @user.errors.full_messages, status: 422
     end
