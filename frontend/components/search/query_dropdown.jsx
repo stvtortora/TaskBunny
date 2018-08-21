@@ -7,14 +7,14 @@ class QueryDropdown extends React.Component {
   }
 
   handleClick(data) {
-    if(this.props.type === 'category'){
-      debugger
-      this.props.createRegistration({ category_id: data.id, tasker_id: this.props.userId })
+    debugger
+    if(this.props.type === 'category' && this.props.userType !== 'Client'){
+      this.props.createRegistration({ category_id: data.id })
     } else if(this.props.path){
       this.props.addToTask({ category: data });
-      this.props.resetForm();
+      // this.props.resetForm();
       this.props.history.push(this.props.path);
-    }else if(this.props.type === 'location'){
+    } else if(this.props.type === 'location'){
       this.props.editTaskerLocation(data);
     }
     this.props.dropDownItemSelected(data);

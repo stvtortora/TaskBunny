@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { RECEIVE_SEARCH_RESULTS, CLEAR_SEARCHBAR, CLEAR_SEARCH_RESULTS } from '../actions/search_actions';
 import { MOD_DROPDOWN, DROPDOWN_ITEM_SELECTED } from '../actions/dropdown_actions';
 import { UPDATE_TASKER, EDIT_TASKER_LOCATION } from '../actions/taskers_actions';
+import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 
 import merge from 'lodash/merge';
 
@@ -37,6 +38,8 @@ const searchReducer = (state = defaultState, action) => {
       return merge({}, state, { input: action.location.title });
     case EDIT_TASKER_LOCATION:
       return merge({}, state, { input: action.data.title });
+  case LOGOUT_CURRENT_USER:
+    return merge({}, state, { input: '' })
    default:
       return state;
  }

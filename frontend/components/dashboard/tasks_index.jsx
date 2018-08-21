@@ -9,6 +9,7 @@ class TasksIndex extends React.Component {
   }
 
   componentDidMount() {
+    console.log('fuck me asshole shitface bitch')
     this.props.fetchTasks();
   }
 

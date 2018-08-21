@@ -10,7 +10,8 @@ import merge from 'lodash/merge';
 const mapStateToProps = (state, ownProps) => {
   return {
     searchResults: state.entities.search.results,
-    userId: state.session.id
+    userId: state.session.id,
+    userType: state.session.type
   }
 };
 

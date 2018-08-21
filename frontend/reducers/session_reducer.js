@@ -1,15 +1,17 @@
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_TASKS, RECEIVE_TASKER_INFO, DELETE_TASK } from '../actions/taskers_actions';
+import { RECEIVE_TASKER_INFO} from '../actions/taskers_actions';
+import { RECEIVE_TASKS, DELETE_TASK } from '../actions/tasks_actions';
 import { CREATE_REGISTRATION } from '../actions/registration_actions';
 import merge from 'lodash/merge';
 
-const _nullUser = Object.freeze({id: null, taskIds: [], categoryIds: [], sizesIds: [], vehicleIds: [], timeSlotIds: [], description: null, name: null});
+const _nullUser = Object.freeze({id: null, taskIds: [], categoryIds: [], sizesIds: [], vehicleIds: [], timeSlotIds: [], timeSlotStatuses: {}, description: null, name: null});
 
 const sessionReducer = (state = _nullUser, action) => {
   let categoryIds;
   let vehicleIds;
-  let sizeIds;
+  let sizesIds;
   let timeSlotIds;
+  let timeSlotStatuses;
   let description;
   let name;
 
@@ -26,11 +28,16 @@ const sessionReducer = (state = _nullUser, action) => {
     case RECEIVE_TASKER_INFO:
       categoryIds = Object.keys(action.info.categories);
       vehicleIds = Object.keys(action.info.vehicles);
-      sizeIds = Object.keys(action.info.sizes);
+      sizesIds = Object.keys(action.info.sizes);
+      timeSlotStatuses = Object.keys(action.info.timeSlots).reduce((statuses, id) => {
+        const timeSlot = action.info.timeSlots[id]
+        statuses[timeSlot.id] = timeSlot.filled;
+        return statuses;
+      }, {});
       timeSlotIds = Object.keys(action.info.timeSlots);
       description = action.info.description;
       name = action.info.name;
-      return merge({}, state, { categoryIds, vehicleIds, sizeIds, location, description, name });
+      return merge({}, state, { categoryIds, vehicleIds, sizesIds, location, timeSlotIds, timeSlotStatuses, description, name });
     case DELETE_TASK:
       const newState = merge({}, state);
 
@@ -46,11 +53,14 @@ const sessionReducer = (state = _nullUser, action) => {
     case CREATE_REGISTRATION:
       const nextState = merge({}, state);
       if(action.response.time_slot_id){
-        debugger
-        timeSlotIds = state.timeSlotIds.concat([action.response.time_slot_id]);
+        timeSlotIds = state.timeSlotIds.concat([action.response.time_slot_id.toString()]);
         return merge({}, nextState, { timeSlotIds });
-      }else{
-        return state;
+      }else if (action.response.size_id){
+        sizesIds = state.sizesIds.concat([action.response.size_id.toString()]);
+        return merge({}, nextState, { sizesIds });
+      } else if (action.response.vehicle_id){
+        vehicleIds = state.vehicleIds.concat([action.response.vehicle_id.toString()]);
+        return merge({}, nextState, { vehicleIds });
       }
     default:
       return state;

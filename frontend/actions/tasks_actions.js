@@ -23,6 +23,7 @@ export const createTask = (task_info) => {
 }
 
 export const addToTask = (taskParam) => {
+  console.log('fuck me asshole')
   return {
     type: ADD_TO_TASK,
     taskParam

@@ -165,7 +165,7 @@ ul {
   font-size: 20px;
 }
 
-.selecetedTime {
+.selectedTime {
   background-color: #51AF33;
   margin: 15px;
   color: white;
@@ -190,3 +190,30 @@ ul {
   border-radius: 4px;
   cursor: pointer;
 }
+
+
+ .selectedOption {
+   background-color: #51AF33;
+   margin: 15px;
+   color: white;
+   font-weight: bold;
+   font-size: 15px;
+   font-weight: bold;
+   border: 1px solid black;
+   padding:15px;
+   border-radius: 4px;
+   cursor: pointer;
+ }
+
+ .unselectedOption {
+   background-color: white;
+   margin: 15px;
+   color: black;
+   font-weight: bold;
+   font-size: 15px;
+   font-weight: bold;
+   border: 1px solid black;
+   padding: 15px;
+   border-radius: 4px;
+   cursor: pointer;
+ }

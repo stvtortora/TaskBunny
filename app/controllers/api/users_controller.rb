@@ -2,6 +2,7 @@ class Api::UsersController < ApplicationController
   def create
     @user = class_name.new(user_params)
 
+    
     if @user.save
       login(@user)
       render "api/users/show"
@@ -50,9 +51,9 @@ class Api::UsersController < ApplicationController
     params.require(:user).permit(:username, :password, :location, :location_id, :name, :rate)
   end
 
-  def class_name
-    params[:type].constantize
-  end
+  # def class_name
+  #   params[:type].constantize
+  # end
 
   def task_info
     params[:task_info]

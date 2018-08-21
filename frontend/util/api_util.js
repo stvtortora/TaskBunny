@@ -137,3 +137,11 @@ export const fetchSizes = () => {
     url: 'api/sizes'
   }));
 }
+
+export const fetchVehicles = () => {
+  debugger
+  return($.ajax({
+    method: 'GET',
+    url: 'api/vehicles'
+  }));
+}

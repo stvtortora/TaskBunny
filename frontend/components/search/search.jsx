@@ -13,12 +13,9 @@ class Search extends React.Component {
 
   componentDidMount() {
     this.props.action();
-
-    // if(this.props.path){
       this.setState({
         searchQuery: ''
-      });
-    // }
+    });
   }
 
   componentWillReceiveProps(newProps) {
@@ -28,7 +25,7 @@ class Search extends React.Component {
       this.setState({
         searchQuery: ''
       })
-    }else if(newProps.input){
+    }else if(newProps.input || newProps.input === ''){
       this.setState({
         searchQuery: newProps.input
       })
@@ -64,7 +61,6 @@ class Search extends React.Component {
   }
 
   render() {
-
     if(this.props.show){
       return (
         <div className="search">

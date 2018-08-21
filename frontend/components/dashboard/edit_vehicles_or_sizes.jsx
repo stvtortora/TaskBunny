@@ -3,25 +3,26 @@ import React from 'react';
 class EditVehiclesOrSizes extends React.Component {
   constructor(props){
     super(props);
-
+    this.toggleSelection = this.toggleSelection.bind(this);
   }
 
   componentDidMount(){
+    console.log('i hate my life with a passion')
     this.props.fetchData();
   }
 
-  toggleSelection(e){
+  toggleSelection (e) {
     let idName = this.props.title === 'Sizes' ? 'size_id' : 'vehicle_id';
-    if(e.currentTarget.getAttribute('class') === 'unselectedTime'){
-      this.props.createRegistration({ idName: e.currentTarget.getAttribute('id'), tasker_id: this.props.userId })
+    if(e.currentTarget.getAttribute('class') === 'unselectedOption'){
+      this.props.createRegistration({ [idName]: e.currentTarget.getAttribute('id') })
     }
   }
 
   render(){
+    debugger
     const options = Object.keys(this.props.options).map(optionId => {
       const option = this.props.options[optionId];
-      debugger
-      const className = this.props.registrationIds === option ? 'selectedOption' : 'unselectedUnselected';
+      const className = this.props.registrationIds.includes(optionId) ? 'selectedOption' : 'unselectedOption';
       return <div className={className} id={option.id} onClick={this.toggleSelection}>{option.title}</div>
     });
 

@@ -26,9 +26,8 @@ class EditSchedule extends React.Component {
   }
 
   toggleSelection(e){
-    debugger
     if(e.currentTarget.getAttribute('class') === 'unselectedTime'){
-      this.props.createRegistration({ time_slot_id: e.currentTarget.getAttribute('id'), tasker_id: this.props.userId })
+      this.props.createRegistration({ time_slot_id: e.currentTarget.getAttribute('id')})
     }
   }
 
@@ -42,7 +41,12 @@ class EditSchedule extends React.Component {
         return <div className={className} value={day} onClick={this.handleClick}>{day}</div>
       });
       times = this.props.timeSlots.days[this.state.date].map(time => {
-          const className = this.props.registrationIds.includes(time.id) ? 'selectedTime' : 'unselectedTime';
+          let className;
+          if (this.props.registrationIds.includes(time.id.toString())){
+            className = this.props.filledStatuses[time.id] ? 'filledTime' : 'selectedTime';
+          } else {
+            className = 'unselectedTime';
+          }
           return <div className={className} id={time.id} onClick={this.toggleSelection}>{time.title}</div>
       });
     }
@@ -63,11 +67,13 @@ class EditSchedule extends React.Component {
 
 const mapStateToProps = state => {
   const registrationIds = state.session.timeSlotIds;
+  const filledStatuses = state.session.timeSlotStatuses;
   const timeSlots = state.taskerInfo.timeSlots;
   const userId = state.session.id;
 
   return {
     registrationIds,
+    filledStatuses,
     timeSlots,
     userId
   }

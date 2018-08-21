@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import { fetchSizes } from '../../actions/registration_actions';
+import { fetchVehicles } from '../../actions/registration_actions';
 import { createRegistration } from '../../actions/registration_actions';
 import EditVehiclesOrSizes from './edit_vehicles_or_sizes';
 
 const mapStateToProps = (state) => {
-  const options = state.taskerInfo.sizes;
-  const registrationIds = state.session.sizesIds;
-  const title = 'Sizes';
+  const options = state.taskerInfo.vehicles;
+  const registrationIds = state.session.vehicleIds;
+  const title = 'Vehicles';
 
   return {
     options,
@@ -17,8 +17,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchData: () => dispatch(fetchSizes()),
-    createRegistration: (registration_info) => dispatch(createRegistration('sizes_registrations', registration_info))
+    fetchData: () => dispatch(fetchVehicles()),
+    createRegistration: (registration_info) => dispatch(createRegistration('vehicles_registrations', registration_info))
   }
 }
 

@@ -27,7 +27,7 @@ const Greeting = ({ user }) => {
       </div>
     )
   }
-
+console.log('wtf mate')
   return (
     <div>
       <section className="intro-content">

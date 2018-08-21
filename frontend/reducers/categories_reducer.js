@@ -5,10 +5,8 @@ import merge from 'lodash/merge';
 const categoriesReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_TASKER_INFO:
-    debugger
       return action.info.categories;
     case CREATE_REGISTRATION:
-    debugger
     if(action.response.title){
       return merge({}, state, { [action.response.id]: action.response });
     }else{

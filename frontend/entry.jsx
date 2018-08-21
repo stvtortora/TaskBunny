@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let preloadedState;
   if (window.currentUser) {
     preloadedState = {
-      session: { id: window.currentUser.id, username: window.currentUser.username, taskIds: [], categoryIds: [], sizesIds: [], vehicleIds: [], timeSlotIds: [], description: null, name: null },
+      session: { id: window.currentUser.id, username: window.currentUser.username, type: window.currentUser.type, taskIds: [] },
       entities: {
         users: {
           [window.currentUser.id]: window.currentUser
@@ -16,6 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
         currentTask: loadCurrentTask()
       }
     };
+
+    if (window.currentUser.type === 'Tasker') {
+      preloadedState.session.categoryIds = [];
+      preloadedState.session.sizesIds = [];
+      preloadedState.session.vehicleIds = [];
+      preloadedState.session.timeSlotIds = [];
+      preloadedState.session.timeSlotStatuses = {};
+      preloadedState.session.description = null;
+      preloadedState.session.name = null;
+    }
+
     delete window.currentUser;
   } else {
     preloadedState = {
