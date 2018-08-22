@@ -47,3 +47,5 @@ json.timeSlots time_slots
 json.location @tasker.location
 json.description @tasker.description
 json.name @tasker.name
+json.rate @tasker.rate
+json.image_url image_url(@tasker.image.url)

@@ -12,9 +12,9 @@ Rails.application.routes.draw do
     resources :locations, only: [:index]
     resources :time_slots, only: [:index]
     resources :tasks, only: [:create, :index, :destroy]
-    resources :category_registrations, controller: 'registrations', type: 'CategoryRegistration', only: [:create, :destroy]
-    resources :time_slot_registrations, controller: 'registrations', type: 'TimeSlotRegistration', only: [:create, :destroy]
-    resources :sizes_registrations, controller: 'registrations', type: 'SizeRegistration', only: [:create, :destroy]
-    resources :vehicles_registrations, controller: 'registrations', type: 'VehicleRegistration', only: [:create, :destroy]
+    resources :category_registrations, type: 'CategoryRegistration', only: [:create, :destroy]
+    resources :time_slot_registrations, type: 'TimeSlotRegistration', only: [:create, :destroy]
+    resources :size_registrations, type: 'SizeRegistration', only: [:create, :destroy]
+    resources :vehicle_registrations, type: 'VehicleRegistration', only: [:create, :destroy]
   end
 end

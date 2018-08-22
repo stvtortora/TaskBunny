@@ -1,5 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import TaskerPhoto from './tasker_photo';
+import EditDescription from './edit_description_container';
+import EditRate from './edit_rate_container';
 import EditLocation from './edit_location_container';
 import EditCategories from './edit_categories_container';
 import EditSchedule from './edit_schedule';
@@ -19,6 +22,9 @@ class TaskerInfo extends React.Component{
   render(){
     return (
       <div>
+        <TaskerPhoto />
+        <EditDescription />
+        <EditRate />
         <EditLocation />
         <EditCategories />
         <EditSchedule />

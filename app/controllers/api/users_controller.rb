@@ -2,7 +2,7 @@ class Api::UsersController < ApplicationController
   def create
     @user = class_name.new(user_params)
 
-    
+
     if @user.save
       login(@user)
       render "api/users/show"
@@ -39,7 +39,7 @@ class Api::UsersController < ApplicationController
     @tasker = Tasker.find(params[:id])
 
     if @tasker.update_attributes(user_params)
-      render json: {}
+      render 'api/users/taskers/show'
     else
       render json: @tasker.errors.full_messages, status: 422
     end
@@ -48,7 +48,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :location, :location_id, :name, :rate)
+    params.require(:user).permit(:username, :password, :location, :location_id, :name, :rate, :description, :image)
   end
 
   # def class_name

@@ -45,11 +45,12 @@ class EditInfo extends React.Component {
 
     const search = this.props.type === 'Location' ? <LocationSearch type='location' show={true}/> : <CategorySearch type='category' show={true}/>
     let categories = null;
+
     if(this.props.type === 'Categories'){
       categories = Object.keys(this.props.categories).map(id => {
         const category = this.props.categories[id];
         return <div onClick={() => {
-            this.props.destroyRegistration({id: id})
+            this.props.destroyRegistration(id)
         }}>
           {category.title}
         </div>
@@ -63,9 +64,9 @@ class EditInfo extends React.Component {
           {categories}
           {search}
         </div>
-          <form onSubmit={this.handleSubmit}>
-            <input type='submit' value='Save'/>
-          </form>
+        <form onSubmit={this.handleSubmit}>
+          <input type='submit' value='Save'/>
+        </form>
       </div>
     )
   }

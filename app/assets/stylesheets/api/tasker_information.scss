@@ -1,0 +1,19 @@
+.taskerImg {
+  max-height: 200px;
+  max-width: 240px;
+}
+
+.taskerImg-nav-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.taskerImg-nav-container > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.taskerImg-nav-container > div > div {
+  margin: 5px;
+  padding: 10px;
+}

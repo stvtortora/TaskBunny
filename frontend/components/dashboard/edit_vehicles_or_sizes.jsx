@@ -7,7 +7,6 @@ class EditVehiclesOrSizes extends React.Component {
   }
 
   componentDidMount(){
-    console.log('i hate my life with a passion')
     this.props.fetchData();
   }
 
@@ -15,6 +14,8 @@ class EditVehiclesOrSizes extends React.Component {
     let idName = this.props.title === 'Sizes' ? 'size_id' : 'vehicle_id';
     if(e.currentTarget.getAttribute('class') === 'unselectedOption'){
       this.props.createRegistration({ [idName]: e.currentTarget.getAttribute('id') })
+    } else {
+      this.props.destroyRegistration(Number(e.currentTarget.getAttribute('id')))
     }
   }
 

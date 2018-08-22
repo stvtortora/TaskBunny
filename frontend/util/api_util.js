@@ -106,6 +106,16 @@ export const updateTasker = (user, taskerId) => {
   });
 }
 
+export const uploadTaskerPhoto = (user) => {
+  return $.ajax({
+    url: `api/taskers/${user.get('user[id]')}`,
+    type: 'PATCH',
+    processData: false,
+    contentType: false,
+    data: user
+  })
+}
+
 export const destroyRegistration = (type, id) => {
   return $.ajax({
     method: 'DELETE',

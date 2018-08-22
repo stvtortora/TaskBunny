@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchTimeSlots } from '../../actions/time_slots_actions';
-import { createRegistration } from '../../actions/registration_actions';
+import { createRegistration, destroyRegistration } from '../../actions/registration_actions';
 
 class EditSchedule extends React.Component {
   constructor(props){
@@ -28,6 +28,8 @@ class EditSchedule extends React.Component {
   toggleSelection(e){
     if(e.currentTarget.getAttribute('class') === 'unselectedTime'){
       this.props.createRegistration({ time_slot_id: e.currentTarget.getAttribute('id')})
+    } else {
+      this.props.destroyRegistration(Number(e.currentTarget.getAttribute('id')))
     }
   }
 
@@ -82,7 +84,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchTimeSlots: () => dispatch(fetchTimeSlots()),
-    createRegistration: (registration_info) => dispatch(createRegistration('time_slot_registrations', registration_info))
+    createRegistration: (registration_info) => dispatch(createRegistration('time_slot_registrations', registration_info)),
+    destroyRegistration: (id) => dispatch(destroyRegistration('time_slot_registrations', id))
   }
 }
 

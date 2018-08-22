@@ -3,7 +3,10 @@ import { openModal } from './modal_actions';
 export const UPDATE_TASKER = 'UPDATE_TASKER';
 export const RECEIVE_TASKER_INFO = 'RECEIVE_TASKER_INFO';
 export const EDIT_TASKER_LOCATION = 'EDIT_TASKER_LOCATION';
+export const EDIT_TASKER_RATE = 'EDIT_TASKER_RATE';
+export const EDIT_TASKER_DESCRIPTION = 'EDIT_TASKER_DESCRIPTION';
 export const EDIT_TASKER_CATEGORIES = 'EDIT_TASKER_CATEGORIES';
+export const EDIT_TASKER_PHOTO = 'EDIT_TASKER_PHOTO';
 
 export const fetchSchedule = (tasker_id) => {
   return dispatch => {
@@ -28,6 +31,12 @@ export const changeTasker = (info, taskerId) => {
   }
 }
 
+export const uploadTaskerPhoto = user => {
+  return dispatch => {
+    return ApiUtil.uploadTaskerPhoto(user)
+  }
+}
+
 export const editTaskerLocation = (data) => {
   return {
     type: EDIT_TASKER_LOCATION,
@@ -39,6 +48,27 @@ export const editTaskerCategories = (data) => {
   return {
     type: EDIT_TASKER_CATEGORIES,
     data
+  }
+}
+
+export const editTaskerRate = (rate) => {
+  return {
+    type: EDIT_TASKER_RATE,
+    rate
+  }
+}
+
+export const editTaskerDescription = (description) => {
+  return {
+    type: EDIT_TASKER_DESCRIPTION,
+    description
+  }
+}
+
+export const editTaskerPhoto = (imgUrl) => {
+  return {
+    type: EDIT_TASKER_PHOTO,
+    imgUrl
   }
 }
 

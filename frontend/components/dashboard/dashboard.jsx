@@ -21,17 +21,17 @@ class Dashboard extends React.Component {
     });
 
     const idName = this.props.user.id ? 'homepage' : 'generic-homepage';
-    const showSearch = Boolean(!this.props.user.id || this.props.user.type === 'Client');
-
+    const notTasker = Boolean(!this.props.user.id || this.props.user.type === 'Client');
+    const contentClass = notTasker ? "all-content" : "tasker-content"
     return (
       <span className='homepage' onClick={() => this.props.modDropdown(false)}>
         <NavBar />
-        <section id={idName} className="all-content">
+        <section id={idName} className={contentClass}>
           <div className='ui-messages'>
             {uiMessages}
           </div>
           <Greeting />
-          <CategorySearch show={showSearch} type={null}/>
+          <CategorySearch show={notTasker} type={null}/>
         </section>
       </span>
     );
