@@ -4,12 +4,11 @@ class EditVehiclesOrSizes extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      showOptions: false
+      editMode: false
     }
     this.toggleSelection = this.toggleSelection.bind(this);
     this.options = this.options.bind(this);
-    this.noneSelected = this.noneSelected.bind(this);
-    this.toggleShowOptions = this.toggleShowOptions.bind(this);
+    this.toggleEditMode = this.toggleEditMode.bind(this);
   }
 
   componentDidMount(){
@@ -31,43 +30,35 @@ class EditVehiclesOrSizes extends React.Component {
       const option = this.props.options[optionId];
       const className = this.props.registrationIds.includes(optionId) ? 'selectedOption' : 'unselectedOption';
 
-      return <div className={className} id={option.id} onClick={this.toggleSelection}>{className === 'selectedOption' ? `x ${option.title[0].toUpperCase() + option.title.slice(1)}` : `+ ${option.title[0].toUpperCase() + option.title.slice(1)}`}</div>
+      return this.state.editMode ?
+        <div className={className} id={option.id} onClick={this.toggleSelection}>
+          <div className='attribute-title'>
+            {option.title[0].toUpperCase() + option.title.slice(1)}
+          </div>
+          <div className='attribute-hover'>
+            {className === 'unselectedOption' ? '+' : 'x'}
+          </div>
+        </div> :
+        <div className={`${className}-static`}>{option.title[0].toUpperCase() + option.title.slice(1)}</div>
     });
   }
 
-  toggleShowOptions () {
-    this.setState({showOptions: !this.state.showOptions})
-  }
-
-  noneSelected (options) {
-    if (!options.length) {
-      debugger
-      return false
-    }
-
-    for (let i = 0; i < options.length; i++) {
-      const option = options[i];
-      debugger
-      if (option.props.className === 'selectedOption') {
-        return false;
-      }
-    }
-
-    return true;
+  toggleEditMode () {
+    this.setState({editMode: !this.state.editMode})
   }
 
   render(){
     const placeHolderText = this.props.title === 'Sizes' ? '+ Add your task size preferences' : '+ Add your vehicle capabilities';
     const options = this.options();
-    const requirePlaceHolder = this.noneSelected(options) && !this.state.showOptions;
+    const requirePlaceHolder = this.props.registrationIds.length === 0 && !this.state.editMode;
 
-    return requirePlaceHolder ? <div onClick={this.toggleShowOptions}>{placeHolderText}</div> :
+    return requirePlaceHolder ? <div onClick={this.toggleEditMode}>{placeHolderText}</div> :
       <div className='tasker-attribute-container'>
         <div className='tasker-attribute-name'>{this.props.title}</div>
         <div className='size-vehicle-options'>
           {options}
         </div>
-        {this.noneSelected(options) ? <div onClick={this.toggleShowOptions}>Cancel</div> : <div id='buffer'></div>}
+        <div onClick={this.toggleEditMode}>{this.state.editMode ? 'Done' : 'Edit'}</div>
       </div>
   }
 }

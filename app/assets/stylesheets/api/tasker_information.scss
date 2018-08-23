@@ -82,6 +82,7 @@
 .size-vehicle-options > div {
   padding-right: 8px;
   margin-right: 8px;
+  width: 70px;
 }
 
 #buffer {
@@ -103,7 +104,7 @@
    padding: 5px;
    margin-top: 0;
    padding-top: 0;
-   width: 70px;
+   width: 65px;
  }
 
  .tasker-schedule-times {
@@ -121,10 +122,6 @@
    font-weight: bold;
    color: green;
  }
-
- // .selectedDay-tasker:hover {
- //   cursor:pointer;
- // }
 
  .unselectedDay-tasker:hover {
    cursor: pointer;
@@ -144,13 +141,13 @@
   flex-direction: row;
 }
 
-.time-hover {
+.attribute-hover {
   display: none;
   margin-left: 5px;
   cursor: pointer;
 }
 
-.time-title:hover + .time-hover {
+.attribute-title:hover + .attribute-hover {
   display: block;
   cursor: pointer;
 }
@@ -161,6 +158,34 @@
  }
 
  .selectedTime-tasker:hover {
+   color: red;
+   font-weight: normal;
+   cursor:pointer;
+ }
+
+ .selectedOption {
+   display: flex;
+   flex-direction: row;
+   font-weight: bold;
+   color: green;
+ }
+
+ .selectedOption-static {
+   font-weight: bold;
+   color: green;
+ }
+
+ .unselectedOption {
+   display: flex;
+   flex-direction: row;
+ }
+
+ .unselectedOption:hover {
+   color: green;
+   cursor:pointer;
+ }
+
+ .selectedOption:hover {
    color: red;
    font-weight: normal;
    cursor:pointer;

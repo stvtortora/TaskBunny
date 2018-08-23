@@ -48,10 +48,10 @@ class EditSchedule extends React.Component {
         }
         return (
           <div className={className} id={time.id} onClick={this.toggleSelection}>
-              <div className='time-title'>
+              <div className='attribute-title'>
                 {time.title}
               </div>
-              <div className='time-hover'>{className === 'unselectedTime-tasker' ? '+' : 'x'}</div>
+              <div className='attribute-hover'>{className === 'unselectedTime-tasker' ? '+' : 'x'}</div>
           </div>
         )
     });

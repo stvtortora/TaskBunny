@@ -26,7 +26,6 @@ class QueryDropdown extends React.Component {
     });
 
     if(this.props.open && data.length > 0 && this.props.searchQuery.length > 0) {
-
       return (
         <ul className='query_results' id={this.props.reduceSize ? 'tasker-query-results' : 'query-results'}>
           {data}
