@@ -39,9 +39,11 @@ class EditText extends React.Component{
       return (
         <div className='tasker-attribute-container'>
           <div>
-            <div >{this.props.type}</div>
+            <div className='tasker-attribute-name'>{this.props.type}</div>
           </div>
-          {input}
+          <div>
+            {input}
+          </div>
           <div className='save-edit-container'>
             <div onClick={this.handleUpdate}>Save</div>
             <div onClick={this.toggleEditMode}>Cancel</div>
@@ -55,9 +57,9 @@ class EditText extends React.Component{
     return this.props.text && this.props.text.length ?
       <div className='tasker-attribute-container'>
         <div>
-          <div onChange>{this.props.type}</div>
+          <div className='tasker-attribute-name'>{this.props.type}</div>
         </div>
-        <div>{this.props.text}</div>
+        <div className='tasker-attribute-content'>{this.props.text}</div>
         <div>
           <div onClick={this.toggleEditMode}>{this.props.text && this.props.text.length ? 'Edit' : editPlaceHolder}</div>
         </div>

@@ -39,6 +39,14 @@
   margin: 5px;
 }
 
+.tasker-attribute-name {
+  width: 75px;
+}
+
+.tasker-attribute-content {
+  width: 280px;
+}
+
 .save-edit-container {
   display: flex;
   flex-direction: row;
@@ -55,11 +63,27 @@
 
 #tasker-search-bar {
   height: 0px;
-  width: 250px;
+  width: 242px;
   font-size: 15px;
 }
 
 #tasker-query-results {
   width: 250px;
   top: 24px;
+}
+
+.size-vehicle-options {
+  display: flex;
+  flex-direction: row;
+  width: 280px;
+}
+
+.size-vehicle-options > div {
+  padding-right: 8px;
+  margin-right: 8px;
+}
+
+#buffer {
+  margin-left: 29px;
+  margin-right: 29px;
 }

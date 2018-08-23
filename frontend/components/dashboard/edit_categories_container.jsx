@@ -8,9 +8,8 @@ const mapStateToProps = state => {
   const categories = state.taskerInfo.categories;
   const userId = state.session.id;
   const type = 'Categories';
-  const display = Object.keys(categories).map(category => {
-    return <div>{category.title}</div>
-  });
+  const numCategories = Object.keys(categories).length
+  const display = `${numCategories} ${numCategories > 1 ? 'categories' : 'category'}`;
 
   return {
     categories,

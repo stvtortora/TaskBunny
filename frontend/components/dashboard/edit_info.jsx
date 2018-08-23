@@ -35,13 +35,13 @@ class EditInfo extends React.Component {
 
   render(){
     const placeHolderText = this.props.type === 'Location' ? '+ Add your location' : '+ Add your areas of expertise';
-    const requirePlaceHolder = !this.props.location || (this.props.categories && !Object.keys(this.props.categories).length);
+    const requirePlaceHolder = !this.props.location && (this.props.categories && !Object.keys(this.props.categories).length);
 
     if(!this.state.editMode){
       return requirePlaceHolder ? <div onClick={this.handleClick}>{placeHolderText}</div> :
         <div className='tasker-attribute-container'>
-          <div>{this.props.type}</div>
-          <div>{this.props.display}</div>
+          <div className='tasker-attribute-name'>{this.props.type}</div>
+          <div className='tasker-attribute-content'>{this.props.display}</div>
 
           <div onClick={this.handleClick}>Edit</div>
         </div>
@@ -63,8 +63,8 @@ class EditInfo extends React.Component {
 
     return (
       <div className='tasker-attribute-container'>
-        <div>{this.props.type}</div>
-        <div>
+        <div className='tasker-attribute-name'>{this.props.type}</div>
+        <div className='tasker-attribute-content'>
           {search}
           {categories}
         </div>

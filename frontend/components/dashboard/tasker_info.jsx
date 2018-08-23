@@ -30,12 +30,12 @@ class TaskerInfo extends React.Component{
           <EditCategories />
           <EditSizes />
           <EditVehicles />
+          <EditSchedule />
         </div>
       </div>
     )
   }
 }
-// <EditSchedule />
 
 const mapStateToProps = state => {
   const userId = state.session.id

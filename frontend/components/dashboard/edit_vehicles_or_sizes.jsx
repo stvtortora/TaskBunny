@@ -31,7 +31,7 @@ class EditVehiclesOrSizes extends React.Component {
       const option = this.props.options[optionId];
       const className = this.props.registrationIds.includes(optionId) ? 'selectedOption' : 'unselectedOption';
 
-      return <div className={className} id={option.id} onClick={this.toggleSelection}>{option.title}</div>
+      return <div className={className} id={option.id} onClick={this.toggleSelection}>{className === 'selectedOption' ? `x ${option.title[0].toUpperCase() + option.title.slice(1)}` : `+ ${option.title[0].toUpperCase() + option.title.slice(1)}`}</div>
     });
   }
 
@@ -62,12 +62,12 @@ class EditVehiclesOrSizes extends React.Component {
     const requirePlaceHolder = this.noneSelected(options) && !this.state.showOptions;
 
     return requirePlaceHolder ? <div onClick={this.toggleShowOptions}>{placeHolderText}</div> :
-      <div>
-        <h3>{this.props.title}</h3>
-        <div>
+      <div className='tasker-attribute-container'>
+        <div className='tasker-attribute-name'>{this.props.title}</div>
+        <div className='size-vehicle-options'>
           {options}
         </div>
-        {this.noneSelected(options) ? <div onClick={this.toggleShowOptions}>Cancel</div> : null}
+        {this.noneSelected(options) ? <div onClick={this.toggleShowOptions}>Cancel</div> : <div id='buffer'></div>}
       </div>
   }
 }
