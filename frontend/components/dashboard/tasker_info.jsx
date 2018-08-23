@@ -21,19 +21,21 @@ class TaskerInfo extends React.Component{
 
   render(){
     return (
-      <div>
+      <div className='tasker-dashboard-info'>
         <TaskerPhoto />
-        <EditDescription />
-        <EditRate />
-        <EditLocation />
-        <EditCategories />
-        <EditSchedule />
-        <EditSizes />
-        <EditVehicles />
+        <div className='tasker-info-box'>
+          <EditDescription />
+          <EditLocation />
+          <EditRate />
+          <EditCategories />
+          <EditSizes />
+          <EditVehicles />
+        </div>
       </div>
     )
   }
 }
+// <EditSchedule />
 
 const mapStateToProps = state => {
   const userId = state.session.id

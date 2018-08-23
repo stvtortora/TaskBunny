@@ -1,3 +1,13 @@
+.tasker-dashboard-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.tasker-info-box {
+  width: 500px;
+}
+
 .taskerImg {
   max-height: 200px;
   max-width: 240px;
@@ -16,4 +26,40 @@
 .taskerImg-nav-container > div > div {
   margin: 5px;
   padding: 10px;
+}
+
+.tasker-attribute-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tasker-attribute-container > div {
+  padding: 5px;
+  margin: 5px;
+}
+
+.save-edit-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.save-edit-container > div {
+  margin: 5px;
+}
+
+#tasker-search {
+  display: flex;
+  flex-direction: row;
+}
+
+#tasker-search-bar {
+  height: 0px;
+  width: 250px;
+  font-size: 15px;
+}
+
+#tasker-query-results {
+  width: 250px;
+  top: 24px;
 }

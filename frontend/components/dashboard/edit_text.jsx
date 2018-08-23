@@ -32,23 +32,37 @@ class EditText extends React.Component{
   }
 
   render(){
-    const input = this.props.type === 'Rate' ? <input value={this.state.text} onChange={this.handleChange()}/> : <textarea value={this.state.text} onChange={this.handleChange()}></textarea>
+    const input = this.props.type === 'Rate' ? <input value={this.state.text} onChange={this.handleChange()}/> :
+    <textarea value={this.state.text} onChange={this.handleChange()}></textarea>
 
     if (this.state.editMode) {
       return (
-        <div>
-          <h2 onChange>{this.props.type}</h2>
+        <div className='tasker-attribute-container'>
+          <div>
+            <div >{this.props.type}</div>
+          </div>
           {input}
-          <div onClick={this.handleUpdate}>Save</div>
+          <div className='save-edit-container'>
+            <div onClick={this.handleUpdate}>Save</div>
+            <div onClick={this.toggleEditMode}>Cancel</div>
+          </div>
         </div>
       )
     }
 
-    return (<div>
-      <h2 onChange>{this.props.type}</h2>
-      <div>{this.props.text}</div>
-      <div onClick={this.toggleEditMode}>Edit</div>
-    </div>)
+    const placeHolderText = this.props.type === 'Rate' ? '+ Add your hourly rate' : '+ Add a description of your services';
+
+    return this.props.text && this.props.text.length ?
+      <div className='tasker-attribute-container'>
+        <div>
+          <div onChange>{this.props.type}</div>
+        </div>
+        <div>{this.props.text}</div>
+        <div>
+          <div onClick={this.toggleEditMode}>{this.props.text && this.props.text.length ? 'Edit' : editPlaceHolder}</div>
+        </div>
+      </div> :
+      <div onClick={this.toggleEditMode}>{placeHolderText}</div>
   }
 }
 

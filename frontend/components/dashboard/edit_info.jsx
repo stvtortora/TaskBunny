@@ -9,6 +9,7 @@ class EditInfo extends React.Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleEditMode = this.toggleEditMode.bind(this);
     this.state = {editMode: false};
   }
 
@@ -33,17 +34,20 @@ class EditInfo extends React.Component {
   }
 
   render(){
+    const placeHolderText = this.props.type === 'Location' ? '+ Add your location' : '+ Add your areas of expertise';
+    const requirePlaceHolder = !this.props.location || (this.props.categories && !Object.keys(this.props.categories).length);
+
     if(!this.state.editMode){
-      return (
-        <div className='task_index'>
-          <h3>{this.props.type}</h3>
+      return requirePlaceHolder ? <div onClick={this.handleClick}>{placeHolderText}</div> :
+        <div className='tasker-attribute-container'>
+          <div>{this.props.type}</div>
           <div>{this.props.display}</div>
-          <p onClick={this.handleClick}>Edit</p>
+
+          <div onClick={this.handleClick}>Edit</div>
         </div>
-      )
     }
 
-    const search = this.props.type === 'Location' ? <LocationSearch type='location' show={true}/> : <CategorySearch type='category' show={true}/>
+    const search = this.props.type === 'Location' ? <LocationSearch toggleEditMode={this.toggleEditMode} type='location' show={true}/> : <CategorySearch toggleEditMode={this.toggleEditMode} type='category' show={true}/>
     let categories = null;
 
     if(this.props.type === 'Categories'){
@@ -58,18 +62,22 @@ class EditInfo extends React.Component {
     }
 
     return (
-      <div className='task_index'>
-        <h3>{this.props.type}</h3>
+      <div className='tasker-attribute-container'>
+        <div>{this.props.type}</div>
         <div>
-          {categories}
           {search}
+          {categories}
         </div>
-        <form onSubmit={this.handleSubmit}>
-          <input type='submit' value='Save'/>
-        </form>
+        <div className='save-edit-container'>
+          <div onClick={this.handleSubmit}>Save</div>
+          <div onClick={this.toggleEditMode}>Cancel</div>
+        </div>
       </div>
     )
   }
 }
+// <form onSubmit={this.handleSubmit}>
+//   <input type='submit' value='Save'/>
+// </form>
 
 export default EditInfo;

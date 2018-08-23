@@ -19,9 +19,7 @@ class Search extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    debugger
     if(!newProps.path && this.props.path){
-      debugger
       this.setState({
         searchQuery: ''
       })
@@ -41,7 +39,7 @@ class Search extends React.Component {
   //   return null;
   // }
 
-  handleClick(e) {
+  handleClick (e) {
     e.stopPropagation();
     this.props.modDropdown(true);
   }
@@ -63,9 +61,9 @@ class Search extends React.Component {
   render() {
     if(this.props.show){
       return (
-        <div className="search">
-          <input className='search_bar' type="text" value={this.state.searchQuery} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
-          <QueryDropdown searchQuery={this.state.searchQuery} open={this.props.open}path={ this.props.path } type={this.props.type}/>
+        <div className="search" id={this.props.toggleEditMode ? 'tasker-search' : 'client-search'} >
+          <input className='search_bar' id={this.props.toggleEditMode ? 'tasker-search-bar' : 'client-search-bar'} type="text" value={this.state.searchQuery} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
+          <QueryDropdown reduceSize={this.props.toggleEditMode ? true : false} searchQuery={this.state.searchQuery} open={this.props.open}path={ this.props.path } type={this.props.type}/>
         </div>
       );
     }

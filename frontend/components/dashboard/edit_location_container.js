@@ -7,7 +7,7 @@ const mapStateToProps = state => {
   const location = state.taskerInfo.location;
   const userId = state.session.id;
   const type = 'Location';
-  const display = location ? location.title : 'None';
+  const display = location ? location.title : null;
 
   return {
     location,
