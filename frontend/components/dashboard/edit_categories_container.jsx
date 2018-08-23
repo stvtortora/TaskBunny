@@ -15,7 +15,8 @@ const mapStateToProps = state => {
     categories,
     userId,
     type,
-    display
+    display,
+    numCategories
   }
 }
 

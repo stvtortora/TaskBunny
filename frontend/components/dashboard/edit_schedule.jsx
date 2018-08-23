@@ -10,9 +10,9 @@ class EditSchedule extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.toggleSelection = this.toggleSelection.bind(this);
     this.toggleEditMode = this.toggleEditMode.bind(this);
-    this.state = {date: null};
     this.days = this.days.bind(this);
     this.times = this.times.bind(this);
+    this.state = {date: null};
   }
 
   componentDidMount(){
@@ -26,7 +26,7 @@ class EditSchedule extends React.Component {
   days () {
     if (!(this.props.timeSlots.days && this.state.date)) {return null}
     return Object.keys(this.props.timeSlots.days).map(day => {
-      const className = this.state.date === day ? 'selectedDay' : 'unselectedDay';
+      const className = this.state.date === day ? 'selectedDay-tasker' : 'unselectedDay-tasker';
       return <div className={className} value={day} onClick={this.handleClick}>{day}</div>
     });
   }
@@ -42,28 +42,20 @@ class EditSchedule extends React.Component {
     return this.props.timeSlots.days[this.state.date].map(time => {
         let className;
         if (this.props.registrationIds.includes(time.id.toString())){
-          className = this.props.filledStatuses[time.id] ? 'filledTime' : 'selectedTime';
+          className = this.props.filledStatuses[time.id] ? 'filledTime' : 'selectedTime-tasker';
         } else {
-          className = 'unselectedTime';
+          className = 'unselectedTime-tasker';
         }
-        return <div className={className} id={time.id} onClick={this.toggleSelection}>{time.title}</div>
+        return (
+          <div className={className} id={time.id} onClick={this.toggleSelection}>
+              <div className='time-title'>
+                {time.title}
+              </div>
+              <div className='time-hover'>{className === 'unselectedTime-tasker' ? '+' : 'x'}</div>
+          </div>
+        )
     });
   }
-
-  // noneSelected (options) {
-  //   if (!options.length) {
-  //     return false
-  //   }
-  //
-  //   for (let i = 0; i < options.length; i++) {
-  //     const option = options[i];
-  //     if (option.props.className === 'selectedTime') {
-  //       return false;
-  //     }
-  //   }
-  //
-  //   return true;
-  // }
 
   toggleEditMode(){
     this.setState({
@@ -72,7 +64,7 @@ class EditSchedule extends React.Component {
   }
 
   toggleSelection(e){
-    if(e.currentTarget.getAttribute('class') === 'unselectedTime'){
+    if(e.currentTarget.getAttribute('class') === 'unselectedTime-tasker'){
       this.props.createRegistration({ time_slot_id: e.currentTarget.getAttribute('id')})
     } else {
       this.props.destroyRegistration(Number(e.currentTarget.getAttribute('id')))
@@ -81,20 +73,40 @@ class EditSchedule extends React.Component {
 
   render(){
     const times = this.times();
+    const days = this.days()
 
     return !this.props.registrationIds.length && !this.state.editMode ? <div onClick={this.toggleEditMode}>+ Add times you're available</div> :
-    <div>
-      <div>Available Times</div>
-      <div className='schedule-days'>
-        {!this.state.editMode ? <div>{`${this.props.registrationIds.length} ${this.props.registrationIds.length > 1 ? 'available times' : 'time available'}`}</div> :
-        <div>
-          {this.days()}
-          <div>
-            {times}
+    <div className='tasker-attribute-container'>
+      <div className='tasker-attribute-name' >Availability</div>
+      <div className='tasker-attribute-content'>
+        {!this.state.editMode ? <div>{`${this.props.registrationIds.length} ${this.props.registrationIds.length !== 1  ? 'times selected' : 'time selected'}`}</div> :
+        <div className='tasker-schedule-content'>
+          <div className='tasker-schedule-days'>
+            <div>
+              {days.slice(0, 3)}
+            </div>
+            <div>
+              {days.slice(3, 6)}
+            </div>
+            <div>
+              {days.slice(6)}
+            </div>
+          </div>
+          <div className='tasker-schedule-times'>
+            <div>
+              {times.slice(0, 4)}
+            </div>
+            <div>
+              {times.slice(4, 8)}
+            </div>
+            <div>
+              {times.slice(8)}
+            </div>
           </div>
         </div>
       }
       </div>
+      <div onClick={this.toggleEditMode}>{this.state.editMode ? 'Done' : 'Edit'}</div>
     </div>
   }
 }

@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: left;
+  color: black;
 }
 
 .tasker-info-box {
@@ -31,7 +32,7 @@
 .tasker-attribute-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left;
 }
 
 .tasker-attribute-container > div {
@@ -87,3 +88,80 @@
   margin-left: 29px;
   margin-right: 29px;
 }
+ .tasker-schedule-days {
+   display: flex;
+   flex-direction: column;
+ }
+
+ .tasker-schedule-days > div {
+   display: flex;
+   flex-direction: row;
+ }
+
+ .tasker-schedule-days > div > div {
+   margin: 5px;
+   padding: 5px;
+   margin-top: 0;
+   padding-top: 0;
+   width: 70px;
+ }
+
+ .tasker-schedule-times {
+   display: flex;
+   flex-direction: row;
+ }
+
+ .tasker-schedule-times > div > div {
+    margin: 10px;
+    padding: 10px;
+    width: 50px;
+ }
+
+ .selectedDay-tasker {
+   font-weight: bold;
+   color: green;
+ }
+
+ // .selectedDay-tasker:hover {
+ //   cursor:pointer;
+ // }
+
+ .unselectedDay-tasker:hover {
+   cursor: pointer;
+   color: green;
+ }
+
+
+.selectedTime-tasker {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  color: green;
+}
+
+.unselectedTime-tasker {
+  display: flex;
+  flex-direction: row;
+}
+
+.time-hover {
+  display: none;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.time-title:hover + .time-hover {
+  display: block;
+  cursor: pointer;
+}
+
+ .unselectedTime-tasker:hover {
+   color: green;
+   cursor:pointer;
+ }
+
+ .selectedTime-tasker:hover {
+   color: red;
+   font-weight: normal;
+   cursor:pointer;
+ }

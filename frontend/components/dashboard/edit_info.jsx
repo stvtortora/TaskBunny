@@ -35,7 +35,7 @@ class EditInfo extends React.Component {
 
   render(){
     const placeHolderText = this.props.type === 'Location' ? '+ Add your location' : '+ Add your areas of expertise';
-    const requirePlaceHolder = !this.props.location && (this.props.categories && !Object.keys(this.props.categories).length);
+    const requirePlaceHolder = (this.props.type === 'Location' && !this.props.location) || (this.props.type === 'Categories' && this.props.numCategories === 0);
 
     if(!this.state.editMode){
       return requirePlaceHolder ? <div onClick={this.handleClick}>{placeHolderText}</div> :
