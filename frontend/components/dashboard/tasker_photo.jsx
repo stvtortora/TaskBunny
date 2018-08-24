@@ -62,7 +62,7 @@ class TaskerPhoto extends React.Component {
   }
 
   render() {
-    const displayMessage = this.props.imgUrl.includes('http://s3') ? 'Change Picture' : '+ Add a picture of yourself'
+    const displayMessage = this.props.imgUrl.includes('http://s3') ? 'Change photo' : '+ Add photo'
     return (
       <div>
         <img className='taskerImg'src={this.state.editMode ? this.state.imgUrl : this.props.imgUrl}/>
@@ -70,8 +70,8 @@ class TaskerPhoto extends React.Component {
         <div className='taskerImg-nav-container'>
           {this.state.editMode ? <input type="file" onChange={this.updateFile}/> : null}
           <div>
-            {this.state.editMode ? <div onClick={this.uploadFile}>Save</div> : null}
-            <div onClick={this.toggleEditMode}>{this.state.editMode ? 'Cancel' : displayMessage}</div>
+            {this.state.editMode ? <div onClick={this.uploadFile} className='photo-text'>Save</div> : null}
+            <div className={displayMessage === '+ Add photo' && !this.state.editMode ? 'placeholder-text' : 'photo-text'} onClick={this.toggleEditMode}>{this.state.editMode ? 'Cancel' : displayMessage}</div>
           </div>
         </div>
       </div>

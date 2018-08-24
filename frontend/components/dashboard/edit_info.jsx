@@ -38,12 +38,13 @@ class EditInfo extends React.Component {
     const requirePlaceHolder = (this.props.type === 'Location' && !this.props.location) || (this.props.type === 'Categories' && this.props.numCategories === 0);
 
     if(!this.state.editMode){
-      return requirePlaceHolder ? <div onClick={this.handleClick}>{placeHolderText}</div> :
+      return requirePlaceHolder ? <div onClick={this.handleClick} className='placeholder-text'>{placeHolderText}</div> :
         <div className='tasker-attribute-container'>
           <div className='tasker-attribute-name'>{this.props.type}</div>
-          <div className='tasker-attribute-content'>{this.props.display}</div>
-
-          <div onClick={this.handleClick}>Edit</div>
+          <div className='tasker-attribute-content' id='tasker-attribute-selection'>{this.props.display}</div>
+          <div className='save-edit-container'>
+            <div onClick={this.handleClick}>Edit</div>
+          </div>
         </div>
     }
 

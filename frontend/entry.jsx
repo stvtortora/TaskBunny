@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
-import { loadCurrentTask, saveCurrentTask } from './util/local_storage_util';
+import { loadData, saveData } from './util/local_storage_util';
 
 document.addEventListener('DOMContentLoaded', () => {
   let preloadedState;
@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         users: {
           [window.currentUser.id]: window.currentUser
         },
-        currentTask: loadCurrentTask()
+        currentTask: loadData('currentTask'),
+        search: loadData('search')
       }
     };
 
@@ -31,15 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     preloadedState = {
       entities: {
-        currentTask: loadCurrentTask()
+        currentTask: loadData('currentTask'),
+        search: loadData('search')
       }
     }
   }
   let store = configureStore(preloadedState);
 
   store.subscribe(() => {
-    saveCurrentTask(store.getState().entities.currentTask);
+    saveData(store.getState().entities.currentTask, 'currentTask');
   });
+
+  store.subscribe(() => {
+    saveData(store.getState().entities.search, 'search')
+  })
 
   const root = document.getElementById('root');
   window.getState = store.getState;

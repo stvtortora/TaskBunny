@@ -32,8 +32,8 @@ class EditText extends React.Component{
   }
 
   render(){
-    const input = this.props.type === 'Rate' ? <input value={this.state.text} onChange={this.handleChange()}/> :
-    <textarea value={this.state.text} onChange={this.handleChange()}></textarea>
+    const input = this.props.type === 'Rate' ? <input id='rate' value={this.state.text} onChange={this.handleChange()} placeholder='Enter your hourly rate'/> :
+    <textarea id='description' value={this.state.text} onChange={this.handleChange()} placeholder='Describe your services to prospective clients'></textarea>
 
     if (this.state.editMode) {
       return (
@@ -41,7 +41,7 @@ class EditText extends React.Component{
           <div>
             <div className='tasker-attribute-name'>{this.props.type}</div>
           </div>
-          <div>
+          <div className='tasker-attribute-content'>
             {input}
           </div>
           <div className='save-edit-container'>
@@ -59,12 +59,12 @@ class EditText extends React.Component{
         <div>
           <div className='tasker-attribute-name'>{this.props.type}</div>
         </div>
-        <div className='tasker-attribute-content'>{this.props.text}</div>
-        <div>
+        <div className='tasker-attribute-content' id='tasker-attribute-selection'>{this.props.text}</div>
+        <div className='save-edit-container'>
           <div onClick={this.toggleEditMode}>{this.props.text && this.props.text.length ? 'Edit' : editPlaceHolder}</div>
         </div>
       </div> :
-      <div onClick={this.toggleEditMode}>{placeHolderText}</div>
+      <div onClick={this.toggleEditMode} className='placeholder-text'>{placeHolderText}</div>
   }
 }
 

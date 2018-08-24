@@ -11,7 +11,7 @@ const showForm = (state = 'location', action) => {
     default:
     return state;
   }
-}
+} 
 
 export default combineReducers ({
   location,

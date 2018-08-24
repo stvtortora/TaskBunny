@@ -52,14 +52,6 @@ class TaskerSchedule extends React.Component {
     }
 
     render(){
-      // const dayOrder = ['Mondy', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-      //
-      // const schedule = Object.keys(this.props.days).reduce((days, day) => {
-      //   const className = this.state.date === day ? 'selectedDay' : 'unselectedDay';
-      //   days[day]= <div className={className} value={day} onClick={this.handleDateSelection}>{day}</div>;
-      //   return days
-      // }, {});
-
       const times = this.props.days[this.state.date].map(time => {
         return <option value={time} onClick={this.handleTimeSelection}>{time.title}</option>
       });

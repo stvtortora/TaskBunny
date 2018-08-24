@@ -9,12 +9,24 @@ import { updateFormTracker } from '../../actions/form_actions';
 class ConfirmTask extends React.Component {
   constructor(props){
     super(props);
+    this.allowAccess = this.allowAccess.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentDidMount() {
-    this.props.updateFormTracker('confirm');
+    if (!this.allowAccess()) {
+      this.props.history.push('/');
+    } else {
+      this.props.updateFormTracker('confirm');
+    }
+  }
+
+  allowAccess () {
+    debugger
+    return Object.keys(this.props.task_info).filter(info => {
+      return this.props.task_info[info] === null;
+    }).length === 0 && this.props.currentUser
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -30,42 +42,50 @@ class ConfirmTask extends React.Component {
     e.preventDefault();
     this.props.createTask(this.props.task_info).then(() => {
       this.props.history.push('/');
+    },
+    () => {
+      this.props.history.push('/');
     });
   }
 
 
   render() {
-    const display = Object.keys(this.props.task_display).map((taskParam) => {
-      const paramValue = this.props.task_display[taskParam];
-      return <div className='task-param-container'>
-              <p className='taskParam'>{taskParam.toUpperCase()}:</ p>
-              <p className='paramValue'> {paramValue.toUpperCase()}</p>
-            </div>
-    });
+    if (this.allowAccess()) {
 
-    return (
-      <div>
-        <NavBar />
-        <FormTracker />
-        <div className='all-content'>
-          <form onSubmit={this.handleSubmit}>
-            <header className='form_header'>
-              <h1>Review Task</h1>
-              <p>Please take a moment to review the details of your order.</p>
-            </header>
-              <div className='taskParams'>
-                {display}
-              </div>
-            <div className='form_input_button'>
-              <input type='submit' value="Confirm Task"/>
+      const display = Object.keys(this.props.task_display).map((taskParam) => {
+        const paramValue = this.props.task_display[taskParam];
+        return <div className='task-param-container'>
+          <p className='taskParam'>{taskParam.toUpperCase()}:</ p>
+            <p className='paramValue'> {paramValue.toUpperCase()}</p>
+          </div>
+        });
+
+        return (
+          <div>
+            <NavBar />
+            <FormTracker />
+            <div className='all-content'>
+              <form onSubmit={this.handleSubmit}>
+                <header className='form_header'>
+                  <h1>Review Task</h1>
+                  <p>Please take a moment to review the details of your order.</p>
+                </header>
+                <div className='taskParams'>
+                  {display}
+                </div>
+                <div className='form_input_button'>
+                  <input type='submit' value="Confirm Task"/>
+                </div>
+                <div className='form_input_button' >
+                  <div onClick={this.handleCancel}>Cancel Task</div>
+                </div>
+              </form>
             </div>
-            <div className='form_input_button' >
-              <div onClick={this.handleCancel}>Cancel Task</div>
-            </div>
-          </form>
-        </div>
-      </div>
-    )
+          </div>
+        )
+    }
+
+    return null;
   }
 }
 
@@ -91,7 +111,8 @@ const mapStateToProps = (state) => {
 
   return {
     task_info,
-    task_display
+    task_display,
+    currentUser: state.session.id
   }
 }
 

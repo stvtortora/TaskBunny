@@ -10,10 +10,12 @@ const currentTaskReducer = (state = {}, action) => {
         newState = merge({}, state, action.taskParam);
         return newState;
     case RESET_FORM:
-      return {};
+    return merge({}, state, {size: '', vehicle: ''})
     default:
       return state;
   }
 }
 
+// case RESET_FORM:
+// return {};
 export default currentTaskReducer;

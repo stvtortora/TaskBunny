@@ -1,14 +1,14 @@
 import store from '../store/store';
 
-export const loadCurrentTask = () => {
-  const serializedState = localStorage.getItem('currentTask');
+export const loadData = (itemName) => {
+  const serializedState = localStorage.getItem(itemName);
   if(serializedState){
     return JSON.parse(serializedState);
   }
   return undefined;
 }
 
-export const saveCurrentTask = (taskInfo) => {
-  const serializedState = JSON.stringify(taskInfo);
-  localStorage.setItem('currentTask', serializedState);
+export const saveData = (data, itemName) => {
+  const serializedState = JSON.stringify(data);
+  localStorage.setItem(itemName, serializedState);
 }

@@ -39,7 +39,7 @@ class EditVehiclesOrSizes extends React.Component {
             {className === 'unselectedOption' ? '+' : 'x'}
           </div>
         </div> :
-        <div className={`${className}-static`}>{option.title[0].toUpperCase() + option.title.slice(1)}</div>
+        className === 'selectedOption' ? <div className={`${className}-static`}>{option.title[0].toUpperCase() + option.title.slice(1)}</div> : null;
     });
   }
 
@@ -52,13 +52,15 @@ class EditVehiclesOrSizes extends React.Component {
     const options = this.options();
     const requirePlaceHolder = this.props.registrationIds.length === 0 && !this.state.editMode;
 
-    return requirePlaceHolder ? <div onClick={this.toggleEditMode}>{placeHolderText}</div> :
+    return requirePlaceHolder ? <div onClick={this.toggleEditMode} className='placeholder-text'>{placeHolderText}</div> :
       <div className='tasker-attribute-container'>
         <div className='tasker-attribute-name'>{this.props.title}</div>
         <div className='size-vehicle-options'>
           {options}
         </div>
-        <div onClick={this.toggleEditMode}>{this.state.editMode ? 'Done' : 'Edit'}</div>
+        <div className='save-edit-container'>
+          <div onClick={this.toggleEditMode}>{this.state.editMode ? 'Done' : 'Edit'}</div>
+        </div>
       </div>
   }
 }

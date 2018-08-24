@@ -63,6 +63,7 @@ const sessionReducer = (state = _nullUser, action) => {
         vehicleIds = state.vehicleIds.concat([action.response.vehicle_id.toString()]);
         return merge({}, nextState, { vehicleIds });
       }
+      return nextState;
     case REMOVE_REGISTRATION:
       nextState = merge({}, state);
       if (action.response.time_slot_id) {
