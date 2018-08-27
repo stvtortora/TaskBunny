@@ -18,7 +18,7 @@ class EditInfo extends React.Component {
   }
 
   handleSubmit(){
-    if(this.props.type === 'Location'){
+    if(this.props.type === 'Location' && this.props.location){
       this.props.changeTasker({location_id: this.props.location.id}, this.props.userId).then(response => {
         this.toggleEditMode();
       });
@@ -54,24 +54,30 @@ class EditInfo extends React.Component {
     if(this.props.type === 'Categories'){
       categories = Object.keys(this.props.categories).map(id => {
         const category = this.props.categories[id];
-        return <div onClick={() => {
-            this.props.destroyRegistration(id)
-        }}>
-          {category.title}
-        </div>
+        return (
+          <div className='selected-category-container' id='attribute-container-edit'>
+            <div className='attribute-title' onClick={() => {this.props.destroyRegistration(id)}}>{category.title}</div>
+            <div className='attribute-hover'>x</div>
+          </div>
+        )
       });
     }
 
     return (
-      <div className='tasker-attribute-container'>
+      <div className='tasker-attribute-container' id='attribute-container-edit'>
         <div className='tasker-attribute-name'>{this.props.type}</div>
         <div className='tasker-attribute-content'>
-          {search}
-          {categories}
+          <div className='tasker-search-container'>
+            {search}
+          </div>
+          <div className='tasker-category-list'>
+            <div>
+              {categories}
+            </div>
+          </div>
         </div>
         <div className='save-edit-container'>
           <div onClick={this.handleSubmit}>Save</div>
-          <div onClick={this.toggleEditMode}>Cancel</div>
         </div>
       </div>
     )

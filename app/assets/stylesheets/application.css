@@ -20,5 +20,11 @@ html {
   font-family: sans-serif;
   color: #5633af ;
   background-color: #8687860f;
+  height: 100%;
 }
 /* #5633af */
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

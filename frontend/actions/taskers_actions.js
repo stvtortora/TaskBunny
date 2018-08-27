@@ -12,7 +12,7 @@ export const fetchSchedule = (tasker_id) => {
   return dispatch => {
     return ApiUtil.fetchSchedule(tasker_id).then(schedule => {
       dispatch(updateTasker(schedule, tasker_id));
-      dispatch(openModal(tasker_id));
+      dispatch(openModal({tasker_id}));
     });
   }
 }

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
+import {openModal} from '../../actions/modal_actions';
 import SessionLinks from './session_links';
 
 const mapStateToProps = (state) => {
@@ -10,7 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    openModal: (formName) => dispatch(openModal(formName))
   };
 };
 

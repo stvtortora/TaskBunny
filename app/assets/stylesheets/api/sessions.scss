@@ -16,23 +16,34 @@
   text-decoration: none;
 }
 
+
 .sign-up-button {
-  border: solid;
-  border-width: 1px;
-  border-radius: 4px;
-  padding: 8px;
-  margin-left: 10px;
-  color: inherit;
-  text-decoration: inherit;
+    border: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    padding: 8px;
+    margin-left: 10px;
+    color: inherit;
+    text-decoration: inherit;
+    font-size: 20px;
+    height: 23px;
+}
+
+.sign-up-button:hover {
+  color: white;
+  background-color: #5633af ;
 }
 
 #logout-button {
   margin-top: 0px;
 }
 
+
 .session-links {
-  margin-top: 20px;
-  margin-right: 40px;
+    margin-right: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .session-link {
@@ -41,32 +52,35 @@
   text-decoration: none;
   height: 20px;
   margin: 20px;
+  font-size: 20px;
 }
 
 .session-link:hover {
   cursor: pointer;
+  text-decoration: underline;
 }
 
-.page-content {
-  background-image: image-url('session_form_background.jpg');
-}
+// .page-content {
+//   background-image: image-url('session_form_background.jpg');
+// }
 
 .session-form {
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 40%;
-  padding: 10px;
   margin-top: 20px;
   padding: 20px;
   align-items: center;
+  background-color: white;
 }
+// width: 40%;
 
 .session-form > h1 {
   text-align: center;
 }
 
-.form-field > {
+
+.form-field {
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -74,21 +88,26 @@
 
 .form-field > label {
   margin-left: 20px;
-  margin-bottom: 10px;
   font-size: 15px;
   color: #86919d;
 
 }
+// margin-bottom: 10px;
 
 .form-field > input {
   width: 400px;
   padding: 10px 16px;
-  margin-left: 20px;
   margin-top: 10px;
   font-size: 15px;
 }
 
-.session-form > button {
+.session-submit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.session-submit-container > button {
     padding: 10px 16px;
     margin: 20px;
     width: 437px;
@@ -101,5 +120,4 @@
     font-size: 20px;
     background-color:#5633af ;
     position: relative;
-    left: 52px
 }

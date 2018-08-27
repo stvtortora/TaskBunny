@@ -80,7 +80,7 @@ const sessionReducer = (state = _nullUser, action) => {
           return id !== action.response.size_id.toString();
         })
         nextState.sizesIds = newSizesIds;
-      } else {
+      } else if (action.response.vehicle_id){
         let oldVehicleIds = Object.assign([], state.vehicleIds);
         let newVehicleIds = oldVehicleIds.filter(id => {
           return id !== action.response.vehicle_id.toString();

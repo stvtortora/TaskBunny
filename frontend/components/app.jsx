@@ -14,9 +14,11 @@ import TaskersForm from './taskers_form/taskers_form';
 import ConfirmTask from './confirm_task/confirm_task';
 import DetailsForm from './details_form/details_form_container';
 import RedirectHandler from './confirm_task/redirect_handler';
+import Modal from './modal/modal';
 
 const App = () => (
   <div>
+    <Modal/>
     <Route path='/' exact component={DashBoard} />
     <Route path='/taskform/details' exact component={DetailsForm} />
     <Route path='/taskform/select_tasker' exact component={TaskersForm} />

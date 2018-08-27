@@ -18,6 +18,8 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.action(this.state).then(() => {
+      debugger
+      this.props.closeModal();
       this.props.history.push('/');
     });
   }
@@ -46,7 +48,9 @@ class SessionForm extends React.Component {
             <label>Password</label>
             <input type="password" value={this.state.user} onChange={this.update('password')}/>
           </div>
-          <button type='submit'>{this.props.formName}</button>
+          <div className='session-submit-container'>
+            <button type='submit'>{this.props.formName}</button>
+          </div>
         </form>
       </div>
     );

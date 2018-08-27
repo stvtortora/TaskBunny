@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 class SessionLinks extends React.Component {
   constructor (props) {
     super (props);
+    this.handleClick = this.handleClick.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
   }
 
@@ -13,6 +14,12 @@ class SessionLinks extends React.Component {
       debugger
       this.props.history.push('/')
     })
+  }
+
+  handleClick (formName) {
+    return () => {
+      this.props.openModal({formName})
+    }
   }
 
   render () {
@@ -26,12 +33,15 @@ class SessionLinks extends React.Component {
 
     return (
       <nav className='session-links'>
-        <Link to='/login' className='session-link'>Login</Link>
-        <Link to='/signup' className='session-link' className='sign-up-button'>Sign Up</Link>
-        <Link to='/become-a-tasker' className='session-link' className='sign-up-button'>Become a Tasker</Link>
+        <div onClick={this.handleClick('login')} className='session-link'>Login</div>
+        <div onClick={this.handleClick('signUp')} className='sign-up-button'>Sign Up</div>
+        <div onClick={this.handleClick('becomeATasker')} className='session-link' className='sign-up-button'>Become a Tasker</div>
       </nav>
     );
   }
 }
 
+// <Link to='/login' className='session-link'>Login</Link>
+// <Link to='/signup' className='session-link' className='sign-up-button'>Sign Up</Link>
+// <Link to='/become-a-tasker' className='session-link' className='sign-up-button'>Become a Tasker</Link>
 export default withRouter(SessionLinks);

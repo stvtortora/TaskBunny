@@ -2,7 +2,6 @@ import React from 'react';
 import Tasker from './tasker';
 import NavBar from '../nav_bar/nav_bar';
 import FormTracker from '../form_tracker/form_tracker';
-import Modal from './modal';
 import { connect } from 'react-redux';
 import { updateFormTracker } from '../../actions/form_actions';
 
@@ -23,7 +22,6 @@ class TaskersIndex extends React.Component {
       <div>
         <NavBar />
         <FormTracker />
-        <Modal />
         <div className='all-content'>
           <header className='form_header'>
             <h1>Pick a Tasker</h1>
@@ -37,6 +35,7 @@ class TaskersIndex extends React.Component {
     )
   }
 }
+// <Modal />
 
 const mapStateToProps = (state) => {
   const searchResults = state.entities.search.results;

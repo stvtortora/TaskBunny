@@ -12,6 +12,9 @@ const Greeting = ({ user }) => {
         <h2 className="header">Everything you need done. <br/> One place.</h2>
         <h1 className='subheader'>Tell us what you need done and get matched with skilled bunnies instantly.</h1>
         <CategorySuggestions />
+        <div className='category-search-container'>
+            <CategorySearch show={true} type={null}/>
+        </div>
       </section>
     );
   }
@@ -22,21 +25,20 @@ const Greeting = ({ user }) => {
         <section>
           <h2 className='header'>Welcome, {user.username}</h2>
         </section>
-        <div className='task_index'>
-          <TasksIndex id={user.id}/>
+        <div className='category-search-container'>
+           <CategorySearch show={true} type={null}/>
         </div>
       </div>
     )
   }
-console.log('wtf mate')
+
   return (
     <div className='intro-content-container'>
-      <section className="intro-content">
-        <h2 className='header'>Welcome, {user.username}</h2>
+      <section className="intro-content-tasker">
+        <h2 className='header' id='tasker-header'>Welcome, {user.username}</h2>
       </section>
       <div className='task_index'>
       </div>
-      <div className='tasker-info-container'></div>
       <TaskerInfo />
     </div>
   )

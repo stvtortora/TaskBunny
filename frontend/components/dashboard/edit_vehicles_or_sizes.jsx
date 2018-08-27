@@ -53,13 +53,13 @@ class EditVehiclesOrSizes extends React.Component {
     const requirePlaceHolder = this.props.registrationIds.length === 0 && !this.state.editMode;
 
     return requirePlaceHolder ? <div onClick={this.toggleEditMode} className='placeholder-text'>{placeHolderText}</div> :
-      <div className='tasker-attribute-container'>
+      <div className='tasker-attribute-container' id={this.state.editMode ? 'attribute-container-edit' : ''}>
         <div className='tasker-attribute-name'>{this.props.title}</div>
         <div className='size-vehicle-options'>
           {options}
         </div>
         <div className='save-edit-container'>
-          <div onClick={this.toggleEditMode}>{this.state.editMode ? 'Done' : 'Edit'}</div>
+          <div onClick={this.toggleEditMode}>{this.state.editMode ? 'Save' : 'Edit'}</div>
         </div>
       </div>
   }

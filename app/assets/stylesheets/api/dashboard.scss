@@ -1,4 +1,13 @@
+.nav-option {
+  padding: 10px;
+  margin: 10px;
+  font-size: 20px;
+}
 
+.nav-option:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 
 .all-content {
   text-align: center;
@@ -12,15 +21,15 @@
 }
 
 #generic-homepage {
-  background: image-url('homebackground.jpg');
   background-size: cover;
   display: block;
   position: absolute;
-  top: 42%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 764px;
+  width: 100%;
 }
+// background: image-url('homesbackground.jpg');
 // border-top: 1px solid #DCE0E6;
 
 #homepage {
@@ -29,15 +38,15 @@
   top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 764px;
+  width: 100%;
 }
 
 .category-search-container {
-  display: block;
-  position: absolute;
-  top: 105%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 20px;
+  padding-bottom: 40px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 // margin-top: 10px;
 
@@ -55,20 +64,35 @@
   font-size: 46px;
   font-style: inherit;
   font-weight: inherit;
-  color: #414437;
+  color: #ffffffe8;
+padding-top: 40px;
+}
+
+#tasker-header {
+  color: #5633af ;
 }
 
 .subheader {
   font-size: 23px;
   font-style: inherit;
   font-weight: inherit;
-  color: #414437;
+  color: #ffffffe8;
 }
 
 .intro-content {
   display: block;
   align-items: center;
+  box-shadow: 3px 2px 15px 10px #5633afa6;
+  width: 100%;
+  border: 0px;
+  background-color: #5633afa6;
 }
+
+.intro-content-tasker {
+  display: block;
+  align-items: center;
+}
+// background: linear-gradient(to bottom right, #5633af, #5633af80);
 
 .category-suggestions {
   padding: 0;
@@ -98,7 +122,9 @@ ul {
   border: solid;
   border-width: thin;
   border-radius: 8px;
-  color: #5633af ;
+    color: #ffffffe8;
+  padding: 10px;
+
 }
 
 .category-row li:hover {
@@ -156,6 +182,14 @@ ul {
 
 .tasks_index {
   align-items: left;
+}
+
+.task_index {
+  display: block;
+  position: absolute;
+  left: 50%;
+  margin-top: 200px;
+  transform: translate(-50%, -50%);
 }
 
 .your-tasks {

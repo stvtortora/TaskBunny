@@ -76,12 +76,13 @@ class EditSchedule extends React.Component {
     const days = this.days()
 
     return !this.props.registrationIds.length && !this.state.editMode ? <div onClick={this.toggleEditMode} className='placeholder-text'>+ Add times you're available</div> :
-    <div className='tasker-attribute-container'>
+    <div className='tasker-attribute-container' id={this.state.editMode ? 'attribute-container-edit' : ''}>
       <div className='tasker-attribute-name' >Availability</div>
       <div className='tasker-attribute-content' id={this.state.editMode ? 'schedule-box' : ''}>
         {!this.state.editMode ? <div id='tasker-attribute-selection'>{`${this.props.registrationIds.length} ${this.props.registrationIds.length !== 1  ? 'times selected' : 'time selected'}`}</div> :
         <div className='tasker-schedule-content'>
           <div className='tasker-schedule-days'>
+            <div className='schedule-header'>Days</div>
             <div>
               {days.slice(0, 3)}
             </div>
@@ -92,6 +93,7 @@ class EditSchedule extends React.Component {
               {days.slice(6)}
             </div>
           </div>
+          <div className='schedule-header'>Times</div>
           <div className='tasker-schedule-times'>
             <div>
               {times.slice(0, 4)}
@@ -107,12 +109,15 @@ class EditSchedule extends React.Component {
       }
       </div>
       <div className='save-edit-container'>
-        <div onClick={this.toggleEditMode}>{this.state.editMode ? 'Done' : 'Edit'}</div>
+        <div onClick={this.toggleEditMode}>{this.state.editMode ? 'Save' : 'Edit'}</div>
       </div>
     </div>
   }
 }
 
+// <div className='save-edit-container'>
+//   <div onClick={this.toggleEditMode}>Done</div>
+// </div>
 
 const mapStateToProps = state => {
   const registrationIds = state.session.timeSlotIds;

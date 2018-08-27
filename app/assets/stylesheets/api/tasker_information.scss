@@ -1,9 +1,10 @@
 #tasker-homepage {
   margin: auto;
-  width: 1000px;
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0px);
+  height: 100%;
+  position:relative;
 }
 // display: block;
 // position: absolute;
@@ -12,20 +13,19 @@
 // top: 50%;
 
 .intro-content-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top:65px;
 }
-// display: block;
-// position: absolute;
-// top: 50%;
-// left: 50%;
-// transform: translate(-50%, -50%);
 
 .tasker-dashboard-info {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
   color: black;
-  padding: 15px;
-  margin: 15px;
+  margin: 0px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   box-shadow: 0 2px 4px 1px rgba(177, 185, 195, 0.3);
@@ -33,20 +33,32 @@
   border-radius: 4px;
   background-color: white;
   font-size: 18px;
+  width: 880px;
+  height:100%;
 }
 
 .tasker-dashboard-info > div {
   padding: 15px;
   margin: 15px;
+  margin-right: 0;
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-left:0;
 }
 
 .tasker-info-box {
-  width: 700px;
+  padding: 0;
+  margin:0;
+  margin-top:0;
+  border-left: 1px solid #DCE0E6;
 }
 
 .taskerImg {
   max-height: 200px;
   max-width: 240px;
+  margin-top:20px;
 }
 
 .taskerImg-nav-container {
@@ -68,7 +80,12 @@
   display: flex;
   flex-direction: row;
   justify-content: right;
-  margin: 20px;
+  padding: 20px;
+  border-bottom: 1px solid #DCE0E6;
+}
+
+#attribute-container-edit {
+  background-color: #dedce666;
 }
 
 .tasker-attribute-container > div {
@@ -77,11 +94,14 @@
 }
 
 .tasker-attribute-name {
-  width: 98px;
+  width: 117px;
 }
 
 .tasker-attribute-content {
-  width: 280px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #tasker-attribute-selection {
@@ -90,13 +110,11 @@
 }
 
 .save-edit-container {
-  display: flex;
-  flex-direction: row;
-  width: 80px;
   margin-top: 0;
   padding-top: 0;
-  position: relative;
   top: -5.3px;
+  width: 117px;
+  text-align: right;
 }
 
 .save-edit-container > div {
@@ -122,7 +140,7 @@
 .size-vehicle-options {
   display: flex;
   flex-direction: row;
-  width: 280px;
+  width: 300px;
 }
 
 .size-vehicle-options > div {
@@ -135,11 +153,13 @@
   color: #5633af ;
   margin:5px;
   padding:10px;
+  font-size: 21.5px;
 }
 
 .placeholder-text:hover {
-  color: grey;
+  color: #00000063;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .photo-text {
@@ -157,17 +177,23 @@
 }
 
 #schedule-box {
-  border: 1px solid #DCE0E6;
-  border-radius: 4px;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  box-shadow: 0 2px 4px 1px rgba(177, 185, 195, 0.3);
 }
+// border: 1px solid #DCE0E6;
+// border-radius: 4px;
+// border-bottom-left-radius: 4px;
+// border-bottom-right-radius: 4px;
+// box-shadow: 0 2px 4px 1px rgba(177, 185, 195, 0.3);
 // color: inherit;
 
  .tasker-schedule-days {
    display: flex;
    flex-direction: column;
+ }
+
+ .schedule-header {
+   color: #00000063;
+   padding: 5px;
+   margin: 5px;
    border-bottom: 1px solid #DCE0E6;
  }
  // border: 1px solid #DCE0E6;
@@ -311,4 +337,26 @@
   color: #5633af ;
   cursor:pointer;
   text-decoration: underline;
+}
+
+.tasker-category-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+  font-weight: bold;
+  color: #5633af ;
+}
+
+.selected-category-container {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  padding: 5px;
+}
+
+.selected-category-container:hover {
+  color: red;
+  font-weight: normal;
+  cursor: pointer;
 }
