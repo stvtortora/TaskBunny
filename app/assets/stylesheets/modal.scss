@@ -1,0 +1,22 @@
+.modal-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  position:relative;
+  margin: 12px;
+}
+
+.closeModal-button {
+  color: #00000063;
+  top: -30%;
+  right: 0px;
+  font-size: 20px;
+  position: absolute;
+  z-index: 1;
+}
+
+.closeModal-button:hover {
+  display: block;
+  cursor: pointer;
+  color: #2e34df ;
+}

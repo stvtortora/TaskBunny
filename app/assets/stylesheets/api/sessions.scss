@@ -31,11 +31,22 @@
 
 .sign-up-button:hover {
   color: white;
-  background-color: #5633af ;
+  background-color: #2e34df ;
+  cursor:pointer;
+  border: solid;
+  border-width: thin;
+  border-radius: 8px;
+  border-color: white;
 }
 
 #logout-button {
   margin-top: 0px;
+  margin-bottom: 0px;
+  color: #00000063;
+}
+
+#logout-button:hover {
+  color: #2e34df;
 }
 
 
@@ -118,6 +129,15 @@
     color: white;
     font-family: inherit;
     font-size: 20px;
-    background-color:#5633af ;
+    background-color:#2e34df ;
     position: relative;
+}
+
+.session-submit-container > button:hover {
+  cursor: pointer;
+  color: #2e34df ;
+  background-color: white;
+  border: solid;
+  border-width: thin;
+  border-radius: 8px;
 }

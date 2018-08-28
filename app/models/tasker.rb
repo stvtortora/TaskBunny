@@ -1,4 +1,6 @@
 class Tasker < User
+  validates :name, presence: true
+  
   has_many :tasks
 
   belongs_to :location, optional: true
@@ -27,5 +29,3 @@ class Tasker < User
     through: :vehicle_registrations,
     source: :vehicle
 end
-
-# validates :name, :location, :rate, :description, presence: true

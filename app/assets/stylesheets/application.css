@@ -18,13 +18,43 @@ html {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  color: #5633af ;
+  color: #2e34df ;
   background-color: #8687860f;
   height: 100%;
 }
-/* #5633af */
+/* #2e34df */
 html, body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.main-content-container {
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+
+footer {
+ position: absolute;
+ bottom: 0;
+ width: 100%;
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-top: 1px solid #DCE0E6;
+}
+
+.footer-link {
+  margin: 15px;
 }

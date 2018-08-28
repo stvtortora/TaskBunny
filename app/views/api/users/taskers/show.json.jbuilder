@@ -32,11 +32,18 @@ vehicles = {}
   }
 end
 
+time_slot_registrations = {}
+
+@tasker.time_slot_registrations.each do |reg|
+  time_slot_registrations[reg.time_slot_id] = reg.filled
+end
+
 time_slots = {}
 
 @tasker.time_slots.each do |time_slot|
   time_slots[time_slot.id] = {
-    id: time_slot.id
+    id: time_slot.id,
+    status: time_slot_registrations[time_slot.id]
   }
 end
 
@@ -49,3 +56,4 @@ json.description @tasker.description
 json.name @tasker.name
 json.rate @tasker.rate
 json.image_url image_url(@tasker.image.url)
+json.name @tasker.name

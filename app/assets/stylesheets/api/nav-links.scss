@@ -1,0 +1,29 @@
+.nav-links {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  padding-top: 3px;
+}
+
+#selected-link {
+  font-weight: bold;
+  color: #2e34df;
+}
+
+#selected-link:hover {
+  text-decoration: none;
+  cursor: auto;
+}
+
+.nav-option {
+  padding: 10px;
+  margin: 10px;
+  font-size: 20px;
+  color: #00000063;
+}
+
+.nav-option:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #2e34df;
+}

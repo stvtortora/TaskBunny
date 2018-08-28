@@ -27,8 +27,8 @@
 
 .form_input_button > input {
   color: white;
-  border: 1px solid #5633af ;
-  background-color: #5633af ;
+  border: 1px solid #2e34df ;
+  background-color: #2e34df ;
   padding: 0.5em 1.38em 0.5em;
   border-radius: 4px;
   font-size: 1.25rem;
@@ -68,7 +68,7 @@
 }
 
 #edit_button:hover {
-  color: #5633af ;
+  color: #2e34df ;
   cursor: pointer;
 }
 
@@ -113,14 +113,14 @@
 }
 
 .tell_details {
-  width: 845px;
+  width: 97%;
   height: 150px;
   border: 1px solid #b1b9c3;
   padding: 6px 12px;
   border-radius: 3px;
   line-height: 1.5em;
   font-size: 15px;
-  outline-color: #5633af ;
+  outline-color: #2e34df ;
 }
 
 .error-message {

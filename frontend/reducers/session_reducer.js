@@ -32,7 +32,7 @@ const sessionReducer = (state = _nullUser, action) => {
       sizesIds = Object.keys(action.info.sizes);
       timeSlotStatuses = Object.keys(action.info.timeSlots).reduce((statuses, id) => {
         const timeSlot = action.info.timeSlots[id]
-        statuses[timeSlot.id] = timeSlot.filled;
+        statuses[timeSlot.id] = timeSlot.status;
         return statuses;
       }, {});
       timeSlotIds = Object.keys(action.info.timeSlots);

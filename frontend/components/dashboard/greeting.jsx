@@ -35,7 +35,7 @@ const Greeting = ({ user }) => {
   return (
     <div className='intro-content-container'>
       <section className="intro-content-tasker">
-        <h2 className='header' id='tasker-header'>Welcome, {user.username}</h2>
+        <h2 className='header' id='tasker-header'>Welcome, {user.name}</h2>
       </section>
       <div className='task_index'>
       </div>

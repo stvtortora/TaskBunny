@@ -1,5 +1,6 @@
 import React from 'react';
 import Task from './task';
+import NavBar from '../nav_bar/nav_bar';
 import { connect } from 'react-redux';
 import { fetchTasks } from '../../actions/tasks_actions';
 
@@ -9,7 +10,6 @@ class TasksIndex extends React.Component {
   }
 
   componentDidMount() {
-    console.log('fuck me asshole shitface bitch')
     this.props.fetchTasks();
   }
 
@@ -21,9 +21,12 @@ class TasksIndex extends React.Component {
     const header = tasks.length > 0 ? <h3 className='your-tasks'>Upcoming Tasks:</h3> : <h3 className='your-tasks'>You haven't booked any tasks yet</h3>
 
     return (
-      <div className='tasks-container'>
-        {header}
-        {tasks}
+      <div>
+        <NavBar />
+        <div className='tasks-container'>
+          {header}
+          {tasks}
+        </div>
       </div>
     )
   }
