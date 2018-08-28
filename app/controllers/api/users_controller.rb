@@ -1,11 +1,10 @@
 class Api::UsersController < ApplicationController
   def create
     @user = class_name.new(user_params)
-    puts 'in create method'
-    puts @user
+  
     if @user.save
       login(@user)
-      
+
       render "api/users/show"
     else
       puts 'error'

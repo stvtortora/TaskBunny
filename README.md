@@ -12,15 +12,13 @@ As mentioned above, Task Bunny supports two types of users: `Client` and `Tasker
 ```ruby
 def create
   @user = class_name.new(user_params)
-  puts 'in create method'
-  puts @user
+
   if @user.save
     login(@user)
 
     render "api/users/show"
   else
-    puts 'error'
-    puts @user
+
     render json: @user.errors.full_messages, status: 422
   end
 end
@@ -104,4 +102,4 @@ render() {
 
   return null;
 }
-``` 
+```
