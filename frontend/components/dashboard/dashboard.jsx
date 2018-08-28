@@ -3,38 +3,54 @@ import NavBar from '../nav_bar/nav_bar';
 import CategorySuggestions from './category_suggestions';
 import Greeting from './greeting_container';
 import CategorySearch from '../search/category_search_container';
+import TasksIndex from './tasks_index';
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+    // this.updateDisplay = this.updateDisplay.bind(this);
   }
+  // this.state = {display: 'search'}
 
-  componentDidMount() {
-    if(this.props.ui_messages.length > 0) {
-      this.props.resetForm();
-    }
-  }
+  // componentDidMount() {
+  //   if(this.props.ui_messages.length > 0) {
+  //     this.props.resetForm();
+  //   }
+  // }
+  //
+  // updateDisplay (display) {
+  //   return () => {
+  //     this.setState({
+  //       display
+  //     })
+  //   }
+  // }
 
   render() {
     const uiMessages = this.props.ui_messages.map(message => {
       return <div>{message}</div>
     });
 
-    const idName = this.props.user ? 'homepage' : 'generic-homepage';
-
+    const idName = this.props.user.id ? 'homepage' : 'generic-homepage';
+    const notTasker = Boolean(!this.props.user.id || this.props.user.type === 'Client');
+    const contentClass = notTasker ? "all-content" : "tasker-content"
     return (
-      <span className='homepage' onClick={() => this.props.modDropdown(false)}>
+      <div>
         <NavBar />
-        <section id={idName} className="all-content">
-          <div className='ui-messages'>
-            {uiMessages}
+        <span className='homepage' onClick={() => this.props.modDropdown(false)}>
+          <div id={this.props.user.type === 'Tasker' ? 'tasker-homepage' : idName} className={contentClass}>
+            <div className='ui-messages'>
+              {uiMessages}
+            </div>
+            <Greeting notTasker={notTasker}/>
           </div>
-          <Greeting />
-          <CategorySearch />
-        </section>
-      </span>
+        </span>
+      </div>
     );
   }
 }
+// <div className='category-search-container'>
+//    <CategorySearch show={notTasker} type={null}/>
+// </div>
 
 export default Dashboard;

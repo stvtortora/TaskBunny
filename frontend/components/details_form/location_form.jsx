@@ -11,7 +11,6 @@ class LocationForm extends React.Component {
   }
 
   handleSubmit(e) {
-    //handle error if bblank
     e.preventDefault();
     if(this.props.location) {
       this.props.addToTask( {location: this.props.location} )
@@ -24,7 +23,7 @@ class LocationForm extends React.Component {
   render() {
     return (
       <form onSubmit={ this.handleSubmit }>
-        <LocationSearch />
+        <LocationSearch type={null} show={true}/>
         <ul className='error-message'>{this.props.locationErrors}</ul>
         <div className='form_input_button'>
           <input type='submit' value="Save" />

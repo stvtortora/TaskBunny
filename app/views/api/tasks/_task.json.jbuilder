@@ -1,4 +1,5 @@
 json.tasker task.tasker.name
+json.client task.client.username
 json.userId task.client.id
 json.category task.category.title
 json.location task.location.title

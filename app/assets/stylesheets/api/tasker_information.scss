@@ -1,0 +1,369 @@
+#tasker-homepage {
+  margin: auto;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0px);
+  height: 100%;
+  position:relative;
+}
+// display: block;
+// position: absolute;
+// left: 50%;
+// transform: translate(-50%, -50%);
+// top: 50%;
+
+.intro-content-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top:65px;
+}
+
+.tasker-dashboard-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  color: black;
+  margin: 0px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 2px 4px 1px rgba(177, 185, 195, 0.3);
+  border: 1px solid #DCE0E6;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 18px;
+  width: 880px;
+  height:100%;
+}
+
+.tasker-dashboard-info > div {
+  padding: 15px;
+  margin: 15px;
+  margin-right: 0;
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-left:0;
+}
+
+.tasker-info-box {
+  padding: 0;
+  margin:0;
+  margin-top:0;
+  border-left: 1px solid #DCE0E6;
+}
+
+.taskerImg {
+  max-height: 200px;
+  max-width: 240px;
+  margin-top:20px;
+}
+
+.taskerImg-nav-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.taskerImg-nav-container > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.taskerImg-nav-container > div > div {
+  margin: 5px;
+  padding: 10px;
+}
+
+.tasker-attribute-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  padding: 20px;
+  border-bottom: 1px solid #DCE0E6;
+}
+
+#attribute-container-edit {
+  background-color: #dedce666;
+}
+
+.tasker-attribute-container > div {
+  padding: 5px;
+  margin: 5px;
+}
+
+.tasker-attribute-name {
+  width: 117px;
+}
+
+.tasker-attribute-content {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#tasker-attribute-selection {
+  font-weight: bold;
+  color: #2e34df ;
+}
+
+.save-edit-container {
+  margin-top: 0;
+  padding-top: 0;
+  top: -5.3px;
+  width: 117px;
+  text-align: right;
+}
+
+.save-edit-container > div {
+  margin: 5px;
+}
+
+#tasker-search {
+  display: flex;
+  flex-direction: row;
+}
+
+#tasker-search-bar {
+  height: 5px;
+  width: 242px;
+  font-size: 18px;
+}
+
+#tasker-query-results {
+  width: 250px;
+  top: 24px;
+}
+
+.size-vehicle-options {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+}
+
+.size-vehicle-options > div {
+  padding-right: 8px;
+  margin-right: 8px;
+  width: 70px;
+}
+
+.placeholder-text {
+  color: #2e34df ;
+  margin:5px;
+  padding:10px;
+  font-size: 21.5px;
+}
+
+.placeholder-text:hover {
+  color: #00000063;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.photo-text {
+   color: #00000063;
+}
+
+.photo-text:hover {
+  color: #2e34df ;
+  cursor:pointer;
+}
+
+#buffer {
+  margin-left: 29px;
+  margin-right: 29px;
+}
+
+#schedule-box {
+}
+// border: 1px solid #DCE0E6;
+// border-radius: 4px;
+// border-bottom-left-radius: 4px;
+// border-bottom-right-radius: 4px;
+// box-shadow: 0 2px 4px 1px rgba(177, 185, 195, 0.3);
+// color: inherit;
+
+ .tasker-schedule-days {
+   display: flex;
+   flex-direction: column;
+ }
+
+ .schedule-header {
+   color: #00000063;
+   padding: 5px;
+   margin: 5px;
+   border-bottom: 1px solid #DCE0E6;
+ }
+ // border: 1px solid #DCE0E6;
+ // border-radius: 4px;
+ // margin-bottom: 5px;
+
+ .tasker-schedule-days > div {
+   display: flex;
+   flex-direction: row;
+ }
+
+ .tasker-schedule-days > div > div {
+   margin: 5px;
+   padding: 5px;
+   margin-top: 0;
+   padding-top: 0;
+   width: 65px;
+ }
+
+ .tasker-schedule-times {
+   display: flex;
+   flex-direction: row;
+ }
+ // border: 1px solid #DCE0E6;
+ // border-radius: 4px;
+
+ .tasker-schedule-times > div > div {
+    margin: 10px;
+    padding: 10px;
+    width: 50px;
+ }
+
+ .selectedDay-tasker {
+   font-weight: bold;
+   color: #2e34df ;
+ }
+
+ .unselectedDay-tasker {
+   color: #00000063;
+ }
+
+ .unselectedDay-tasker:hover {
+   cursor: pointer;
+   color: #2e34df ;
+ }
+
+
+.selectedTime-tasker {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  color: #2e34df ;
+}
+
+.filledTime {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  color: #2e34df ;
+}
+
+.unselectedTime-tasker {
+  display: flex;
+  flex-direction: row;
+  color: #00000063;
+}
+
+.attribute-hover {
+  display: none;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.attribute-title:hover + .attribute-hover {
+  display: block;
+  cursor: pointer;
+}
+
+ .unselectedTime-tasker:hover {
+   color: #2e34df ;
+   cursor:pointer;
+ }
+
+ .selectedTime-tasker:hover {
+   color: red;
+   font-weight: normal;
+   cursor:pointer;
+ }
+
+ .selectedOption {
+   display: flex;
+   flex-direction: row;
+   font-weight: bold;
+   color: #2e34df ;
+ }
+
+ // #static-options {
+ //   display: flex;
+ //   flex-direction: row;
+ //   justify-content: space-between;
+ // }
+
+ .selectedOption-static {
+   font-weight: bold;
+   color: #2e34df ;
+ }
+
+ .unselectedOption-static {
+   color: #00000063;
+ }
+
+ .unselectedOption {
+   display: flex;
+   flex-direction: row;
+   color: #00000063;
+ }
+
+ .unselectedOption:hover {
+   color: #2e34df ;
+   cursor:pointer;
+ }
+
+ .selectedOption:hover {
+   color: red;
+   font-weight: normal;
+   cursor:pointer;
+ }
+
+ #rate {
+   width: 242px;
+   height: 5px;
+   font-size: 18px;
+   padding: 10px;
+ }
+
+ #description {
+   width: 242px;
+   padding: 10px;
+   height: 100px;
+   font-size: 18px;
+ }
+
+.save-edit-container > div {
+  color: #00000063;
+}
+
+.save-edit-container > div:hover {
+  color: #2e34df ;
+  cursor:pointer;
+  text-decoration: underline;
+}
+
+.tasker-category-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+  font-weight: bold;
+  color: #2e34df ;
+}
+
+.selected-category-container {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  padding: 5px;
+}
+
+.selected-category-container:hover {
+  color: red;
+  font-weight: normal;
+  cursor: pointer;
+}

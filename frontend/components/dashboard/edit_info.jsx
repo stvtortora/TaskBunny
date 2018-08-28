@@ -9,6 +9,7 @@ class EditInfo extends React.Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleEditMode = this.toggleEditMode.bind(this);
     this.state = {editMode: false};
   }
 
@@ -17,7 +18,7 @@ class EditInfo extends React.Component {
   }
 
   handleSubmit(){
-    if(this.props.type === 'Location'){
+    if(this.props.type === 'Location' && this.props.location){
       this.props.changeTasker({location_id: this.props.location.id}, this.props.userId).then(response => {
         this.toggleEditMode();
       });
@@ -33,42 +34,57 @@ class EditInfo extends React.Component {
   }
 
   render(){
+    const placeHolderText = this.props.type === 'Location' ? '+ Add your location' : '+ Add your areas of expertise';
+    const requirePlaceHolder = (this.props.type === 'Location' && !this.props.location) || (this.props.type === 'Categories' && this.props.numCategories === 0);
+
     if(!this.state.editMode){
-      return (
-        <div className='task_index'>
-          <h3>{this.props.type}</h3>
-          <div>{this.props.display}</div>
-          <p onClick={this.handleClick}>Edit</p>
+      return requirePlaceHolder ? <div onClick={this.handleClick} className='placeholder-text'>{placeHolderText}</div> :
+        <div className='tasker-attribute-container'>
+          <div className='tasker-attribute-name'>{this.props.type}</div>
+          <div className='tasker-attribute-content' id='tasker-attribute-selection'>{this.props.display}</div>
+          <div className='save-edit-container'>
+            <div onClick={this.handleClick}>Edit</div>
+          </div>
         </div>
-      )
     }
 
-    const search = this.props.type === 'Location' ? <LocationSearch type='location' show={true}/> : <CategorySearch type='category' show={true}/>
+    const search = this.props.type === 'Location' ? <LocationSearch toggleEditMode={this.toggleEditMode} type='location' show={true}/> : <CategorySearch toggleEditMode={this.toggleEditMode} type='category' show={true}/>
     let categories = null;
+
     if(this.props.type === 'Categories'){
       categories = Object.keys(this.props.categories).map(id => {
         const category = this.props.categories[id];
-        return <div onClick={() => {
-            this.props.destroyRegistration({id: id})
-        }}>
-          {category.title}
-        </div>
+        return (
+          <div className='selected-category-container' id='attribute-container-edit'>
+            <div className='attribute-title' onClick={() => {this.props.destroyRegistration(id)}}>{category.title}</div>
+            <div className='attribute-hover'>x</div>
+          </div>
+        )
       });
     }
 
     return (
-      <div className='task_index'>
-        <h3>{this.props.type}</h3>
-        <div>
-          {categories}
-          {search}
+      <div className='tasker-attribute-container' id='attribute-container-edit'>
+        <div className='tasker-attribute-name'>{this.props.type}</div>
+        <div className='tasker-attribute-content'>
+          <div className='tasker-search-container'>
+            {search}
+          </div>
+          <div className='tasker-category-list'>
+            <div>
+              {categories}
+            </div>
+          </div>
         </div>
-          <form onSubmit={this.handleSubmit}>
-            <input type='submit' value='Save'/>
-          </form>
+        <div className='save-edit-container'>
+          <div onClick={this.handleSubmit}>Save</div>
+        </div>
       </div>
     )
   }
 }
+// <form onSubmit={this.handleSubmit}>
+//   <input type='submit' value='Save'/>
+// </form>
 
 export default EditInfo;

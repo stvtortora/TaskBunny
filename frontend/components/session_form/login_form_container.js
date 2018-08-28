@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
 import { login, clearSessionErrors } from '../../actions/session_actions';
+import {closeModal} from '../../actions/modal_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -12,7 +13,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     action: (user) => dispatch(login(user)),
-    clearSessionErrors: () => dispatch(clearSessionErrors())
+    clearSessionErrors: () => dispatch(clearSessionErrors()),
+    closeModal: () => dispatch(closeModal())
   };
 };
 

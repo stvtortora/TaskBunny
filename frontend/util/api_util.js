@@ -68,6 +68,13 @@ export const fetchSchedule = (tasker_id) => {
   });
 }
 
+export const fetchUserInfo = (id) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/taskers/${id}`
+  });
+}
+
 export const createTask = (task_info) => {
   return $.ajax({
     method: 'POST',
@@ -89,4 +96,62 @@ export const deleteTask = (id) => {
     url: `api/tasks/${id}`,
     data: { id }
   });
+}
+
+export const updateTasker = (user, taskerId) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/taskers/${taskerId}`,
+    data: { user }
+  });
+}
+
+export const uploadTaskerPhoto = (user) => {
+  return $.ajax({
+    url: `api/taskers/${user.get('user[id]')}`,
+    type: 'PATCH',
+    processData: false,
+    contentType: false,
+    data: user
+  })
+}
+
+export const destroyRegistration = (type, id) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `api/${type}/${id}`
+  })
+}
+
+
+export const createRegistration = (type, info) => {
+  debugger
+  return $.ajax({
+    method: 'POST',
+    url: `api/${type}`,
+    data: { info }
+  })
+}
+
+export const fetchTimeSlots = () => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/time_slots'
+  });
+}
+
+export const fetchSizes = () => {
+  debugger
+  return($.ajax({
+    method: 'GET',
+    url: 'api/sizes'
+  }));
+}
+
+export const fetchVehicles = () => {
+  debugger
+  return($.ajax({
+    method: 'GET',
+    url: 'api/vehicles'
+  }));
 }

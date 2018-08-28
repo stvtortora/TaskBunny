@@ -7,12 +7,16 @@ class QueryDropdown extends React.Component {
   }
 
   handleClick(data) {
-    if(this.props.path){
+    debugger
+    if(this.props.type === 'category' && this.props.userType !== 'Client'){
+      this.props.createRegistration({ category_id: Number(data.id) })
+    } else if(this.props.path){
       this.props.addToTask({ category: data });
       this.props.history.push(this.props.path);
-    } else {
-      this.props.dropDownItemSelected(data);
+    } else if(this.props.type === 'location'){
+      this.props.editTaskerLocation(data);
     }
+    this.props.dropDownItemSelected(data);
   }
 
   render() {
@@ -22,9 +26,8 @@ class QueryDropdown extends React.Component {
     });
 
     if(this.props.open && data.length > 0 && this.props.searchQuery.length > 0) {
-
       return (
-        <ul className='query_results'>
+        <ul className='query_results' id={this.props.reduceSize ? 'tasker-query-results' : 'query-results'}>
           {data}
         </ul>
       );

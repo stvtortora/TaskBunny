@@ -1,5 +1,5 @@
 class Tasker < User
-  # validates :name, :location, :rate, :description, presence: true
+  validates :name, presence: true
 
   has_many :tasks
 

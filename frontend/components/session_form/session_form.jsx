@@ -5,12 +5,8 @@ import { withRouter } from 'react-router';
 class SessionForm extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {username: '', password: ''};
+    this.state = {username: '', password: '', name: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentDidMount() {
-    
   }
 
   update (field) {
@@ -21,7 +17,10 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state).then(() => {
+    const params = this.props.formName === 'Become a Tasker' ? this.state : {username: this.state.username, password: this.state.password};
+    this.props.action(params).then(() => {
+      debugger
+      this.props.closeModal();
       this.props.history.push('/');
     });
   }
@@ -42,15 +41,24 @@ class SessionForm extends React.Component {
         <form className='session-form' onSubmit={this.handleSubmit}>
           <h1>{this.props.formName}</h1>
           <div className="ui-messages">{this.renderErrors()}</div>
+          {
+          this.props.formName === 'Become a Tasker' ?
+          <div className='form-field'>
+            <label>Name</label>
+            <input type="text" value={this.state.name} onChange={this.update('name')}/>
+          </div> : null
+          }
           <div className='form-field'>
             <label>Username</label>
-            <input type="text" value={this.state.user} onChange={this.update('username')}/>
+            <input type="text" value={this.state.username} onChange={this.update('username')}/>
           </div>
           <div className='form-field'>
             <label>Password</label>
-            <input type="password" value={this.state.user} onChange={this.update('password')}/>
+            <input type="password" value={this.state.password} onChange={this.update('password')}/>
           </div>
-          <button type='submit'>{this.props.formName}</button>
+          <div className='session-submit-container'>
+            <button type='submit'>{this.props.formName}</button>
+          </div>
         </form>
       </div>
     );

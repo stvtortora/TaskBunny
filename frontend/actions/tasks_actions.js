@@ -4,6 +4,7 @@ export const RECEIVE_TASKS = 'RECEIVE_TASKS';
 export const DELETE_TASK = 'DELETE_TASK';
 export const TASK_CREATED = 'TASK_CREATED';
 export const TASK_CANCELLED = 'TASK_CANCELLED';
+export const TASK_CONFLICT ='TASK_CONFLICT';
 export const ADD_TO_TASK = 'ADD_TO_TASK';
 
 export const fetchTasks = () => {
@@ -18,8 +19,11 @@ export const createTask = (task_info) => {
   return dispatch => {
     return ApiUtil.createTask(task_info).then(() => {
       return dispatch({type: TASK_CREATED})
-    });
-  }
+    },
+    err => {
+      return dispatch({type: TASK_CONFLICT})
+    }
+  )};
 }
 
 export const addToTask = (taskParam) => {

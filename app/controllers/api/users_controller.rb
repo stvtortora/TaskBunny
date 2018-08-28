@@ -2,6 +2,7 @@ class Api::UsersController < ApplicationController
   def create
     @user = class_name.new(user_params)
 
+
     if @user.save
       login(@user)
       render "api/users/show"
@@ -25,15 +26,34 @@ class Api::UsersController < ApplicationController
     render 'api/users/taskers/index'
   end
 
+  def show
+    @tasker = Tasker
+                  .includes(:categories, :sizes, :vehicles, :time_slots)
+                  .where("users.id = ?", params[:id])
+                  .first
+
+    render 'api/users/taskers/show'
+  end
+
+  def update
+    @tasker = Tasker.find(params[:id])
+
+    if @tasker.update_attributes(user_params)
+      render 'api/users/taskers/show'
+    else
+      render json: @tasker.errors.full_messages, status: 422
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :location, :name)
+    params.require(:user).permit(:username, :password, :location, :location_id, :name, :rate, :description, :image)
   end
 
-  def class_name
-    params[:type].constantize
-  end
+  # def class_name
+  #   params[:type].constantize
+  # end
 
   def task_info
     params[:task_info]

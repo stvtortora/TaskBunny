@@ -13,7 +13,16 @@
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
+
+  -webkit-animation: modal-enter 1s;
  }
+
+ @-webkit-keyframes modal-enter {
+    from { transform: translate(-50%, -100%);}
+    to   { transform: translate(-50%, -50%);}
+    from { opacity: 0; }
+    to   { opacity: 1;}
+}
 
  .tasker-schedule {
    outline: 1px solid black;
@@ -33,7 +42,7 @@
  }
 
  .selectedDay {
-   background-color: #51AF33;
+   background-color: #2e34df ;
    margin: 15px;
    color: white;
    font-weight: bold;
@@ -89,6 +98,7 @@
    box-shadow: 0 2px 4px 1px rgba(177, 185, 195, 0.3);
    border: 1px solid #DCE0E6;
    border-radius: 4px;
+   background-color: white;
  }
 
 
@@ -134,7 +144,7 @@
 }
 
  .custom-button {
-   background-color: #51AF33;
+   background-color: #2e34df ;
    margin: 15px;
    color: white;
    font-weight: lighter;

@@ -11,6 +11,7 @@ class TaskerSchedule extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleDateSelection = this.handleDateSelection.bind(this);
       this.handleTimeSelection = this.handleTimeSelection.bind(this);
+      this.schedule = this.schedule.bind(this);
       this.defaultDay = Object.keys(this.props.days)[0];
       this.state = {date: this.defaultDay, time: this.props.days[this.defaultDay][0], tasker: this.props.tasker};
     }
@@ -38,15 +39,24 @@ class TaskerSchedule extends React.Component {
       this.props.history.push('/taskform/confirm_task');
     }
 
-    render(){
-      const schedule = Object.keys(this.props.days).map(day => {
+    schedule () {
+      const unOrderedSchedule = Object.keys(this.props.days).reduce((days, day) => {
         const className = this.state.date === day ? 'selectedDay' : 'unselectedDay';
-        return <div className={className} value={day} onClick={this.handleDateSelection}>{day}</div>;
-      });
+        days[day]= <div className={className} value={day} onClick={this.handleDateSelection}>{day}</div>;
+        return days
+      }, {});
 
+      return ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => {
+        return unOrderedSchedule[day]
+      })
+    }
+
+    render(){
       const times = this.props.days[this.state.date].map(time => {
         return <option value={time} onClick={this.handleTimeSelection}>{time.title}</option>
       });
+
+      debugger
 
       return(
         <div className='tasker-schedule'>
@@ -54,7 +64,7 @@ class TaskerSchedule extends React.Component {
           <p className='tasker-schedule-subheader'>Choose a start time from the tasker's availability that works for you.</p>
           <form onSubmit={this.handleSubmit}>
             <div className='schedule-days'>
-              {schedule}
+              {this.schedule()}
             </div>
             <select className='time-options'>
               {times}
@@ -70,7 +80,7 @@ class TaskerSchedule extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
 
-  const tasker = state.entities.search.results[state.modal];
+  const tasker = state.entities.search.results[state.modal.tasker_id];
   const days = tasker.days;
 
   return {

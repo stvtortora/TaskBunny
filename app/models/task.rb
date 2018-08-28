@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   validates :category, :location, :tasker, :client, :time_slot, presence: true
+  validates :tasker, uniqueness: {scope: :time_slot}
 
   belongs_to :category
 
