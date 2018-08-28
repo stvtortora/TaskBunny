@@ -23,7 +23,6 @@ class ConfirmTask extends React.Component {
   }
 
   allowAccess () {
-    debugger
     return Object.keys(this.props.task_info).filter(info => {
       return this.props.task_info[info] === null;
     }).length === 0 && this.props.currentUser

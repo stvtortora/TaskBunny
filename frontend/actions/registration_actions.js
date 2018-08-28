@@ -14,7 +14,6 @@ export const destroyRegistration = (registration_type, id) => {
 }
 
 export const createRegistration = (registration_type, info) => {
-  debugger
   return dispatch => {
     ApiUtil.createRegistration(registration_type, info).then(response => {
       dispatch({type: CREATE_REGISTRATION, response});

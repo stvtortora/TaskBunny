@@ -56,8 +56,6 @@ class TaskerSchedule extends React.Component {
         return <option value={time} onClick={this.handleTimeSelection}>{time.title}</option>
       });
 
-      debugger
-
       return(
         <div className='tasker-schedule'>
           <h3 className='tasker-schedule-header'>Tasker's Schedule</h3>

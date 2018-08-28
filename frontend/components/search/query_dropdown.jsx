@@ -7,7 +7,6 @@ class QueryDropdown extends React.Component {
   }
 
   handleClick(data) {
-    debugger
     if(this.props.type === 'category' && this.props.userType !== 'Client'){
       this.props.createRegistration({ category_id: Number(data.id) })
     } else if(this.props.path){

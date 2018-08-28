@@ -76,7 +76,6 @@ const sessionReducer = (state = _nullUser, action) => {
       } else if (action.response.size_id) {
         let oldSizeIds = Object.assign([], state.sizesIds);
         let newSizesIds = oldSizeIds.filter(id => {
-          console.log(id !== action.response.size_id.toString() )
           return id !== action.response.size_id.toString();
         })
         nextState.sizesIds = newSizesIds;

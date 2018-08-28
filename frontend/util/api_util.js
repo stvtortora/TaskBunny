@@ -125,7 +125,6 @@ export const destroyRegistration = (type, id) => {
 
 
 export const createRegistration = (type, info) => {
-  debugger
   return $.ajax({
     method: 'POST',
     url: `api/${type}`,
@@ -141,7 +140,6 @@ export const fetchTimeSlots = () => {
 }
 
 export const fetchSizes = () => {
-  debugger
   return($.ajax({
     method: 'GET',
     url: 'api/sizes'
@@ -149,7 +147,6 @@ export const fetchSizes = () => {
 }
 
 export const fetchVehicles = () => {
-  debugger
   return($.ajax({
     method: 'GET',
     url: 'api/vehicles'

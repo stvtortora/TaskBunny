@@ -19,7 +19,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const params = this.props.formName === 'Become a Tasker' ? this.state : {username: this.state.username, password: this.state.password};
     this.props.action(params).then(() => {
-      debugger
+
       this.props.closeModal();
       this.props.history.push('/');
     });

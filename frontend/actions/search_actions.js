@@ -28,7 +28,6 @@ export const fetchTaskers = (task_info) => {
 }
 
 export const receiveSearchResults = (results) => {
-  debugger
   return {
     type: RECEIVE_SEARCH_RESULTS,
     results

@@ -11,7 +11,7 @@ class SessionLinks extends React.Component {
 
   handleLogOut () {
     this.props.logout().then(() => {
-      debugger
+
       this.props.history.push('/')
     })
   }
@@ -41,7 +41,4 @@ class SessionLinks extends React.Component {
   }
 }
 
-// <Link to='/login' className='session-link'>Login</Link>
-// <Link to='/signup' className='session-link' className='sign-up-button'>Sign Up</Link>
-// <Link to='/become-a-tasker' className='session-link' className='sign-up-button'>Become a Tasker</Link>
 export default withRouter(SessionLinks);

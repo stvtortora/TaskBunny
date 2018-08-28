@@ -17,10 +17,6 @@ const searchReducer = (state = defaultState, action) => {
    case CLEAR_SEARCHBAR:
     return defaultState;
   case CLEAR_SEARCH_RESULTS:
-    // const newState = merge({}, state);
-    // delete newState.results;
-    // return merge({}, newState, {results: {}});
-    debugger
     return defaultState;
    case RECEIVE_SEARCH_RESULTS:
     const next = Object.assign(state, {});

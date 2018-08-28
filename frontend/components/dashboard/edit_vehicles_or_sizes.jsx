@@ -20,7 +20,6 @@ class EditVehiclesOrSizes extends React.Component {
     if(e.currentTarget.getAttribute('class') === 'unselectedOption'){
       this.props.createRegistration({ [idName]: e.currentTarget.getAttribute('id') })
     } else {
-      debugger
       this.props.destroyRegistration(Number(e.currentTarget.getAttribute('id')))
     }
   }

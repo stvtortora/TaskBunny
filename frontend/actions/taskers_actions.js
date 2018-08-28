@@ -81,7 +81,6 @@ export const updateTasker = (schedule, tasker_id) => {
 }
 
 export const receiveTaskerInfo = (info) => {
-  debugger
   return {
     type: RECEIVE_TASKER_INFO,
     info

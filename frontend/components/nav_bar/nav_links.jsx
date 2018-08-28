@@ -21,7 +21,7 @@ class NavLinks extends React.Component {
 
   render () {
     const currentLocation = this.currentLocation();
-debugger
+
     return (
       this.props.user.id ?
         <div className='nav-links'>

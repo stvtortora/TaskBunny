@@ -30,7 +30,6 @@ class Task extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <div className='task-container'>
         <div className='task-header-container'>
