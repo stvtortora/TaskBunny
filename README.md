@@ -1,5 +1,6 @@
 # Task Bunny
-https://taskbunny.herokuapp.com/#/
+
+Live: https://taskbunny.herokuapp.com/#/
 
 ## Overview
 
@@ -82,7 +83,7 @@ end
 
 ## The Reusable Searchbar
 
-Search bars are used in four different contexts in this application; clients and taskers each use them to search for either categories or locations. To keep my code DRY, the same components are used in each context. To distinguish between category and location search bars, I passed context-specific props to components via Redux containers. For example, the search component is passed a `fetchResults` method prop. This props is either the `fetchCategories` method or `fetchLocations` method, depending on the context. Consequently, the actual search component can simply call fetchResults and remain agnostic to the type of data it's retrieving.
+Search bars are used in four different contexts in this application; clients and taskers each use them to search for either categories or locations. To keep my code DRY, the same components are used in each context. To distinguish between category and location search bars, I passed context-specific props to components via Redux containers. For example, the `Search` component is passed a `fetchResults` method prop. This prop is either the `fetchCategories` method or `fetchLocations` method, depending on the context. Consequently, the `Search` can simply call `fetchResults` and remain agnostic to the type of data it's retrieving.
 
 The main differences between search components used by taskers and clients are stylistic. To account for these differences, components were again fed context-specific props that determined which CSS properties they should have. Here's code from the search component's render method which demonstrates this:
 
