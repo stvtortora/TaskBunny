@@ -4,9 +4,8 @@ class Api::UsersController < ApplicationController
     puts 'in create method'
     puts @user
     if @user.save
-
-      puts 'user saved'
-      puts @user
+      login(@user)
+      
       render "api/users/show"
     else
       puts 'error'
