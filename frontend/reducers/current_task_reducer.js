@@ -1,6 +1,6 @@
 import { ADD_TO_TASK } from '../actions/tasks_actions';
 import { TASK_CREATED } from '../actions/tasks_actions';
-import {  RESET_FORM } from '../actions/form_actions';
+import {  RESET_FORM, CLEAR_FORM } from '../actions/form_actions';
 import merge from 'lodash/merge';
 
 const currentTaskReducer = (state = {}, action) => {
@@ -11,6 +11,8 @@ const currentTaskReducer = (state = {}, action) => {
         return newState;
     case RESET_FORM:
     return merge({}, state, {size: '', vehicle: ''})
+    case CLEAR_FORM:
+      return {};
     default:
       return state;
   }

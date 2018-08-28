@@ -3,6 +3,7 @@ export const UPDATE_FORM_TRACKER = 'UPDATE_FORM_TRACKER';
 export const RESET_SHOWFORM = 'RESET_SHOWFORM';
 export const UPDATE_SHOWFORM = 'UPDATE_SHOWFORM';
 export const RESET_FORM = 'RESET_FORM';
+export const CLEAR_FORM = 'CLEAR_FORM'
 
 export const updateShowForm = (formName) => {
   return {
@@ -33,5 +34,11 @@ export const invalidLocation = () => {
 export const resetForm = () => {
   return {
     type: RESET_FORM
+  }
+}
+
+export const clearForm = () => {
+  return {
+    type: CLEAR_FORM
   }
 }

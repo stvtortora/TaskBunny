@@ -42,7 +42,7 @@ class TaskerSchedule extends React.Component {
     schedule () {
       const unOrderedSchedule = Object.keys(this.props.days).reduce((days, day) => {
         const className = this.state.date === day ? 'selectedDay' : 'unselectedDay';
-        days[day]= <div className={className} value={day} onClick={this.handleDateSelection}>{day}</div>;
+        days[day] = <div className={className} value={day} onClick={this.handleDateSelection}>{day}</div>;
         return days
       }, {});
 
