@@ -27,32 +27,9 @@ end
 
 Let's address two key points in the code above. The `class_name` method uses the request's params to determine which model to create a new instance of. The `login` method leverages methods defined in the `User` model to begin a session.
 
-
-## Maintaining State
-
-Since the app features a multi-stage form, data from previous stages of the form would be lost from the `currentTask` slice without a way to preserve Redux state when the page reloads. This is a problem because the backend relies on `currentTask` for it's parameters, and it expects it's parameters to always contain the same type of information. To address this, I used local storage. Every time state changes, the store's `subscribe` method ensures that local storage is updated with the most current version of `currentTask`. I also preloaded the contents of local storage into the my Redux state to retrieve the data needed for `currentTask` whenever the page reloads. Here are the methods for storing and loading data with local storage:
-
-``` javascript
-import store from '../store/store';
-
-export const loadData = (itemName) => {
-  const serializedState = localStorage.getItem(itemName);
-  if(serializedState){
-    return JSON.parse(serializedState);
-  }
-  return undefined;
-}
-
-export const saveData = (data, itemName) => {
-  const serializedState = JSON.stringify(data);
-  localStorage.setItem(itemName, serializedState);
-}
-```
-
-
 ## Matching Users with Taskers
 
-After a client specifies some details about the task they need done, they are presented with a list of taskers. Up until this point, Redux has been accumulating task details into a `currentTask` slice of state. To retrieve taskers from the database, the data from the `currentTask` slice is sent to the backend through a GET request. The `Users` controller then leverages Active Record associations to find taskers whose data match the parameters of the request. Here's the filtering code:
+After the client specifies some details about the task they need done, they are presented with a list of taskers. Up until this point, Redux has been accumulating details the client enters into a `currentTask` slice of state. To retrieve taskers from the database, the data from the `currentTask` slice is sent to the backend through a GET request. The `UsersController` then leverages Active Record associations to find taskers whose data match the parameters of the request. Here's the code for this filtering process:
 
 ``` ruby
 class Api::UsersController < ApplicationController
@@ -81,6 +58,27 @@ class Api::UsersController < ApplicationController
 end
 ```
 
+## Maintaining State
+
+Since the app features a multi-stage form, data from previous stages of the form would be lost from the `currentTask` slice without a way to preserve Redux state when the page reloads. This is a problem because the backend relies on `currentTask` for it's parameters. To address this, I used local storage. Every time state changes, the store's `subscribe` method ensures that local storage is updated with the most current version of `currentTask`. I also preloaded the contents of local storage into the my Redux state to retrieve the data needed for `currentTask` whenever the page reloads. Here are the methods for storing and loading data with local storage:
+
+``` javascript
+import store from '../store/store';
+
+export const loadData = (itemName) => {
+  const serializedState = localStorage.getItem(itemName);
+  if(serializedState){
+    return JSON.parse(serializedState);
+  }
+  return undefined;
+}
+
+export const saveData = (data, itemName) => {
+  const serializedState = JSON.stringify(data);
+  localStorage.setItem(itemName, serializedState);
+}
+```
+
 ## The Reusable Searchbar
 
 Search bars are used in four different contexts in this application; clients and taskers each use them to search for either categories or locations. To keep my code DRY, the same components are used in each context. To distinguish between category and location search bars, I passed context-specific props to components via Redux containers. For example, the `Search` component is passed a `fetchResults` method prop. This prop is either the `fetchCategories` method or `fetchLocations` method, depending on the context. Consequently, the `Search` can simply call `fetchResults` and remain agnostic to the type of data it's retrieving.
@@ -96,7 +94,7 @@ render() {
     return (
       <div className="search" id={tasker ? 'tasker-search' : 'client-search'} >
         <input className='search_bar' id={tasker ? 'tasker-search-bar' : 'client-search-bar'} type="text" value={this.state.searchQuery} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
-        <QueryDropdown reduceSize={tasker ? true : false} searchQuery={this.state.searchQuery} open={this.props.open}path={ this.props.path } type={this.props.type}/>
+        <QueryDropdown reduceSize={tasker ? true : false} searchQuery={this.state.searchQuery} open={this.props.open} path={ this.props.path } type={this.props.type}/>
       </div>
     );
   }
