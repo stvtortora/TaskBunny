@@ -13,7 +13,7 @@ class EditInfo extends React.Component {
     this.handleCancel = this.handleCancel.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
     this.toggleEditMode = this.toggleEditMode.bind(this);
-    this.handleNewResources = this.handleNewResources.bind(this);
+    this.updateResources = this.updateResources.bind(this);
     this.resourceTitles = this.resourceTitles.bind(this);
     this.state = {editMode: false, newResources: [], destroyResources: []};
   }
@@ -51,9 +51,9 @@ class EditInfo extends React.Component {
         this.toggleEditMode();
       });
     } else {
-      this.handleNewResources(this.props.createRegistration, 'save', this.state.newResources)
+      this.updateResources(this.props.createRegistration, 'save', this.state.newResources)
       .then(() => {
-        this.handleNewResources(this.props.destroyRegistration, 'save', this.state.destroyResources)
+        this.updateResources(this.props.destroyRegistration, 'save', this.state.destroyResources)
         .then(() => {
           this.setState({newResources: [], destroyResources: []});
           this.toggleEditMode();
@@ -62,18 +62,14 @@ class EditInfo extends React.Component {
     }
   }
 
-  handleNewResources (action, type, resources) {
-
+  updateResources (action, type, resources) {
     return new Promise((resolve, reject) => {
-
       for (let i = 0; i < resources.length; i++) {
         let resource = resources[i];
 
         if (resource.unsaved || action === this.props.destroyRegistration) {
-
           this.props.removeRegistration(resource);
         }
-
         if (type === 'save') {
           if (action === this.props.createRegistration) {
             action({category_id: resource.id});
@@ -81,7 +77,6 @@ class EditInfo extends React.Component {
           } else {
             action(resource.id)
           }
-
         }
       }
 
@@ -94,8 +89,8 @@ class EditInfo extends React.Component {
       this.props.cancelLocationChange();
     } else {
       debugger
-      this.handleNewResources(null, 'cancel', this.state.newResources);
-      this.handleNewResources(null, 'cancel', this.state.destroyResources)
+      this.updateResources(null, 'cancel', this.state.newResources);
+      this.updateResources(null, 'cancel', this.state.destroyResources)
       this.setState({newResources: [], destroyResources: []});
     }
 
@@ -124,8 +119,11 @@ class EditInfo extends React.Component {
   }
 
   categoryDisplay () {
+    if (this.props.type !== 'Categories') { return null }
+
     return Object.keys(this.props.categories).map(id => {
       const category = this.props.categories[id];
+
       if (!this.state.destroyResources.includes(category)) {
         return (
           <div className='selected-category-container' id='attribute-container-edit'>
@@ -155,11 +153,6 @@ class EditInfo extends React.Component {
     }
 
     const search = this.props.type === 'Location' ? <LocationSearch toggleEditMode={this.toggleEditMode} type='location' show={true}/> : <CategorySearch toggleEditMode={this.toggleEditMode} type='category' show={true}/>
-    let categories = null;
-
-    if(this.props.type === 'Categories'){
-      categories = this.categoryDisplay();
-    }
 
     return (
       <div className='tasker-attribute-container' id='attribute-container-edit'>
@@ -170,7 +163,7 @@ class EditInfo extends React.Component {
           </div>
           <div className='tasker-category-list'>
             <div>
-              {categories}
+              {this.categoryDisplay()}
             </div>
           </div>
         </div>
@@ -182,8 +175,5 @@ class EditInfo extends React.Component {
     )
   }
 }
-// <form onSubmit={this.handleSubmit}>
-//   <input type='submit' value='Save'/>
-// </form>
 
 export default EditInfo;
