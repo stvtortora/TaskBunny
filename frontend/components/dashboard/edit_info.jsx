@@ -11,10 +11,11 @@ class EditInfo extends React.Component {
     this.categoryDisplay = this.categoryDisplay.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
     this.toggleEditMode = this.toggleEditMode.bind(this);
     this.handleNewResources = this.handleNewResources.bind(this);
     this.resourceTitles = this.resourceTitles.bind(this);
-    this.state = {editMode: false, newResources: {}, destroyResources: []};
+    this.state = {editMode: false, newResources: [], destroyResources: []};
   }
 
   resourceTitles (resources) {
@@ -29,11 +30,11 @@ class EditInfo extends React.Component {
 
       const prevCategoryTitles = this.resourceTitles(prevProps.categories);
 
-      const newResources = merge({}, this.state.newResources);
+      const newResources = this.state.newResources.slice(0);
       Object.keys(this.props.categories).forEach((categoryId) => {
         if (!prevCategoryTitles[this.props.categories[categoryId].title]) {
 
-          newResources[categoryId] = (this.props.categories[categoryId]);
+          newResources.push(this.props.categories[categoryId]);
         }
       });
 
@@ -50,30 +51,37 @@ class EditInfo extends React.Component {
         this.toggleEditMode();
       });
     } else {
-      this.handleNewResources(this.props.createRegistration).then(() => {
-        this.setState({newResources: {}});
-        this.toggleEditMode();
+      this.handleNewResources(this.props.createRegistration, 'save', this.state.newResources)
+      .then(() => {
+        this.handleNewResources(this.props.destroyRegistration, 'save', this.state.destroyResources)
+        .then(() => {
+          this.setState({newResources: [], destroyResources: []});
+          this.toggleEditMode();
+        })
       })
     }
   }
 
-  handleNewResources (action) {
+  handleNewResources (action, type, resources) {
 
     return new Promise((resolve, reject) => {
-      const resourceKeys = Object.keys(this.state.newResources);
 
-      for (let i = 0; i < resourceKeys.length; i++) {
-        let resource = this.state.newResources[resourceKeys[i]];
+      for (let i = 0; i < resources.length; i++) {
+        let resource = resources[i];
 
         if (resource.unsaved || action === this.props.destroyRegistration) {
 
           this.props.removeRegistration(resource);
         }
 
-        if (action) {
-          const id = action === this.props.createRegistration ? 'category_id' : 'id';
+        if (type === 'save') {
+          if (action === this.props.createRegistration) {
+            action({category_id: resource.id});
 
-          action({[id]: resource.id});
+          } else {
+            action(resource.id)
+          }
+
         }
       }
 
@@ -86,38 +94,28 @@ class EditInfo extends React.Component {
       this.props.cancelLocationChange();
     } else {
       debugger
-      this.handleNewResources(null);
-      this.setState({newResources: {}});
+      this.handleNewResources(null, 'cancel', this.state.newResources);
+      this.handleNewResources(null, 'cancel', this.state.destroyResources)
+      this.setState({newResources: [], destroyResources: []});
     }
 
     this.toggleEditMode();
   }
 
-  // handleRemove (resource) {
-  //   const resourceTitles = this.resourceTitles(this.props.categories);
-  //
-  //   if (!resource.unsaved) {
-  //     const destroyResources = this.state.destroyResources.slice(0);
-  //     destroyResources.push(resource);
-  //
-  //     this.setState({
-  //       destroyResources
-  //     });
-  //   }
-  //
-  //   this.props.
-  // }
+  handleRemove (resource) {
+    return () => {
+      const resourceTitles = this.resourceTitles(this.props.categories);
 
+      if (!resource.unsaved) {
+        const destroyResources = this.state.destroyResources.slice(0);
+        destroyResources.push(resource);
 
-  // handleSubmit(){
-  //   if(this.props.type === 'Location' && this.props.location){
-  //     this.props.changeTasker({location_id: this.props.location.id}, this.props.userId).then(response => {
-  //       this.toggleEditMode();
-  //     });
-  //   } else{
-  //     this.toggleEditMode();
-  //   }
-  // }
+        this.setState({
+          destroyResources
+        });
+      }
+    }
+  }
 
   toggleEditMode(){
     this.setState({
@@ -128,12 +126,16 @@ class EditInfo extends React.Component {
   categoryDisplay () {
     return Object.keys(this.props.categories).map(id => {
       const category = this.props.categories[id];
-      return (
-        <div className='selected-category-container' id='attribute-container-edit'>
-          <div className='attribute-title' onClick={() => {this.props.destroyRegistration(id)}}>{category.title}</div>
-          <div className='attribute-hover'>x</div>
-        </div>
-      )
+      if (!this.state.destroyResources.includes(category)) {
+        return (
+          <div className='selected-category-container' id='attribute-container-edit'>
+            <div className='attribute-title' onClick={this.handleRemove(category)}>{category.title}</div>
+            <div className='attribute-hover'>x</div>
+          </div>
+        )
+      }
+
+      return null;
     });
   }
 
