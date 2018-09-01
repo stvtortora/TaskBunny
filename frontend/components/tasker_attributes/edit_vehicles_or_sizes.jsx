@@ -4,7 +4,8 @@ class EditVehiclesOrSizes extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      editMode: false
+      editMode: false,
+      newResources: []
     }
     this.toggleSelection = this.toggleSelection.bind(this);
     this.options = this.options.bind(this);
@@ -15,22 +16,39 @@ class EditVehiclesOrSizes extends React.Component {
     this.props.fetchData()
   }
 
-  toggleSelection (e) {
-    let idName = this.props.title === 'Sizes' ? 'size_id' : 'vehicle_id';
-    if(e.currentTarget.getAttribute('class') === 'unselectedOption'){
-      this.props.createRegistration({ [idName]: e.currentTarget.getAttribute('id') })
+
+  toggleSelection (option, className) {
+    return () => {
+      const saved = this.props.registrationIds.includes(option.id);
+      if (className === 'selectedOption') {
+        if (!saved) {
+          option.unsaved = true;
+        }
+        this.handleRemove(option)
+      }
     } else {
-      this.props.destroyRegistration(Number(e.currentTarget.getAttribute('id')))
+      const newResources = this.state.newResources.slice(0);
+      newResources.push(option)
+
+      this.setState({})
     }
+
   }
 
+  // if(e.currentTarget.getAttribute('class') === 'unselectedOption'){
+  //   this.props.createRegistration({ [idName]: e.currentTarget.getAttribute('id') })
+  // } else {
+  //   this.props.destroyRegistration(Number(e.currentTarget.getAttribute('id')))
+  // }
   options () {
     return Object.keys(this.props.options).map(optionId => {
       const option = this.props.options[optionId];
+
+
       const className = this.props.registrationIds.includes(optionId) ? 'selectedOption' : 'unselectedOption';
 
       return this.state.editMode ?
-        <div className={className} id={option.id} onClick={this.toggleSelection}>
+        <div className={className} id={option.id} onClick={this.toggleSelection(option, className)}>
           <div className='attribute-title'>
             {option.title[0].toUpperCase() + option.title.slice(1)}
           </div>

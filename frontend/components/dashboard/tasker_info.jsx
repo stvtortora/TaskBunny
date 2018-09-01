@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import TaskerPhoto from './tasker_photo';
-import EditDescription from './edit_description_container';
-import EditRate from './edit_rate_container';
-import EditLocation from './edit_location_container';
-import EditCategories from './edit_categories_container';
-import EditSchedule from './edit_schedule';
-import EditSizes from './edit_sizes_container';
-import EditVehicles from './edit_vehicles_container';
+import TaskerPhoto from '../tasker_attributes/tasker_photo';
+import EditDescription from '../tasker_attributes/edit_description_container';
+import EditRate from '../tasker_attributes/edit_rate_container';
+import EditLocation from '../tasker_attributes/edit_location_container';
+import EditCategories from '../tasker_attributes/edit_categories_container';
+import EditSchedule from '../tasker_attributes/edit_schedule';
+// import EditSizes from '../tasker_attributes/edit_sizes_container';
+// import EditVehicles from '../tasker_attributes/edit_vehicles_container';
 import { fetchUserInfo } from '../../actions/taskers_actions';
 
 class TaskerInfo extends React.Component{
@@ -28,8 +28,6 @@ class TaskerInfo extends React.Component{
           <EditLocation />
           <EditRate />
           <EditCategories />
-          <EditSizes />
-          <EditVehicles />
           <EditSchedule />
         </div>
       </div>
@@ -37,6 +35,8 @@ class TaskerInfo extends React.Component{
   }
 }
 
+// <EditSizes />
+// <EditVehicles />
 const mapStateToProps = state => {
   const userId = state.session.id
 

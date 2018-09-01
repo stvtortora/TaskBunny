@@ -50,13 +50,13 @@ class Search extends React.Component {
   }
 
   render() {
-    const tasker = this.props.toggleEditMode ? true : false;
+    const tasker = this.props.addResource ? true : false;
 
     if(this.props.show){
       return (
         <div className="search" id={tasker ? 'tasker-search' : 'client-search'} >
           <input className='search_bar' id={tasker ? 'tasker-search-bar' : 'client-search-bar'} type="text" value={this.state.searchQuery} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
-          <QueryDropdown reduceSize={tasker ? true : false} searchQuery={this.state.searchQuery} open={this.props.open}path={ this.props.path } type={this.props.type}/>
+          <QueryDropdown addResource={ this.props.addResource } reduceSize={tasker ? true : false} searchQuery={this.state.searchQuery} open={this.props.open}path={ this.props.path } type={this.props.type}/>
         </div>
       );
     }

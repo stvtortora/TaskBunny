@@ -20,7 +20,7 @@ class QueryDropdown extends React.Component {
 
   handleClick(data) {
     if(this.props.type === 'category' && this.props.userType !== 'Client'){
-      this.props.editTaskerCategories({title: data.title, id: data.id, unsaved: true})
+      this.props.addResource(data);
     } else if(this.props.path){
       this.props.addToTask({ category: data });
       this.props.history.push(this.props.path);

@@ -2,17 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchTimeSlots } from '../../actions/time_slots_actions';
 import { createRegistration, destroyRegistration } from '../../actions/registration_actions';
+import merge from 'lodash/merge';
 
 class EditSchedule extends React.Component {
   constructor(props){
     super(props);
     this.state = {editMode: false}
     this.handleClick = this.handleClick.bind(this);
-    this.toggleSelection = this.toggleSelection.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+    this.updateResources = this.updateResources.bind(this);
+    this.addSaved = this.addSaved.bind(this);
+    this.addUnsaved = this.addUnsaved.bind(this);
+    this.removeSaved = this.removeSaved.bind(this);
+    this.removeUnsaved = this.removeUnsaved.bind(this);
     this.toggleEditMode = this.toggleEditMode.bind(this);
     this.days = this.days.bind(this);
     this.times = this.times.bind(this);
-    this.state = {date: null};
+    this.state = {date: null, toCreate: {}, toDestroy: {}};
   }
 
   componentDidMount(){
@@ -31,23 +38,87 @@ class EditSchedule extends React.Component {
     });
   }
 
+  removeSaved (resource) {
+    const toDestroy = merge({}, this.state.toDestroy, {[resource.id]: resource});
+
+    this.setState({toDestroy})
+  }
+
+  removeUnsaved (resource) {
+    const toCreate = merge({}, this.state.toCreate);
+    delete toCreate[resource.id];
+
+    this.setState({toCreate});
+  }
+
+  addUnsaved (resource) {
+    const toCreate = merge({}, this.state.toCreate, {[resource.id]: resource});
+
+    this.setState({toCreate})
+  }
+
+  addSaved (resource) {
+    const toDestroy = merge({}, this.state.toDestroy);
+    delete toDestroy[resource.id];
+
+    this.setState({toDestroy})
+  }
+
   handleClick (e){
     this.setState({
       date: e.currentTarget.getAttribute('value')
     });
   }
 
+  handleSave () {
+    this.updateResources(this.state.toCreate, this.props.createRegistration).then(() => {
+      this.updateResources(this.state.toDestroy, this.props.destroyRegistration).then(() => {
+        this.toggleEditMode();
+      })
+    })
+  }
+
+  handleCancel () {
+    this.toggleEditMode();
+  }
+
+  updateResources (resources, action) {
+    return new Promise((resolve, reject) => {
+        const resourceKeys = Object.keys(resources);
+
+        for (let i = 0; i < resourceKeys.length; i++) {
+          debugger
+          let resource = resources[resourceKeys[i]];
+
+          if (action === this.props.createRegistration) {
+            action({time_slot_id: resource.id});
+          } else {
+            action(resource.id);
+          }
+        }
+
+        resolve();
+      })
+  }
+
   times () {
     if (!(this.props.timeSlots.days && this.state.date)) {return null}
+
     return this.props.timeSlots.days[this.state.date].map(time => {
+        const saved = this.props.registrationIds.includes(time.id.toString());
         let className;
-        if (this.props.registrationIds.includes(time.id.toString())){
+        let toggleMethod;
+
+        if ((saved && !this.state.toDestroy[time.id]) || this.state.toCreate[time.id]){
           className = this.props.filledStatuses[time.id] ? 'filledTime' : 'selectedTime-tasker';
+          toggleMethod = saved ? this.removeSaved : this.removeUnsaved;
         } else {
           className = 'unselectedTime-tasker';
+          toggleMethod = saved ? this.addSaved : this.addUnsaved;
         }
+
         return (
-          <div className={className} id={time.id} onClick={className === 'filledTime' ? null : this.toggleSelection}>
+          <div className={className} id={time.id} onClick={className === 'filledTime' ? null : () => toggleMethod(time)}>
               <div className={className === 'filledTime' ? 'filled-attribute' : 'attribute-title'}>
                 {className === 'filledTime' ? 'Booked' : time.title}
               </div>
@@ -59,16 +130,10 @@ class EditSchedule extends React.Component {
 
   toggleEditMode(){
     this.setState({
-      editMode: !this.state.editMode
+      editMode: !this.state.editMode,
+      toCreate: {},
+      toDestroy: {}
     });
-  }
-
-  toggleSelection(e){
-    if(e.currentTarget.getAttribute('class') === 'unselectedTime-tasker'){
-      this.props.createRegistration({ time_slot_id: e.currentTarget.getAttribute('id')})
-    } else {
-      this.props.destroyRegistration(Number(e.currentTarget.getAttribute('id')))
-    }
   }
 
   render(){
@@ -109,7 +174,8 @@ class EditSchedule extends React.Component {
       }
       </div>
       <div className='save-edit-container'>
-        <div onClick={this.toggleEditMode}>{this.state.editMode ? 'Save' : 'Edit'}</div>
+        <div onClick={this.state.editMode ? this.handleSave : this.toggleEditMode }>{this.state.editMode ? 'Save' : 'Edit'}</div>
+        {this.state.editMode ? <div onClick={this.toggleEditMode }>Cancel</div> : null}
       </div>
     </div>
   }
