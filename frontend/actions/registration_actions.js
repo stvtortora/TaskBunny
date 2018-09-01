@@ -36,3 +36,10 @@ export const fetchVehicles = () => {
     })
   }
 }
+
+export const removeRegistration = (response) => {
+  return {
+    type: REMOVE_REGISTRATION,
+    response
+  }
+}

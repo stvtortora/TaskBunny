@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
     addToTask: (taskParam) => dispatch(addToTask(taskParam)),
     dropDownItemSelected: (location) => dispatch(dropDownItemSelected(location)),
     editTaskerLocation: (data) => dispatch(editTaskerLocation(data)),
+    editTaskerCategories: (data) => dispatch(editTaskerCategories(data)),
     createRegistration: (registration_info) => dispatch(createRegistration('category_registrations', registration_info)),
     resetForm: () => dispatch(resetForm())
   };

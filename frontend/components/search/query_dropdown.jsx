@@ -6,9 +6,21 @@ class QueryDropdown extends React.Component {
     super(props);
   }
 
+  // handleClick(data) {
+  //   if(this.props.type === 'category' && this.props.userType !== 'Client'){
+  //     this.props.createRegistration({ category_id: Number(data.id) })
+  //   } else if(this.props.path){
+  //     this.props.addToTask({ category: data });
+  //     this.props.history.push(this.props.path);
+  //   } else if(this.props.type === 'location'){
+  //     this.props.editTaskerLocation(data);
+  //   }
+  //   this.props.dropDownItemSelected(data);
+  // }
+
   handleClick(data) {
     if(this.props.type === 'category' && this.props.userType !== 'Client'){
-      this.props.createRegistration({ category_id: Number(data.id) })
+      this.props.editTaskerCategories({title: data.title, id: data.id, unsaved: true})
     } else if(this.props.path){
       this.props.addToTask({ category: data });
       this.props.history.push(this.props.path);

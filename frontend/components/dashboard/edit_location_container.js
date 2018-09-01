@@ -1,7 +1,7 @@
 import React from 'react';
 import EditInfo from './edit_info';
 import { connect } from 'react-redux';
-import { changeTasker } from '../../actions/taskers_actions';
+import { changeTasker, cancelLocationChange, affirmLocationChange } from '../../actions/taskers_actions';
 
 const mapStateToProps = state => {
   const location = state.taskerInfo.location;
@@ -19,7 +19,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeTasker: (info, taskerId) => dispatch(changeTasker(info, taskerId))
+    changeTasker: (info, taskerId) => dispatch(changeTasker(info, taskerId)),
+    cancelLocationChange: () => dispatch(cancelLocationChange()),
+    affirmLocationChange: () => dispatch(affirmLocationChange())
   }
 }
 

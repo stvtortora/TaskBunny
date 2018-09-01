@@ -1,4 +1,4 @@
-import { RECEIVE_TASKER_INFO } from '../actions/taskers_actions';
+import { RECEIVE_TASKER_INFO, EDIT_TASKER_CATEGORIES } from '../actions/taskers_actions';
 import { CREATE_REGISTRATION, REMOVE_REGISTRATION } from '../actions/registration_actions';
 import merge from 'lodash/merge';
 
@@ -12,6 +12,8 @@ const categoriesReducer = (state = {}, action) => {
       }else{
         return state;
       }
+    case EDIT_TASKER_CATEGORIES:
+      return merge({}, state, {[Number(action.data.id)]: action.data})
     case REMOVE_REGISTRATION:
     if(action.response.title){
       const nextState = merge({}, state);

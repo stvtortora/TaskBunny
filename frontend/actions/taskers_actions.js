@@ -7,6 +7,8 @@ export const EDIT_TASKER_RATE = 'EDIT_TASKER_RATE';
 export const EDIT_TASKER_DESCRIPTION = 'EDIT_TASKER_DESCRIPTION';
 export const EDIT_TASKER_CATEGORIES = 'EDIT_TASKER_CATEGORIES';
 export const EDIT_TASKER_PHOTO = 'EDIT_TASKER_PHOTO';
+export const AFFIRM_LOCATION_CHANGE = 'AFFIRM_LOCATION_CHANGE';
+export const CANCEL_LOCATION_CHANGE ='CANCEL_LOCATION_CHANGE';
 
 export const fetchSchedule = (tasker_id) => {
   return dispatch => {
@@ -43,6 +45,14 @@ export const editTaskerLocation = (data) => {
     data
   }
 }
+
+export const cancelLocationChange = () => ({
+  type: CANCEL_LOCATION_CHANGE
+})
+
+export const affirmLocationChange = () => ({
+  type: AFFIRM_LOCATION_CHANGE
+})
 
 export const editTaskerCategories = (data) => {
   return {
