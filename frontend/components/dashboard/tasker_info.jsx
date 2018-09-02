@@ -6,9 +6,10 @@ import EditRate from '../tasker_attributes/edit_rate_container';
 import EditLocation from '../tasker_attributes/edit_location_container';
 import EditCategories from '../tasker_attributes/edit_categories_container';
 import EditSchedule from '../tasker_attributes/edit_schedule';
-// import EditSizes from '../tasker_attributes/edit_sizes_container';
-// import EditVehicles from '../tasker_attributes/edit_vehicles_container';
+import EditSizes from '../tasker_attributes/edit_sizes_container';
+import EditVehicles from '../tasker_attributes/edit_vehicles_container';
 import { fetchUserInfo } from '../../actions/taskers_actions';
+
 
 class TaskerInfo extends React.Component{
   constructor(props){
@@ -28,6 +29,8 @@ class TaskerInfo extends React.Component{
           <EditLocation />
           <EditRate />
           <EditCategories />
+          <EditSizes />
+          <EditVehicles />
           <EditSchedule />
         </div>
       </div>
@@ -35,8 +38,6 @@ class TaskerInfo extends React.Component{
   }
 }
 
-// <EditSizes />
-// <EditVehicles />
 const mapStateToProps = state => {
   const userId = state.session.id
 
