@@ -6,8 +6,16 @@ class EditText extends React.Component{
     super(props);
     this.state = {text: '', editMode: false}
     this.handleChange = this.handleChange.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleSave = this.handleSave.bind(this);
     this.toggleEditMode = this.toggleEditMode.bind(this);
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (this.state.editMode !== prevState.editMode) {
+      this.setState({
+        text: this.props.text
+      })
+    }
   }
 
   handleChange() {
@@ -18,7 +26,7 @@ class EditText extends React.Component{
     }
   }
 
-  handleUpdate() {
+  handleSave () {
     this.props.changeTasker(this.state, this.props.userId).then(response => {
       this.props.editState(this.state)
       this.toggleEditMode()
@@ -27,7 +35,8 @@ class EditText extends React.Component{
 
   toggleEditMode(){
     this.setState({
-      editMode: !this.state.editMode
+      editMode: !this.state.editMode,
+      text: ''
     });
   }
 
@@ -43,7 +52,8 @@ class EditText extends React.Component{
             {input}
           </div>
           <div className='save-edit-container'>
-            <div onClick={this.handleUpdate}>Save</div>
+            <div onClick={this.handleSave}>Save</div>
+            <div onClick={this.toggleEditMode}>Cancel</div>
           </div>
         </div>
       )
