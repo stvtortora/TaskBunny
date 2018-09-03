@@ -5,7 +5,7 @@ import EditDescription from '../tasker_attributes/edit_description_container';
 import EditRate from '../tasker_attributes/edit_rate_container';
 import EditLocation from '../tasker_attributes/edit_location_container';
 import EditCategories from '../tasker_attributes/edit_categories_container';
-import EditSchedule from '../tasker_attributes/edit_schedule';
+import EditSchedule from '../tasker_attributes/schedule_container';
 import EditSizes from '../tasker_attributes/edit_sizes_container';
 import EditVehicles from '../tasker_attributes/edit_vehicles_container';
 import { fetchUserInfo } from '../../actions/taskers_actions';
