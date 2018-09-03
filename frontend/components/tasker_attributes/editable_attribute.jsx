@@ -4,23 +4,12 @@ import merge from 'lodash/merge';
 class EditableAttribute extends React.Component {
   constructor(props){
     super(props);
-    this.options = this.options.bind(this);
-    this.categoryDisplay = this.categoryDisplay.bind(this);
-    this.categoryDisplayHelper = this.categoryDisplayHelper.bind(this);
-    this.resourceTitles = this.resourceTitles.bind(this);
-    this.selectDay = this.selectDay.bind(this);
-    this.handleSave = this.handleSave.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
-    this.updateResources = this.updateResources.bind(this);
-    this.key = this.key.bind(this);
-    this.addResource = this.addResource.bind(this);
-    this.addSaved = this.addSaved.bind(this);
-    this.addUnsaved = this.addUnsaved.bind(this);
-    this.removeSaved = this.removeSaved.bind(this);
-    this.removeUnsaved = this.removeUnsaved.bind(this);
-    this.toggleEditMode = this.toggleEditMode.bind(this);
-    this.days = this.days.bind(this);
-    this.times = this.times.bind(this);
+    this.options = this.options.bind(this); this.categoryDisplay = this.categoryDisplay.bind(this); this.categoryDisplayHelper = this.categoryDisplayHelper.bind(this);
+    this.resourceTitles = this.resourceTitles.bind(this); this.selectDay = this.selectDay.bind(this); this.handleSave = this.handleSave.bind(this);
+    this.handleCancel = this.handleCancel.bind(this); this.updateResources = this.updateResources.bind(this); this.key = this.key.bind(this);
+    this.firstResource = this.firstResource.bind(this); this.addResource = this.addResource.bind(this); this.addSaved = this.addSaved.bind(this);
+    this.addUnsaved = this.addUnsaved.bind(this); this.removeSaved = this.removeSaved.bind(this); this.removeUnsaved = this.removeUnsaved.bind(this);
+    this.toggleEditMode = this.toggleEditMode.bind(this); this.days = this.days.bind(this); this.times = this.times.bind(this);
     this.state = {date: null, toCreate: {}, toDestroy: {}, editMode: false};
   }
 
@@ -136,7 +125,8 @@ class EditableAttribute extends React.Component {
   }
 
   key (resource) {
-    return this.props.idName === 'category_id' ? resource.title : resource.id;
+    debugger
+    return this.props.idName === 'category_id' || this.props.idName === 'location_id' ? resource.title : resource.id;
   }
 
   removeSaved (resource) {
@@ -152,15 +142,28 @@ class EditableAttribute extends React.Component {
     this.setState({toCreate});
   }
 
-  addResource (category) {
-    if (this.resourceTitles(this.props.categories)[category.title]) {
-      this.addSaved(category);
+  firstResource (resources) {
+    return resources[Object.keys(resources)[0]];
+  }
+
+  addResource (resource) {
+    if (this.props.type === 'Location') {
+      const toCreate = this.firstResource(this.state.toCreate);
+      if (toCreate) {
+        this.removeUnsaved(toCreate);
+      }
+    }
+
+    if (this.props.type ==='Category' && this.resourceTitles(this.props.categories)[resource.title]) {
+        this.addSaved(resource);
     } else {
-      this.addUnsaved(category);
+      debugger
+        this.addUnsaved(resource);
     }
   }
 
   addUnsaved (resource) {
+    debugger
     const toCreate = merge({}, this.state.toCreate, {[this.key(resource)]: resource});
 
     this.setState({toCreate})
@@ -174,11 +177,19 @@ class EditableAttribute extends React.Component {
   }
 
   handleSave () {
-    this.updateResources(this.state.toCreate, this.props.createRegistration).then(() => {
-      this.updateResources(this.state.toDestroy, this.props.destroyRegistration).then(() => {
-        this.toggleEditMode();
+    if (this.props.type === 'Location') {
+      const location = this.state.toCreate[Object.keys(this.state.toCreate)[0]];
+      this.props.changeTasker({location_id: location.id}, this.props.userId).then(() => {
+          this.props.editTaskerLocation(location);
+          this.toggleEditMode();
       })
-    })
+    } else {
+      this.updateResources(this.state.toCreate, this.props.createRegistration).then(() => {
+        this.updateResources(this.state.toDestroy, this.props.destroyRegistration).then(() => {
+          this.toggleEditMode();
+        })
+      })
+    }
   }
 
   handleCancel () {
@@ -190,7 +201,6 @@ class EditableAttribute extends React.Component {
         const resourceKeys = Object.keys(resources);
 
         for (let i = 0; i < resourceKeys.length; i++) {
-          debugger
           let resource = resources[resourceKeys[i]];
 
           if (action === this.props.createRegistration) {

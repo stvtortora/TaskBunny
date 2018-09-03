@@ -25,7 +25,7 @@ class QueryDropdown extends React.Component {
       this.props.addToTask({ category: data });
       this.props.history.push(this.props.path);
     } else if(this.props.type === 'location'){
-      this.props.editTaskerLocation(data);
+      this.props.addResource(data);
     }
     this.props.dropDownItemSelected(data);
   }
