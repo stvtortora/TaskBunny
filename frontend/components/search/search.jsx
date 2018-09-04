@@ -43,6 +43,9 @@ class Search extends React.Component {
       { searchQuery: e.target.value },
       () => {
         this.timeout = setTimeout(() => this.props.fetchResults(this.state.searchQuery).then(() => {
+          if (this.props.type) {
+            this.props.setResultsType(this.props.type);
+          }
           this.props.modDropdown(true)
         }), 500)
       }
@@ -56,7 +59,11 @@ class Search extends React.Component {
       return (
         <div className="search" id={tasker ? 'tasker-search' : 'client-search'} >
           <input className='search_bar' id={tasker ? 'tasker-search-bar' : 'client-search-bar'} type="text" value={this.state.searchQuery} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
-          <QueryDropdown addResource={ this.props.addResource } reduceSize={tasker ? true : false} searchQuery={this.state.searchQuery} open={this.props.open}path={ this.props.path } type={this.props.type}/>
+          {
+            this.props.type && this.props.type === this.props.resultsType ?
+            <QueryDropdown addResource={ this.props.addResource } reduceSize={tasker ? true : false} searchQuery={this.state.searchQuery} open={this.props.open}path={ this.props.path } type={this.props.type}/>
+            : null
+          }
         </div>
       );
     }

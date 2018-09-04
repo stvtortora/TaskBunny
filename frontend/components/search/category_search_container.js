@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
   return {
     input: state.entities.search.input,
     open: state.entities.search.open,
+    resultsType: state.entities.search.resultsType,
     path: "/taskform/details",
     placeholder
   }
@@ -19,7 +20,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     modDropdown: (status) => dispatch(modDropdown(status)),
     fetchResults: (criteria) => dispatch(fetchCategories(criteria)),
-    action: () => dispatch(clearSearchBar())
+    action: () => dispatch(clearSearchBar()),
+    setResultsType: (type) => dispatch(setResultsType(type))
   }
 }
 

@@ -2,6 +2,7 @@ import * as ApiUtil from '../util/api_util';
 export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
 export const CLEAR_SEARCHBAR = 'CLEAR_SEARCHBAR';
 export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS';
+export const SET_RESULTS_TYPE = 'SET_RESULTS_TYPE';
 
 export const fetchCategories = (criteria) => {
   return (dispatch) => {
@@ -43,5 +44,12 @@ export const clearSearchBar = () => {
 export const clearSearchResults = () => {
   return {
     type: CLEAR_SEARCH_RESULTS
+  }
+}
+
+export const setResultsType = resultsType => {
+  return {
+    type: SET_RESULTS_TYPE,
+    resultsType
   }
 }
