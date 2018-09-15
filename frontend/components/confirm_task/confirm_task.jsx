@@ -41,7 +41,7 @@ class ConfirmTask extends React.Component {
     e.preventDefault();
     this.props.createTask(this.props.task_info).then(() => {
       this.props.clearForm();
-      this.props.history.push('/');
+      this.props.history.push('/tasks');
     },
     () => {
       this.props.history.push('/');
