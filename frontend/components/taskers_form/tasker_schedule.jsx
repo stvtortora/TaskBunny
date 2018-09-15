@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router';
 import { addToTask } from '../../actions/tasks_actions';
-import { closeModal } from '../../actions/modal_actions';
+import { closeModal, openModal } from '../../actions/modal_actions';
 import merge from 'lodash/merge';
 
 class TaskerSchedule extends React.Component {
@@ -35,8 +35,12 @@ class TaskerSchedule extends React.Component {
     handleSubmit(e) {
       e.preventDefault(e);
       this.props.addToTask(this.state);
-      this.props.closeModal();
-      this.props.history.push('/taskform/confirm_task');
+      if (this.props.currentUser) {
+        this.props.closeModal();
+        this.props.history.push('/taskform/confirm_task');
+      } else {
+        this.props.openModal({formName: 'redirect'})
+      }
     }
 
     schedule () {
@@ -80,17 +84,20 @@ const mapStateToProps = (state, ownProps) => {
 
   const tasker = state.entities.search.results[state.modal.tasker_id];
   const days = tasker.days;
+  const currentUser = state.session.id;
 
   return {
     tasker,
-    days
+    days,
+    currentUser
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     addToTask: (task_info) => dispatch(addToTask(task_info)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    openModal: (data) => dispatch(openModal(data))
   }
 }
 

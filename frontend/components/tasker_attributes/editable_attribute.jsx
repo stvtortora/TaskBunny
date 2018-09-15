@@ -125,7 +125,6 @@ class EditableAttribute extends React.Component {
   }
 
   key (resource) {
-    debugger
     return this.props.idName === 'category_id' || this.props.idName === 'location_id' ? resource.title : resource.id;
   }
 
@@ -178,6 +177,7 @@ class EditableAttribute extends React.Component {
 
   handleSave () {
     if (this.props.type === 'Location') {
+      debugger
       const location = this.state.toCreate[Object.keys(this.state.toCreate)[0]];
       this.props.changeTasker({location_id: location.id}, this.props.userId).then(() => {
           this.props.editTaskerLocation(location);

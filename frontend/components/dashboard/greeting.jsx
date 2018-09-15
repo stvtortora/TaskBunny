@@ -36,6 +36,7 @@ const Greeting = ({ user }) => {
     <div className='intro-content-container'>
       <section className="intro-content-tasker">
         <h2 className='header' id='tasker-header'>Welcome, {user.name}</h2>
+        <h1 className='subheader' id='tasker-subheader'>Your Details</h1>
       </section>
       <div className='task_index'>
       </div>
@@ -43,6 +44,5 @@ const Greeting = ({ user }) => {
     </div>
   )
 }
-// <ManageTasks user={user}/>
 
 export default Greeting;

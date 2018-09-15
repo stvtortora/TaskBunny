@@ -9,6 +9,7 @@ import NavBar from './nav_bar/nav_bar';
 import LogInFormContainer from './session_form/login_form_container';
 import SignUpFormContainer from './session_form/signup_form_container';
 import SignUpTaskerContainer from './session_form/signup_tasker_container';
+import Register from './register/register';
 import DashBoard from './dashboard/dashboard_container';
 import Tasks from './dashboard/tasks_index'
 import TaskersForm from './taskers_form/taskers_form';
@@ -23,6 +24,7 @@ const App = () => (
     <div className='main-content-container'>
       <Modal/>
       <Route path='/' exact component={DashBoard} />
+      <Route path='/register' exact component={Register} />
       <Route path='/tasks' exact component={Tasks} />
       <Route path='/taskform/details' exact component={DetailsForm} />
       <Route path='/taskform/select_tasker' exact component={TaskersForm} />
@@ -30,7 +32,7 @@ const App = () => (
       <Route path='/signup' exact component={SignUpFormContainer}/>
       <Route path = '/become-a-tasker' exact component={SignUpTaskerContainer}/>
       <Route path='/login' exact component={LogInFormContainer}/>
-    </div>
+      </div>
     <Footer />
   </div>
 );

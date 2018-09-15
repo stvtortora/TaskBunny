@@ -21,7 +21,8 @@ class SessionForm extends React.Component {
     this.props.action(params).then(() => {
 
       this.props.closeModal();
-      this.props.history.push('/');
+      const path = this.props.currentTask ? '/taskform/confirm_task' : '/';
+      this.props.history.push(this.props.path ? this.props.path : path);
     });
   }
 

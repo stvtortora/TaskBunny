@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { editTaskerPhoto, uploadTaskerPhoto} from '../../actions/taskers_actions';
+import * as FileUtil from '../../util/file_util';
+
+
 
 class TaskerPhoto extends React.Component {
   constructor (props) {
@@ -26,14 +29,19 @@ class TaskerPhoto extends React.Component {
         imgFile: null
       })
     }
+
+    if (this.props.registering && this.state.editMode === false) {
+      this.setState({editMode: true})
+    }
   }
 
   updateFile (e) {
     e.preventDefault()
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
-    reader.onloadend = () =>
-    this.setState({ imgUrl: reader.result, imgFile: file});
+    reader.onloadend = () => {
+      this.setState({ imgUrl: reader.result, imgFile: file});
+    }
 
     if (file) {
       reader.readAsDataURL(file);
@@ -44,14 +52,14 @@ class TaskerPhoto extends React.Component {
 
   uploadFile () {
     const file = this.state.imgFile;
+
     const formData = new FormData();
     formData.append("user[id]", this.props.userId);
     if (file) formData.append("user[image]", file);
 
-    this.props.uploadTaskerPhoto(formData).then(response => {
+    return this.props.uploadTaskerPhoto(formData).then(response => {
       this.props.editTaskerPhoto(response.image_url);
-
-      this.toggleEditMode()
+      return this.toggleEditMode();
     });
   }
 
@@ -68,11 +76,12 @@ class TaskerPhoto extends React.Component {
         <img className='taskerImg'src={this.state.editMode ? this.state.imgUrl : this.props.imgUrl}/>
         <br/>
         <div className='taskerImg-nav-container'>
-          {this.state.editMode ? <input type="file" onChange={this.updateFile}/> : null}
+          {this.state.editMode || this.props.registering ? <input type="file" onChange={this.updateFile}/> : null}
+          {this.props.registering ? null :
           <div>
             {this.state.editMode ? <div onClick={this.uploadFile} className='photo-text'>Save</div> : null}
             <div className={displayMessage === '+ Add photo' && !this.state.editMode ? 'placeholder-text' : 'photo-text'} onClick={this.toggleEditMode}>{this.state.editMode ? 'Cancel' : displayMessage}</div>
-          </div>
+          </div>}
         </div>
       </div>
     )
@@ -81,11 +90,11 @@ class TaskerPhoto extends React.Component {
 
 const mapStateToProps = state => {
   const imgUrl = state.taskerInfo.imgUrl;
-  const userId = state.session.id
+  const userId = state.session.id;
 
   return {
     imgUrl,
-    userId
+    userId,
   }
 }
 

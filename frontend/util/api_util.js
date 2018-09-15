@@ -52,6 +52,13 @@ export const fetchLocations = (searchQuery) => {
   });
 }
 
+export const allLocations = () => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/locations'
+  });
+}
+
 export const fetchTaskers = (task_info) => {
   return $.ajax({
     method: 'GET',
@@ -125,6 +132,7 @@ export const destroyRegistration = (type, id) => {
 
 
 export const createRegistration = (type, info) => {
+  debugger
   return $.ajax({
     method: 'POST',
     url: `api/${type}`,

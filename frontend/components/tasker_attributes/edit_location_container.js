@@ -48,7 +48,7 @@ const mapStateToProps = state => {
             </div>
           </div>
           <div className='save-edit-container'>
-            <div onClick={this.handleSave}>Save</div>
+            <div id='' onClick={this.handleSave}>Save</div>
             <div onClick={this.handleCancel}>Cancel</div>
           </div>
         </div>
@@ -60,8 +60,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeTasker: (info, taskerId) => dispatch(changeTasker(info, taskerId)),
-    cancelLocationChange: () => dispatch(cancelLocationChange()),
-    affirmLocationChange: () => dispatch(affirmLocationChange()),
     fetchData: () => new Promise((res, rej) => res()),
     editTaskerLocation: (data) => dispatch(editTaskerLocation(data)),
   }

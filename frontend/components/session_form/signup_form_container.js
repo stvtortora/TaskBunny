@@ -6,7 +6,8 @@ import {closeModal} from '../../actions/modal_actions';
 const mapStateToProps = (state) => {
   return {
     errors: state.errors.sessionErrors,
-    formName: 'Sign Up'
+    formName: 'Sign Up',
+    currentTask: state.entities.currentTask.time.id
   };
 };
 

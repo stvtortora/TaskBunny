@@ -60,7 +60,7 @@ class Search extends React.Component {
         <div className="search" id={tasker ? 'tasker-search' : 'client-search'} >
           <input className='search_bar' id={tasker ? 'tasker-search-bar' : 'client-search-bar'} type="text" value={this.state.searchQuery} placeholder={this.props.placeholder}  onClick={this.handleClick} onChange={ this.handleChange } />
           {
-            this.props.type && this.props.type === this.props.resultsType ?
+            (this.props.type && this.props.type === this.props.resultsType) || !this.props.type ?
             <QueryDropdown addResource={ this.props.addResource } reduceSize={tasker ? true : false} searchQuery={this.state.searchQuery} open={this.props.open}path={ this.props.path } type={this.props.type}/>
             : null
           }

@@ -14,10 +14,10 @@ function Modal({modal, closeModal, session}) {
 
   let display;
   const formName = modal.formName;
-  if (session && !formName) {
+  if (!formName) {
     display = <TaskerSchedule id={modal.tasker_id}/>;
   } else {
-    if (modal.tasker_id) {
+    if (formName === 'redirect') {
       display = <RedirectOptions />;
     }
     if (formName === 'login') {

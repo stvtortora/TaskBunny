@@ -6,7 +6,8 @@ import {closeModal} from '../../actions/modal_actions';
 const mapStateToProps = (state) => {
   return {
     errors: state.errors.sessionErrors,
-    formName: 'Become a Tasker'
+    formName: 'Become a Tasker',
+    path: '/register'
   };
 };
 

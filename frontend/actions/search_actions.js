@@ -20,6 +20,14 @@ export const fetchLocations = (criteria) => {
   };
 };
 
+export const allLocations = () => {
+  return (dispatch) => {
+    return ApiUtil.allLocations().then(locations => {
+      return dispatch(receiveSearchResults(locations))
+    });
+  };
+};
+
 export const fetchTaskers = (task_info) => {
   return (dispatch) => {
     return ApiUtil.fetchTaskers(task_info).then(taskers => {
