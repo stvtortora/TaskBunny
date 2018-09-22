@@ -5,7 +5,7 @@ import Search from './search';
 
 const mapStateToProps = (state) => {
   const input = state.entities.search.input;
-  const placeholder = state.session.id ? 'Search categories here.' : 'Need something different?';
+  const placeholder = 'Tell us what you need done.';
   return {
     input: state.entities.search.input,
     open: state.entities.search.open,

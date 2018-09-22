@@ -20,10 +20,10 @@ class LocationForm extends React.Component {
   }
 
   locations () {
+    const that = this;
     return Object.keys(this.props.locations).map((id) => {
       const location = this.props.locations[id];
-      debugger
-      return <option value={JSON.stringify(location)}>{location.title}</option>
+      return <option selected={that.state.location && (that.state.location.id === location.id) ? true : false} value={JSON.stringify(location)}>{location.title}</option>
     })
   }
 
@@ -50,7 +50,7 @@ class LocationForm extends React.Component {
         <ul className='error-message'>{this.props.locationErrors}</ul>
           <div className='select-container'>
             <select ref={this.myRef} className='select' onChange={this.updateLocation} value={JSON.stringify(this.state.location)}>
-              <option value="" disabled selected>Select your location</option>
+              <option>Select your location</option>
               {this.locations()}
             </select>
           </div>

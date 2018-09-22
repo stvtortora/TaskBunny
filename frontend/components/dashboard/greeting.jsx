@@ -4,6 +4,7 @@ import ManageTasks from './manage_tasks';
 import TaskerInfo from './tasker_info';
 import CategorySuggestions from './category_suggestions';
 import CategorySearch from '../search/category_search_container';
+import CategoryPrimers from './category_primers';
 
 const Greeting = ({ user }) => {
   if(!user.id){
@@ -23,12 +24,14 @@ const Greeting = ({ user }) => {
     return (
       <div className="intro-content">
         <section>
-          <h2 className='header'>Welcome, {user.username}</h2>
+          <h3 className='subheader'>Welcome, {user.username}</h3>
+          <h2 className='header'>Book Your Next Task</h2>
         </section>
         <CategorySuggestions />
         <div className='category-search-container'>
            <CategorySearch show={true} type={null}/>
         </div>
+        <CategoryPrimers />
       </div>
     )
   }
