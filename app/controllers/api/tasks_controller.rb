@@ -2,7 +2,7 @@ class Api::TasksController < ApplicationController
   def create
     @task = current_user.tasks.new(task_params)
     if @task.save
-      time_slot_registration = TimeSlotRegistration.find_by(tasker_id: @task.tasker.id, time_slot_id: @task.time_slot.id)
+      time_slot_registration = TimeSlotRegistration.find_by(tasker_id: @task.tasker_id, time_slot_id: @task.time_slot_id)
       time_slot_registration.toggle_status
       render json: {}
     else
@@ -18,7 +18,7 @@ class Api::TasksController < ApplicationController
 
   def destroy
     @task  = Task.find(params[:id])
-    time_slot_registration = TimeSlotRegistration.find_by(tasker_id: @task.tasker.id, time_slot_id: @task.time_slot.id)
+    time_slot_registration = TimeSlotRegistration.find_by(tasker_id: @task.tasker_id, time_slot_id: @task.time_slot_id)
     time_slot_registration.toggle_status
     @task.destroy
     render 'api/tasks/show'
