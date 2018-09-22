@@ -4,11 +4,11 @@ import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 const taskStatusReducer = (state = [], action) => {
   switch(action.type) {
     case TASK_CREATED:
-      return ['Task confirmed'];
+      return state;
     case TASK_CANCELLED:
-      return ['Task cancelled'];
+      return state;
     case TASK_CONFLICT:
-      return ['Task not confirmed due to time conflict'];
+      return state;
     case LOGOUT_CURRENT_USER:
       return [];
     case ADD_TO_TASK:

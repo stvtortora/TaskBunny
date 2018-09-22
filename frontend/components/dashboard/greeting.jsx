@@ -25,6 +25,7 @@ const Greeting = ({ user }) => {
         <section>
           <h2 className='header'>Welcome, {user.username}</h2>
         </section>
+        <CategorySuggestions />
         <div className='category-search-container'>
            <CategorySearch show={true} type={null}/>
         </div>
