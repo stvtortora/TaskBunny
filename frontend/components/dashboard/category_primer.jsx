@@ -19,8 +19,13 @@ class CategoryPrimer extends React.Component {
 
     return (
       <div className='category-primer' onClick={this.handleClick}>
-        <h3>Book {this.props.category.title}</h3>
         <img className='primer-image' src={this.props.picture} />
+        <div className='primer-message'>
+          <h3>{this.props.message}</h3>
+          <div className='submit-container' >
+            <button id='primer-button'>Book {this.props.displayName}</button>
+          </div>
+        </div>
       </div>
     );
   }

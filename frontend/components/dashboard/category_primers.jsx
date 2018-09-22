@@ -17,19 +17,24 @@ class CategoryPrimers extends React.Component {
   render() {
     const primers = Object.keys(this.props.categorySuggestions).slice(0, 3).map((title) => {
       const category = this.props.categorySuggestions[title];
-      const pictures = {
-        'Mounting & Installation': window.staticImages.mounting_pic,
-        'Moving & Packing': window.staticImages.moving_pic,
-        'Furniture Assembly': window.staticImages.furniture_pic
+      const primerInfo = {
+        'Mounting & Installation': ['Mount a TV', window.staticImages.mounting_pic, 'Mounting'],
+        'Moving & Packing': ['Make a move', window.staticImages.moving_pic, 'Moving'],
+        'Furniture Assembly': ['Put together furniture', window.staticImages.furniture_pic, 'Assembly']
       }
-      const picture = pictures[category.title];
+      const thisInfo = primerInfo[category.title]
+      const message = thisInfo[0]
+      const picture = thisInfo[1];
+      const displayName = thisInfo[2]
 
-      return <CategoryPrimer category={category} picture={picture}/>
+      return <CategoryPrimer category={category} picture={picture} message={message} displayName={displayName}/>
     });
 
     return (
-      <div className='category-suggestions'>
-        {primers}
+      <div className='category-primers-container'>
+        <div className='category-primers'>
+          {primers}
+        </div>
       </div>
     );
   }

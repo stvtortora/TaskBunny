@@ -4,6 +4,7 @@ import CategorySuggestions from './category_suggestions';
 import Greeting from './greeting_container';
 import CategorySearch from '../search/category_search_container';
 import TasksIndex from './tasks_index';
+import CategoryPrimers from './category_primers';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -46,6 +47,7 @@ class Dashboard extends React.Component {
             <Greeting notTasker={notTasker}/>
           </div>
         </span>
+        <CategoryPrimers />
       </div>
     );
   }

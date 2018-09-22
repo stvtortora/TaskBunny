@@ -31,7 +31,6 @@ const Greeting = ({ user }) => {
         <div className='category-search-container'>
            <CategorySearch show={true} type={null}/>
         </div>
-        <CategoryPrimers />
       </div>
     )
   }
