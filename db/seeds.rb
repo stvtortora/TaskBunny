@@ -425,7 +425,6 @@ image_urls = [
   "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/Bunn-Rabbit-Easter-Wallpaper.jpg",
   "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/DYifBivX4AAoAV6.jpg",
   "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/Holland-Lop-Sable-Point.jpg",
-  "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/Rupert+3.JPG",
   "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/a723ec68360465c99c98a87af0f3c3e0.jpg",
   "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/bd84a7_6537945.jpg",
   "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/bunny-rabbit-pictures-35-of-the-cutest-bunny-rabbits-are-cuteness-overload-free.jpg",
@@ -438,12 +437,21 @@ image_urls = [
   "https://s3.us-east-2.amazonaws.com/task-bunny-pro/tasker_images/tumblr_o3irzcrVCc1tiyj7vo1_500.jpg"
 ]
 
+descriptions = [
+  'Hello, I am amazing. Hire me!',
+  'I am the best there is.',
+  "I can hop better than the rest of them",
+  "I'm hard working, puncutual, and love carrots",
+  "My work ethic is only mathced by my thumping habit"
+]
+
 
 names.each do |name|
   rateGenerator = Random.new
   rate = rateGenerator.rand(15.0...200.0).round(2).to_s
+  description = descriptions.sample
   image = image_urls.sample
-  Tasker.create!({username: name, password: 'password', name: name, location_id: locations.sample.id, description:'Hello, I am amazing. Hire me!', rate: rate, image: image})
+  Tasker.create!({username: name, password: 'password', name: name, location_id: locations.sample.id, description: description, rate: rate, image: image})
 end
 
 

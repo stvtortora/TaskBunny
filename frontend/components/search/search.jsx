@@ -23,7 +23,7 @@ class Search extends React.Component {
       this.setState({
         searchQuery: ''
       })
-    }else if(newProps.input || newProps.input === ''){
+    } else if(newProps.input || newProps.input === ''){
       this.setState({
         searchQuery: newProps.input
       })

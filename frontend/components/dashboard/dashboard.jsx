@@ -32,7 +32,6 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    debugger
     const uiMessages = this.props.ui_messages.map(message => {
       return <div>{message}</div>
     });

@@ -35,7 +35,6 @@ class StepOne extends React.Component {
 
   componentDidUpdate (prevProps) {
     if (this.props.sizeIds !== prevProps.sizeIds) {
-      debugger
       this.initializeState('sizeIds')
     }
     if (this.props.vehicleIds !== prevProps.vehicleIds) {
@@ -89,7 +88,6 @@ class StepOne extends React.Component {
 
   updateState (field, id) {
     return () => {
-      debugger
       const newSlice = merge({}, this.state[field]);
       if (this.state[field][id]) {
         delete newSlice[id];

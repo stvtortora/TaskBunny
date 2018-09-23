@@ -25,8 +25,8 @@ class NavLinks extends React.Component {
     return (
       this.props.user.id ?
         <div className='nav-links'>
-          <div className='nav-option' id={currentLocation === "/" ? 'selected-link': ''} onClick={this.handleClick('./')}>{this.props.user.type === 'Client' ? 'Book a Task' : 'Account'}</div>
-          <div className='nav-option' id={currentLocation === "/tasks" ? 'selected-link': ''} onClick={this.handleClick('./tasks')}>Your Tasks</div>
+          <div className='nav-option' id={currentLocation === "/" ? 'selected-link': ''} onClick={this.handleClick('/')}>{this.props.user.type === 'Client' ? 'Book a Task' : 'Account'}</div>
+          <div className='nav-option' id={currentLocation === "/tasks" ? 'selected-link': ''} onClick={this.handleClick('/tasks')}>Your Tasks</div>
         </div> : null
     )
   }

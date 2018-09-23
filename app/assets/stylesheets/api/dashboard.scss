@@ -12,10 +12,10 @@
 }
 
 #generic-homepage {
-  background-size: cover;
   display: block;
   width: 100%;
   background: image-url('homebackground.jpg');
+  background-size: 100%;
 }
 // background: image-url('homesbackground.jpg');
 // border-top: 1px solid #DCE0E6;
@@ -24,6 +24,7 @@
   display: block;
 width: 100%;
 background: image-url('homebackground.jpg');
+background-size: 100%;
 }
 // display: block;
 // position: absolute;
@@ -70,7 +71,7 @@ background: image-url('homebackground.jpg');
   margin-top: 0;
   font-style: inherit;
   font-weight: inherit;
-padding-top: 80px;
+padding-top: 130px;
 }
 
 #tasker-header {
