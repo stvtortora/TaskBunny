@@ -14,11 +14,8 @@
 #generic-homepage {
   background-size: cover;
   display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
+  background: image-url('homebackground.jpg');
 }
 // background: image-url('homesbackground.jpg');
 // border-top: 1px solid #DCE0E6;
@@ -26,6 +23,7 @@
 #homepage {
   display: block;
 width: 100%;
+background: image-url('homebackground.jpg');
 }
 // display: block;
 // position: absolute;
@@ -69,10 +67,10 @@ width: 100%;
 
 .header {
   font-size: 46px;
+  margin-top: 0;
   font-style: inherit;
   font-weight: inherit;
-  color: #ffffffe8;
-padding-top: 40px;
+padding-top: 80px;
 }
 
 #tasker-header {
@@ -83,16 +81,13 @@ padding-top: 40px;
   font-size: 23px;
   font-style: inherit;
   font-weight: inherit;
-  color: #ffffffe8;
 }
 
 .intro-content {
   display: block;
   align-items: center;
-  box-shadow: 3px 2px 15px 10px #2e34df;
   width: 100%;
   border: 0px;
-  background-color: #2e34df;
 }
 // #2e34dfa6
 .intro-content-tasker {
@@ -112,7 +107,16 @@ padding-top: 40px;
   align-items: center;
 }
 
+.category-primers-container {
+  text-align: center;
+  margin-top: 80px;
+}
 
+.category-primers-container > h1 {
+  font-weight: lighter;
+  color: black;
+  font-size: 40px;
+}
 
 .category-primers {
   padding: 30px;

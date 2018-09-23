@@ -24,7 +24,6 @@ const Greeting = ({ user }) => {
     return (
       <div className="intro-content">
         <section>
-          <h3 className='subheader'>Welcome, {user.username}</h3>
           <h2 className='header'>Book Your Next Task</h2>
         </section>
         <CategorySuggestions />

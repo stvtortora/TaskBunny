@@ -19,6 +19,7 @@ class ConfirmTask extends React.Component {
       this.props.history.push('/');
     } else {
       this.props.updateFormTracker('confirm');
+      window.scrollTo(0, 0);
     }
   }
 

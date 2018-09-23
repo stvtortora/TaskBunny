@@ -13,6 +13,7 @@ class TaskersIndex extends React.Component {
 
   componentDidMount() {
     this.props.updateFormTracker('taskers');
+    window.scrollTo(0, 0)
   }
 
   render() {

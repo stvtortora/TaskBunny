@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   return {
     errors: state.errors.sessionErrors,
     formName: 'Sign Up',
-    currentTask: state.entities.currentTask.time.id
+    currentTask: state.entities.currentTask.time ? state.entities.currentTask.time.id : null
   };
 };
 

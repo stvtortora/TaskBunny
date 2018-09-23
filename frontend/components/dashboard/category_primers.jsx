@@ -32,6 +32,7 @@ class CategoryPrimers extends React.Component {
 
     return (
       <div className='category-primers-container'>
+        <h1>Get Inspired</h1>
         <div className='category-primers'>
           {primers}
         </div>

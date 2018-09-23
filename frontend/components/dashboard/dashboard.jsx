@@ -27,6 +27,10 @@ class Dashboard extends React.Component {
   //   }
   // }
 
+  componentDidMount () {
+    window.scrollTo(0, 0)
+  }
+
   render() {
     debugger
     const uiMessages = this.props.ui_messages.map(message => {
@@ -47,7 +51,7 @@ class Dashboard extends React.Component {
             <Greeting notTasker={notTasker}/>
           </div>
         </span>
-        <CategoryPrimers />
+        {notTasker ? <CategoryPrimers /> : null}
       </div>
     );
   }
