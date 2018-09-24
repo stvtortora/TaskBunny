@@ -18,7 +18,7 @@ class TasksIndex extends React.Component {
       return <Task key={id} id={id} />
     });
 
-    const header = tasks.length > 0 ? <h3 className='your-tasks'>Upcoming Tasks</h3> : <h3 className='your-tasks'>No booked tasks yet.</h3>
+    const header = tasks.length > 0 ? <h3 className='your-tasks'>Your Tasks</h3> : <h3 className='your-tasks'>No booked tasks yet.</h3>
 
     return (
       <div>
