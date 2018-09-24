@@ -31,12 +31,6 @@ class Dashboard extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  componentDidUpdate (prevProps) {
-    if (this.props.modal && !prevProps.modal) {
-      this.props.closeModal();
-    }
-  }
-
   render() {
     const uiMessages = this.props.ui_messages.map(message => {
       return <div>{message}</div>

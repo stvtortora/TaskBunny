@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
   return {
     errors: state.errors.sessionErrors,
     formName: 'Become a Tasker',
-    path: '/register'
+    path: '/register',
+    
   };
 };
 
