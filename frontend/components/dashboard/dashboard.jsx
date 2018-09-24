@@ -28,7 +28,13 @@ class Dashboard extends React.Component {
   // }
 
   componentDidMount () {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
+  }
+
+  componentDidUpdate (prevProps) {
+    if (this.props.modal && !prevProps.modal) {
+      this.props.closeModal();
+    }
   }
 
   render() {

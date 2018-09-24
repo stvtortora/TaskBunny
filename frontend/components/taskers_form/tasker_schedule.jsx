@@ -18,6 +18,12 @@ class TaskerSchedule extends React.Component {
       this.state = {date: null, time: null, tasker: null};
     }
 
+    componentDidUpdate (prevProps) {
+      if(!this.props.tasker && prevProps.tasker) {
+        this.props.closeModal();
+      }
+    }
+
     componentDidMount () {
       let defaultDay;
       for (let i = 0; i < this.dayOrder.length; i++) {
@@ -76,7 +82,7 @@ debugger
     }
 
     render(){
-      if (this.state.date) {
+      if (this.state.date && this.props.tasker) {
         debugger
         const times = this.props.days[this.state.date].map(time => {
           return <option value={time} onClick={this.handleTimeSelection}>{time.title}</option>
@@ -108,7 +114,7 @@ debugger
 const mapStateToProps = (state, ownProps) => {
 
   const tasker = state.entities.search.results[state.modal.tasker_id];
-  const days = tasker.days;
+  const days = tasker ? tasker.days : undefined;
   const currentUser = state.session.id;
 
   return {
