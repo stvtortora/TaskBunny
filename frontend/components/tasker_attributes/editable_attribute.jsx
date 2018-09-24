@@ -223,6 +223,7 @@ class EditableAttribute extends React.Component {
   }
 
   render(){
+    debugger
     return this.props.render.call(this);
   }
 }

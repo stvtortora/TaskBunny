@@ -20,6 +20,7 @@ const mapStateToProps = state => {
     type,
     display,
     numCategories,
+    idName,
     render: function () {
       const placeHolderText = this.props.type === 'Location' ? '+ Add your location' : '+ Add your areas of expertise';
       const requirePlaceHolder = (this.props.type === 'Location' && !this.props.location) || (this.props.type === 'Categories' && this.props.numCategories === 0);
