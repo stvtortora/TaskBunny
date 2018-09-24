@@ -65,7 +65,7 @@ class LocationForm extends React.Component {
 // <LocationSearch type={null} show={true}/>
 const mapStateToProps = (state) => {
   const location = state.entities.detailForm.location.value;
-  const locationErrors = state.errors.formErrors;
+  const locationErrors = state.errors.locationErrors;
   const locations = state.entities.search.results;
 
   return {

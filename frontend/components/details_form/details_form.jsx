@@ -13,6 +13,11 @@ class DetailsForm extends React.Component {
   componentDidMount() {
     this.props.updateFormTracker('details');
     window.scrollTo(0, 0);
+    if (this.props.size && this.props.vehicle) {
+      this.props.updateShowForm('tellDetails');
+    } else if (this.props.location) {
+      this.props.updateShowForm('taskDetails');
+    }
   }
 
   render() {

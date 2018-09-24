@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addToTask } from '../../actions/tasks_actions';
-import { updateShowForm } from '../../actions/form_actions';
+import { updateShowForm, invalidSize, invalidVehicle } from '../../actions/form_actions';
 
 class TaskDetailsForm extends React.Component {
   constructor(props) {
@@ -20,8 +20,17 @@ class TaskDetailsForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addToTask(this.state);
-    this.props.updateShowForm('tellDetails');
+    if (!this.state.size || !this.state.vehicle) {
+      if (!this.state.size) {
+        this.props.invalidSize();
+      }
+      if (!this.state.vehicle) {
+        this.props.invalidVehicle();
+      }
+    } else {
+      this.props.addToTask(this.state);
+      this.props.updateShowForm('tellDetails');
+    }
   }
 
   render(){
@@ -29,6 +38,7 @@ class TaskDetailsForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <div>
           <h3 className="form_question">How Big is Your Task?</h3>
+          <div className='error-message'>{this.props.sizeErrors}</div>
           <div className="size_options">
             <label><input type="radio" value="small" checked={this.state.size === 'small'} onChange={this.handleChange('size')} />Small - Est. 1 hr</ label>
             <label><input type="radio" value="medium" checked={this.state.size === 'medium'} onChange={this.handleChange('size')} />Medium - Est. 2-3 hrs</ label>
@@ -37,6 +47,7 @@ class TaskDetailsForm extends React.Component {
         </div>
         <div>
           <h3 className="form_question">Vehicle Requirements</h3>
+          <div className='error-message'>{this.props.vehicleErrors}</div>
           <div className="vehicle_options">
             <label><input type="radio" value="none" checked={this.state.vehicle === 'none'} onChange={this.handleChange('vehicle')} />Not needed for task</label>
             <label><input type="radio" value="car" checked={this.state.vehicle === 'car'} onChange={this.handleChange('vehicle')} />Task requires a car</label>
@@ -53,7 +64,9 @@ class TaskDetailsForm extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    state: state.entities.currentTask.size ? state.entities.currentTask : {size: '', vehicle: ''}
+    state: state.entities.currentTask.size ? state.entities.currentTask : {size: '', vehicle: ''},
+    sizeErrors: state.errors.sizeErrors[0],
+    vehicleErrors: state.errors.vehicleErrors[0]
   }
 }
 
@@ -61,6 +74,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addToTask: (state) => dispatch(addToTask(state)),
     updateShowForm: (formName) => dispatch(updateShowForm(formName)),
+    invalidSize: () => dispatch(invalidSize()),
+    invalidVehicle: () => dispatch(invalidVehicle())
   };
 }
 

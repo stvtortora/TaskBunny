@@ -4,7 +4,7 @@ import { updateShowForm } from '../../actions/form_actions';
 import Show from './show';
 
 const mapStateToProps = (state) => {
-  const fields = [state.entities.detailForm.location.value.title];
+  const fields = [state.entities.currentTask.location.title];
 
   return {
     fields,

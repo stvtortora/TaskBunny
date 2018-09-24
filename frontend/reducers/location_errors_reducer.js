@@ -4,7 +4,7 @@ import { ADD_TO_TASK } from '../actions/tasks_actions';
 const locationErrorsReducer = (state = [], action) => {
   switch(action.type) {
     case INVALID_LOCATION:
-      return ['You must select a valid location'];
+      return ["Location can't be blank."];
     case ADD_TO_TASK:
       return [];
     default:
