@@ -37,8 +37,7 @@ const Greeting = ({ user }) => {
   return (
     <div className='intro-content-container'>
       <section className="intro-content-tasker">
-        <h2 className='header' id='tasker-header'>Welcome, {user.name}</h2>
-        <h1 className='subheader' id='tasker-subheader'>Your Details</h1>
+        <h1 className='tasker-account-header' id=''>Your Account</h1>
       </section>
       <div className='task_index'>
       </div>

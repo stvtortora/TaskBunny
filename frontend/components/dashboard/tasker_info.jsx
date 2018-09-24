@@ -46,14 +46,14 @@ class TaskerInfo extends React.Component{
     return (
       <div className='tasker-dashboard-info'>
         <div className='tasker-info-options'>
-          <div className='info-option' onClick={this.update}>Photo</div>
-          <div className='info-option' onClick={this.update}>About</div>
-          <div className='info-option' onClick={this.update}>Location</div>
-          <div className='info-option' onClick={this.update}>Rate</div>
-          <div className='info-option' onClick={this.update}>Categories</div>
-          <div className='info-option' onClick={this.update}>Sizes</div>
-          <div className='info-option' onClick={this.update}>Vehicles</div>
-          <div className='info-option' onClick={this.update}>Schedule</div>
+          <div className='info-option' id={this.state.currentInfo === 'Photo' ? 'selected-info' : ''} onClick={this.update}>Photo</div>
+          <div className='info-option' id={this.state.currentInfo === 'About' ? 'selected-info' : ''} onClick={this.update}>About</div>
+          <div className='info-option' id={this.state.currentInfo === 'Location' ? 'selected-info' : ''} onClick={this.update}>Location</div>
+          <div className='info-option' id={this.state.currentInfo === 'Rate' ? 'selected-info' : ''} onClick={this.update}>Rate</div>
+          <div className='info-option' id={this.state.currentInfo === 'Categories' ? 'selected-info' : ''} onClick={this.update}>Categories</div>
+          <div className='info-option' id={this.state.currentInfo === 'Sizes' ? 'selected-info' : ''} onClick={this.update}>Sizes</div>
+          <div className='info-option' id={this.state.currentInfo === 'Vehicles' ? 'selected-info' : ''} onClick={this.update}>Vehicles</div>
+          <div className='info-option' id={this.state.currentInfo === 'Schedule' ? 'selected-info' : ''} onClick={this.update}>Schedule</div>
         </div>
         <div className='tasker-info-box'>
           {this.info[this.state.currentInfo]}

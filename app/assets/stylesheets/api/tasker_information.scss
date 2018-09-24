@@ -17,7 +17,6 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin-top:65px;
 }
 
 #tasker-header {
@@ -27,6 +26,13 @@
 #tasker-subheader {
   text-align: center;
   color: black;
+}
+
+.tasker-account-header {
+  font-size: 2.5rem;
+font-weight: lighter;
+width: 950px;
+color: black;
 }
 
 .tasker-dashboard-info {
@@ -55,7 +61,8 @@
   padding-top: 0;
   margin-bottom: 0;
   padding-bottom: 0;
-  padding-left:0;
+  padding-left: 0;
+  margin-left: 0;
 }
 
 .tasker-info-box {
@@ -92,7 +99,7 @@
   justify-content: right;
   padding: 0px;
   margin:20px;
-  width: 757px;
+  width: 700px;
   min-height: 400px
 }
 
@@ -118,6 +125,7 @@
   text-align: center;
 height: 100%;
 width: 700px;
+margin: 20px;
 }
 
 // #tasker-attribute-selection {
@@ -144,17 +152,6 @@ width: 700px;
 #tasker-search {
   display: flex;
   flex-direction: row;
-}
-
-#tasker-search-bar {
-  height: 5px;
-  width: 242px;
-  font-size: 18px;
-}
-
-#tasker-query-results {
-  width: 250px;
-  top: 24px;
 }
 
 .size-vehicle-options {
@@ -214,7 +211,18 @@ width: 700px;
 
 .info-option {
   padding: 5px;
+  padding-left: 15px;
   margin: 10px;
+  margin-left: 0;
+}
+
+#selected-info {
+  border-left: 4px solid #2e34df;
+}
+
+.info-option:hover {
+  cursor: pointer;
+  border-left: 4px solid #00000063;
 }
 
  .tasker-schedule-days {
@@ -348,8 +356,7 @@ width: 700px;
  // }
 
  .selectedOption-static {
-   font-weight: bold;
-   color: #2e34df ;
+   font-weight: lighter;
  }
 
  .unselectedOption-static {
@@ -374,16 +381,13 @@ width: 700px;
  }
 
  #rate {
-   width: 242px;
-   height: 5px;
    font-size: 18px;
    padding: 10px;
  }
 
  #description {
-   width: 242px;
    padding: 10px;
-   height: 100px;
+   height: 200px;
    font-size: 18px;
  }
 
