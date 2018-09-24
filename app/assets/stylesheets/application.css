@@ -28,6 +28,7 @@ html, body {
   display: flex;
   flex-direction: column;
   position: relative;
+  margin: 0;
 }
 
 .main-content-container {
