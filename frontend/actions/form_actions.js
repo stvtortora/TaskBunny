@@ -1,6 +1,8 @@
 export const INVALID_LOCATION = 'INVALID_LOCATION';
 export const INVALID_SIZE = 'INVALID_SIZE';
 export const INVALID_VEHICLE = 'INVALID_VEHICLE';
+export const VALID_SIZE = 'VALID_SIZE';
+export const VALID_VEHICLE = 'VALID_VEHICLE';
 export const UPDATE_FORM_TRACKER = 'UPDATE_FORM_TRACKER';
 export const RESET_SHOWFORM = 'RESET_SHOWFORM';
 export const UPDATE_SHOWFORM = 'UPDATE_SHOWFORM';
@@ -42,6 +44,18 @@ export const invalidSize = () => {
 export const invalidVehicle = () => {
   return {
     type: INVALID_VEHICLE
+  }
+}
+
+export const validSize = () => {
+  return {
+    type: VALID_SIZE
+  }
+}
+
+export const validVehicle = () => {
+  return {
+    type: VALID_VEHICLE
   }
 }
 

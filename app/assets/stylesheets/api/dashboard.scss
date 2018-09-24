@@ -15,7 +15,7 @@
   display: block;
   width: 100%;
   background: image-url('homebackground.jpg');
-  background-size: 100%;
+  background-size: cover;
   margin-top: 0;
 }
 // background: image-url('homesbackground.jpg');
@@ -25,12 +25,12 @@
   display: block;
 width: 100%;
 background: image-url('homebackground.jpg');
-background-size: 100%;
+background-size: cover;
 margin-top: 0;
 }
 
 #picture-header {
-  padding-top: 200px;
+  padding-top: 120px;
 }
 // display: block;
 // position: absolute;
@@ -349,6 +349,17 @@ ul {
   font-weight: lighter;
   padding: 30px;
   padding-top:0;
+}
+
+.tasker-demo-link {
+  padding: 25px;
+  padding-bottom: 0;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.tasker-demo-link:hover {
+  cursor: pointer;
 }
 
 .selectedTime {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addToTask } from '../../actions/tasks_actions';
-import { updateShowForm, invalidSize, invalidVehicle } from '../../actions/form_actions';
+import { updateShowForm, invalidSize, invalidVehicle, validSize, validVehicle } from '../../actions/form_actions';
 
 class TaskDetailsForm extends React.Component {
   constructor(props) {
@@ -23,9 +23,13 @@ class TaskDetailsForm extends React.Component {
     if (!this.state.size || !this.state.vehicle) {
       if (!this.state.size) {
         this.props.invalidSize();
+      } else {
+        this.props.validSize();
       }
       if (!this.state.vehicle) {
         this.props.invalidVehicle();
+      } else {
+        this.props.validVehicle()
       }
     } else {
       this.props.addToTask(this.state);
@@ -75,7 +79,9 @@ const mapDispatchToProps = (dispatch) => {
     addToTask: (state) => dispatch(addToTask(state)),
     updateShowForm: (formName) => dispatch(updateShowForm(formName)),
     invalidSize: () => dispatch(invalidSize()),
-    invalidVehicle: () => dispatch(invalidVehicle())
+    invalidVehicle: () => dispatch(invalidVehicle()),
+    validSize: () => dispatch(validSize()),
+    validVehicle: () => dispatch(validVehicle())
   };
 }
 
