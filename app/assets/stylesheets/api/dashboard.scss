@@ -162,15 +162,15 @@ ul {
   border: solid;
   border-width: thin;
   border-radius: 8px;
-    color: #2e34df;
+  color: white;
   padding: 10px;
-  background-color: white;
+  background-color: #2e34df;
 
 }
 
 .category-row li:hover {
-  background-color: #2e34df;
-  color: white;
+  background-color: white;
+  color: #2e34df;
   cursor: pointer;
 }
 
@@ -302,6 +302,10 @@ ul {
 .primer-image {
   height: 350px;
   max-width: 300px;
+}
+
+.category-primer:hover{
+  cursor: pointer;
 }
 
 .primer-message {
