@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
     input: state.entities.search.input,
     open: state.entities.search.open,
     resultsType: state.entities.search.resultsType,
-    placeholder: 'Enter your location',
+    placeholder: 'Where are you located?',
     path: undefined
   }
 }

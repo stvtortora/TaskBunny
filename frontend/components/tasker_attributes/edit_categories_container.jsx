@@ -25,12 +25,14 @@ const mapStateToProps = state => {
       const requirePlaceHolder = (this.props.type === 'Location' && !this.props.location) || (this.props.type === 'Categories' && this.props.numCategories === 0);
 
       if(!this.state.editMode){
-        return requirePlaceHolder ? <div onClick={this.toggleEditMode} className='placeholder-text'>{placeHolderText}</div> :
+        return requirePlaceHolder ? <div className='placeholder-container'><div onClick={this.toggleEditMode} className='placeholder-text'>{placeHolderText}</div></div> :
           <div className='tasker-attribute-container'>
             <div className='tasker-attribute-name'>{this.props.type}</div>
-            <div className='tasker-attribute-content' id='tasker-attribute-selection'>{this.props.display}</div>
-            <div className='save-edit-container'>
-              <div onClick={this.toggleEditMode}>Edit</div>
+            <div className={this.state.editMode ? 'attribute-edit' : 'attribute-show'}>
+              <div className='tasker-attribute-content' id='tasker-attribute-selection'>{this.props.display}</div>
+              <div className='save-edit-container'>
+                <div onClick={this.toggleEditMode}>Edit</div>
+              </div>
             </div>
           </div>
       }
@@ -51,7 +53,7 @@ const mapStateToProps = state => {
             </div>
           </div>
           <div className='save-edit-container'>
-            <div onClick={this.handleSave}>Save</div>
+            <div id='save-button' onClick={this.handleSave}>Save</div>
             <div onClick={this.handleCancel}>Cancel</div>
           </div>
         </div>

@@ -52,7 +52,7 @@ class EditText extends React.Component{
             {input}
           </div>
           <div className='save-edit-container'>
-            <div onClick={this.handleSave}>Save</div>
+            <div id='save-button' onClick={this.handleSave}>Save</div>
             <div onClick={this.toggleEditMode}>Cancel</div>
           </div>
         </div>
@@ -64,12 +64,14 @@ class EditText extends React.Component{
     return this.props.text && this.props.text.length ?
       <div className='tasker-attribute-container'>
         <div className='tasker-attribute-name'>{this.props.type}</div>
-        <div className='tasker-attribute-content' id='tasker-attribute-selection'>{this.props.text}</div>
-        <div className='save-edit-container'>
-          <div onClick={this.toggleEditMode}>{this.props.text && this.props.text.length ? 'Edit' : editPlaceHolder}</div>
+        <div className={this.state.editMode ? 'attribute-edit' : 'attribute-show'}>
+          <p className='tasker-attribute-content' id='tasker-attribute-selection'>{this.props.text}</p>
+          <div className='save-edit-container'>
+            <div onClick={this.toggleEditMode}>{this.props.text && this.props.text.length ? 'Edit' : editPlaceHolder}</div>
+          </div>
         </div>
       </div> :
-      <div onClick={this.toggleEditMode} className='placeholder-text'>{placeHolderText}</div>
+      <div className='placeholder-container'><div onClick={this.toggleEditMode} className='placeholder-text'>{placeHolderText}</div></div>
   }
 }
 

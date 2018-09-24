@@ -14,24 +14,49 @@ import { fetchUserInfo } from '../../actions/taskers_actions';
 class TaskerInfo extends React.Component{
   constructor(props){
     super(props);
+    this.update = this.update.bind(this);
+    this.info = {
+      'Photo': <TaskerPhoto />,
+      'About': <EditDescription />,
+      'Location': <EditLocation />,
+      'Rate': <EditRate />,
+      'Categories': <EditCategories />,
+      'Sizes': <EditSizes />,
+      'Vehicles': <EditVehicles />,
+      'Schedule': <EditSchedule />
+    }
+    this.state = {
+      currentInfo: 'Photo'
+    }
   }
 
   componentDidMount(){
     this.props.fetchUserInfo(this.props.userId);
   }
 
+  update (e) {
+    debugger
+    this.setState({
+      currentInfo: e.currentTarget.textContent
+    })
+  }
+
   render(){
+    debugger
     return (
       <div className='tasker-dashboard-info'>
-        <TaskerPhoto />
+        <div className='tasker-info-options'>
+          <div className='info-option' onClick={this.update}>Photo</div>
+          <div className='info-option' onClick={this.update}>About</div>
+          <div className='info-option' onClick={this.update}>Location</div>
+          <div className='info-option' onClick={this.update}>Rate</div>
+          <div className='info-option' onClick={this.update}>Categories</div>
+          <div className='info-option' onClick={this.update}>Sizes</div>
+          <div className='info-option' onClick={this.update}>Vehicles</div>
+          <div className='info-option' onClick={this.update}>Schedule</div>
+        </div>
         <div className='tasker-info-box'>
-          <EditDescription />
-          <EditLocation />
-          <EditRate />
-          <EditCategories />
-          <EditSizes />
-          <EditVehicles />
-          <EditSchedule />
+          {this.info[this.state.currentInfo]}
         </div>
       </div>
     )

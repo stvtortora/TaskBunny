@@ -19,15 +19,17 @@ const mapStateToProps = (state) => {
       const options = this.options();
       const requirePlaceHolder = this.props.registrationIds.length === 0 && !this.state.editMode;
 
-      return requirePlaceHolder ? <div onClick={this.toggleEditMode} className='placeholder-text'>{placeHolderText}</div> :
+      return requirePlaceHolder ? <div className='placeholder-container'><div onClick={this.toggleEditMode} className='placeholder-text'>{placeHolderText}</div></div> :
         <div className='tasker-attribute-container' id={this.state.editMode ? 'attribute-container-edit' : ''}>
           <div className='tasker-attribute-name'>{this.props.title}</div>
-          <div className='size-vehicle-options'>
-            {options}
-          </div>
-          <div className='save-edit-container'>
-            <div onClick={this.state.editMode ? this.handleSave : this.toggleEditMode }>{this.state.editMode ? 'Save' : 'Edit'}</div>
-            {this.state.editMode ? <div onClick={this.toggleEditMode }>Cancel</div> : null}
+          <div className={this.state.editMode ? 'attribute-edit' : 'attribute-show'}>
+            <div className='size-vehicle-options'>
+              {options}
+            </div>
+            <div className='save-edit-container'>
+              <div id={this.state.editMode ? 'save-button' : ''} onClick={this.state.editMode ? this.handleSave : this.toggleEditMode }>{this.state.editMode ? 'Save' : 'Edit'}</div>
+              {this.state.editMode ? <div onClick={this.toggleEditMode }>Cancel</div> : null}
+            </div>
           </div>
         </div>
     }
