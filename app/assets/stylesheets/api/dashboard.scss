@@ -26,6 +26,10 @@ width: 100%;
 background: image-url('homebackground.jpg');
 background-size: 100%;
 }
+
+#picture-header {
+  padding-top: 120px;
+}
 // display: block;
 // position: absolute;
 // top: 42%;
@@ -237,10 +241,9 @@ ul {
 }
 
 .your-tasks {
-  color: #2e34df;
+  color: black;
   font-size:25px;;
-  font-weight: normal;
-  text-transform: capitalize;
+  font-weight: lighter;
 }
 
 .task-container{

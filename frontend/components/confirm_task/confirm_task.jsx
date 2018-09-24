@@ -4,7 +4,7 @@ import FormTracker from '../form_tracker/form_tracker';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { createTask, taskCancelled } from '../../actions/tasks_actions';
-import { updateFormTracker, clearForm } from '../../actions/form_actions';
+import { updateFormTracker, clearForm, resetForm  } from '../../actions/form_actions';
 
 class ConfirmTask extends React.Component {
   constructor(props){
@@ -42,6 +42,7 @@ class ConfirmTask extends React.Component {
     e.preventDefault();
     this.props.createTask(this.props.task_info).then(() => {
       this.props.clearForm();
+      this.props.resetForm();
       this.props.history.push('/tasks');
     },
     () => {
@@ -122,7 +123,8 @@ const mapDispatchToProps = dispatch => {
     updateFormTracker: (currentForm) => dispatch(updateFormTracker(currentForm)),
     createTask: (task_info) => dispatch(createTask(task_info)),
     taskCancelled: () => dispatch(taskCancelled()),
-    clearForm: () => dispatch(clearForm())
+    clearForm: () => dispatch(clearForm()),
+    resetForm: () => dispatch(resetForm())
   }
 }
 

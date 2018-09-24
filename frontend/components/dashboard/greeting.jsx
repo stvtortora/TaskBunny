@@ -10,7 +10,7 @@ const Greeting = ({ user }) => {
   if(!user.id){
     return (
       <section className="intro-content">
-        <h2 className="header">Everything you need done. <br/> One place.</h2>
+        <h2 className="header" id='picture-header'>Everything you need done. <br/> One place.</h2>
         <h1 className='subheader'>Tell us what you need done and get matched with skilled bunnies instantly.</h1>
         <CategorySuggestions />
         <div className='category-search-container'>
@@ -24,7 +24,7 @@ const Greeting = ({ user }) => {
     return (
       <div className="intro-content">
         <section>
-          <h2 className='header'>Book Your Next Task</h2>
+          <h2 className='header' id='picture-header'>Book Your Next Task</h2>
         </section>
         <CategorySuggestions />
         <div className='category-search-container'>

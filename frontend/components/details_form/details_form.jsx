@@ -12,7 +12,6 @@ class DetailsForm extends React.Component {
 
   componentDidMount() {
     this.props.updateFormTracker('details');
-    this.props.resetForm();
     window.scrollTo(0, 0);
   }
 
