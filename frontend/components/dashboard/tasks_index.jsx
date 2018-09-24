@@ -14,6 +14,7 @@ class TasksIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchTasks();
+    window.scrollTo(0, 0);
   }
 
   handleDemo () {
