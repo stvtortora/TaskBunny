@@ -79,7 +79,7 @@ class ConfirmTask extends React.Component {
                   <input type='submit' value="Confirm Task"/>
                 </div>
                 <div className='form_input_button' >
-                  <div onClick={this.handleCancel}>Cancel Task</div>
+                  <div className='cancel-task-button' onClick={this.handleCancel}>Cancel Task</div>
                 </div>
               </form>
             </div>
