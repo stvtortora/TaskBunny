@@ -32,13 +32,6 @@ class Task extends React.Component {
   render() {
     return (
       <div className='task-container'>
-        <div className='task-header-container'>
-          <h3>{this.props.task.category}</h3>
-          <div className='task-cancel-container'>
-            {this.props.sessionType === 'Client' ? <div className='cancel-task' onClick={this.handleClick}>Cancel</div> : null}
-          </div>
-        </div>
-
         <div className='task-info-container'>
             <div>
               <p>{this.props.sessionType === "Client" ? "Tasker" : "Client"}</p>
@@ -55,6 +48,9 @@ class Task extends React.Component {
             <div>
               <p>Date</p>
               <p>{this.props.task.date} @ {this.props.task.time}</p>
+            </div>
+            <div className='task-cancel-container' id='cancel-task'>
+              {this.props.sessionType === 'Client' ? <div className='cancel-task' onClick={this.handleClick}>Cancel</div> : null}
             </div>
         </div>
       </div>

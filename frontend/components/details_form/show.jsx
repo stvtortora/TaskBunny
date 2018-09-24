@@ -25,7 +25,7 @@ class Show extends React.Component {
             {displayNames}
           </div>
           <div id="edit_button">
-            <p onClick={this.handleClick}>Edit</p>
+            {<p onClick={this.handleClick}>Edit</p>}
           </div>
         </span>
       );
