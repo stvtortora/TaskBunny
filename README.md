@@ -1,6 +1,6 @@
 # Task Bunny
 
-Live: https://taskbunny.herokuapp.com/#/
+Live: https://task--bunny.herokuapp.com/#/
 
 ## Overview
 

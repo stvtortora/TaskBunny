@@ -1,5 +1,6 @@
 var path = require("path");
 var webpack = require("webpack");
+const TerserPlugin = require('terser-webpack-plugin');
 
 var plugins = []; // if using any plugins for both dev and production
 var devPlugins = []; // if using any plugins for development
@@ -30,6 +31,10 @@ module.exports = {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: "bundle.js"
   },
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin({})],
+}
   module: {
     loaders: [
       {
